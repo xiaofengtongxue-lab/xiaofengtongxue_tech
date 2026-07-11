@@ -10,7 +10,7 @@ const parsedSiteUrl = new URL(siteUrl)
 const siteOrigin = parsedSiteUrl.origin
 const sitePath = parsedSiteUrl.pathname.replace(/\/$/, '')
 const siteTitle = '程序员小枫同学'
-const siteDescription = '程序员小枫同学的 Codex 系统教程，覆盖 Codex App、CLI、AGENTS.md、Skills、MCP、代码审查与真实项目工作流。'
+const siteDescription = '程序员小枫同学的 Codex 实战教程，从新手到专家，覆盖真实项目开发、AGENTS.md、Skills、MCP、自动化、PPT、电商与漫剧工作流。'
 const authorId = `${siteUrl}/#author`
 const websiteId = `${siteUrl}/#website`
 
@@ -197,14 +197,86 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: 'Codex 教程', link: '/codex/' }
+      { text: 'Codex 教程', link: '/codex/' },
+      { text: '技巧实战', link: '/codex/practice/' },
+      { text: 'Skill 推荐', link: '/codex/skills/' }
     ],
     sidebar: {
       '/codex/': [
         {
-          text: 'Codex 教程',
+          text: 'Codex 实战教程',
           items: [
             { text: '教程总览', link: '/codex/' }
+          ]
+        },
+        {
+          text: '第一阶段：安全入门',
+          collapsed: false,
+          items: [
+            { text: 'Codex 是什么', link: '/codex/start/what-is-codex' },
+            { text: 'App、CLI、IDE 和云任务怎么选', link: '/codex/start/choose-surface' },
+            { text: '安装、登录与环境检查', link: '/codex/start/install-login' },
+            { text: '第一次可验证任务', link: '/codex/start/first-task' },
+            { text: '提示词与任务说明', link: '/codex/start/prompting' },
+            { text: '权限、沙箱与工作区安全', link: '/codex/start/permissions' }
+          ]
+        },
+        {
+          text: '第二阶段：真实项目工作流',
+          collapsed: false,
+          items: [
+            { text: '读懂陌生代码库', link: '/codex/workflows/understand-codebase' },
+            { text: '复现并修复 Bug', link: '/codex/workflows/fix-bugs' },
+            { text: '开发一个完整功能', link: '/codex/workflows/build-feature' },
+            { text: '补测试与验证门槛', link: '/codex/workflows/testing' },
+            { text: '根据截图实现界面', link: '/codex/workflows/ui-from-screenshot' },
+            { text: '可回退的重构与迁移', link: '/codex/workflows/refactor' },
+            { text: '代码审查、Git 与 PR', link: '/codex/workflows/code-review-git' },
+            { text: '文档与发布准备', link: '/codex/workflows/docs-release' }
+          ]
+        },
+        {
+          text: '第三阶段：专家进阶',
+          collapsed: true,
+          items: [
+            { text: 'AGENTS.md 实战', link: '/codex/advanced/agents-md' },
+            { text: 'config.toml 配置实战', link: '/codex/advanced/config' },
+            { text: 'MCP 配置与安全', link: '/codex/advanced/mcp' },
+            { text: 'Plugins 安装与管理', link: '/codex/advanced/plugins' },
+            { text: '云任务与 Worktree', link: '/codex/advanced/cloud-worktrees' },
+            { text: '定时任务与持续目标', link: '/codex/advanced/automation' },
+            { text: 'codex exec 与 GitHub Actions', link: '/codex/advanced/exec-ci' },
+            { text: 'Hooks 与 Rules', link: '/codex/advanced/hooks-rules' },
+            { text: 'Subagents 并行协作', link: '/codex/advanced/subagents' },
+            { text: 'SDK 与 App Server', link: '/codex/advanced/sdk-app-server' },
+            { text: '团队安全与数据边界', link: '/codex/advanced/security' },
+            { text: '常见故障分层排查', link: '/codex/advanced/troubleshooting' }
+          ]
+        },
+        {
+          text: 'Codex 技巧与场景实战',
+          collapsed: false,
+          items: [
+            { text: '场景实战总览', link: '/codex/practice/' },
+            { text: '制作可交付的 PPT', link: '/codex/practice/ppt' },
+            { text: '搭建电商运营工作流', link: '/codex/practice/ecommerce' },
+            { text: '制作 AI 漫剧与短片', link: '/codex/practice/comic-drama' },
+            { text: '处理 Word、Excel 和 PDF', link: '/codex/practice/documents-spreadsheets-pdf' },
+            { text: '完成带来源的研究报告', link: '/codex/practice/research-report' },
+            { text: '数据分析与可视化', link: '/codex/practice/data-analysis' },
+            { text: '从想法到 Web 应用', link: '/codex/practice/web-app' },
+            { text: '图文、短视频与内容素材', link: '/codex/practice/content-video' }
+          ]
+        },
+        {
+          text: 'Codex Skill 推荐',
+          collapsed: false,
+          items: [
+            { text: 'Skill 推荐总览', link: '/codex/skills/' },
+            { text: '官方与高价值能力推荐', link: '/codex/skills/official' },
+            { text: '社区 Skill 推荐', link: '/codex/skills/community' },
+            { text: '安装与安全审计', link: '/codex/skills/install-audit' },
+            { text: '从零创建自己的 Skill', link: '/codex/skills/create' }
           ]
         }
       ]

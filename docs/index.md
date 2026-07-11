@@ -1,25 +1,31 @@
 ---
 layout: home
 title: 程序员小枫同学
-description: 程序员小枫同学的 Codex 系统教程，覆盖 Codex App、CLI、AGENTS.md、Skills、MCP、代码审查与真实项目工作流。
+description: 程序员小枫同学的 Codex 实战教程，从新手到专家，覆盖真实项目开发、AGENTS.md、Skills、MCP、自动化、PPT、电商与漫剧工作流。
 
 hero:
   name: 程序员小枫同学
-  text: Codex 系统教程
-  tagline: 学会使用 Codex App、CLI、AGENTS.md、Skills 与 MCP 完成真实开发任务
+  text: Codex 工程实战教程
+  tagline: 不做官方文档搬运，从第一次任务到自动化、PPT、电商和漫剧，所有章节都以真实交付和验证为终点
   actions:
     - theme: brand
-      text: 开始学习 Codex
+      text: 从新手开始
       link: /codex/
+    - theme: alt
+      text: 查看场景实战
+      link: /codex/practice/
 
 features:
-  - title: 选择使用方式
-    details: 理解 Codex App 与 CLI 的适用场景，从正确入口开始第一次任务。
+  - title: 从新手到专家
+    details: 安装、提示、权限、Bug、功能、测试、重构、审查、配置、MCP、云任务和 CI 形成一条完整学习路线。
     link: /codex/
-  - title: 建立项目规则
-    details: 使用 AGENTS.md 固化项目背景、修改边界和验证命令。
-    link: /codex/
-  - title: 扩展开发工作流
-    details: 使用 Skills 与 MCP 复用流程、连接工具，并在提交前完成验证。
-    link: /codex/
+  - title: 面向真实工程交付
+    details: 每章包含输入、步骤、提示模板、验证门槛、失败处理和安全边界，不用“代码已生成”冒充任务完成。
+    link: /codex/workflows/understand-codebase
+  - title: PPT、电商与漫剧
+    details: 把 Codex 用到演示文稿、电商运营、AI 漫剧、办公文件、研究、数据、Web 应用和内容视频。
+    link: /codex/practice/
+  - title: Skill 推荐与创建
+    details: 选择官方和社区 Skill，审查脚本、权限与许可证，并把自己的稳定流程制作成可复用 Skill。
+    link: /codex/skills/
 ---

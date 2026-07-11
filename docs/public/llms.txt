@@ -1,6 +1,6 @@
 # 程序员小枫同学
 
-> 程序员小枫同学的 Codex 系统教程，覆盖 Codex App、CLI、AGENTS.md、Skills、MCP、代码审查与真实项目工作流。
+> 面向开发者和知识工作者的 Codex 工程实战教程。内容从新手安全入门延伸到真实项目交付、团队自动化、PPT、电商、漫剧与 Skill 生态。
 
 ## Identity
 
@@ -15,19 +15,70 @@
 - Planned custom domain: https://tech.xiaofengtongxue.com/
 - CCWS product documentation: https://docs.ccws.pro/
 
-## Primary Topic
+## Primary Codex Entry
 
-- Codex tutorials: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/
+- Complete Codex tutorial: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/
 
-## Current Publishing Scope
+## Learning Path
 
-- The public site currently publishes only the Codex tutorial section.
-- Other topic sections are intentionally excluded from navigation, search, build output, and sitemap until they are ready for publication.
+- Safe beginner path: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/start/what-is-codex
+- Install and sign in: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/start/install-login
+- First verified task: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/start/first-task
+- Prompting and task design: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/start/prompting
+- Permissions and sandboxing: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/start/permissions
 
-## Content Boundaries
+## Real Project Workflows
 
-- This site currently explains Codex concepts, workflows, and developer tooling.
+- Understand a codebase: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/understand-codebase
+- Reproduce and fix bugs: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/fix-bugs
+- Build a feature: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/build-feature
+- Testing and validation: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/testing
+- UI from screenshots: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/ui-from-screenshot
+- Refactoring and migration: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/refactor
+- Code review and Git: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/code-review-git
+- Documentation and release preparation: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/workflows/docs-release
+
+## Advanced Codex
+
+- AGENTS.md: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/agents-md
+- config.toml: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/config
+- MCP: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/mcp
+- Plugins: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/plugins
+- Cloud and worktrees: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/cloud-worktrees
+- Goals and scheduled tasks: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/automation
+- codex exec and GitHub Actions: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/exec-ci
+- Hooks and Rules: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/hooks-rules
+- Subagents: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/subagents
+- SDK and App Server: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/sdk-app-server
+- Security: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/security
+- Troubleshooting: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/advanced/troubleshooting
+
+## Scenario Practice
+
+- Scenario index: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/
+- PowerPoint: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/ppt
+- Ecommerce: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/ecommerce
+- AI comics and short drama: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/comic-drama
+- Word, Excel, and PDF: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/documents-spreadsheets-pdf
+- Research reports: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/research-report
+- Data analysis: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/data-analysis
+- Web applications: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/web-app
+- Content and video: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/practice/content-video
+
+## Skills
+
+- Skill learning path: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/skills/
+- Official and high-value skills/plugins: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/skills/official
+- Community skills: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/skills/community
+- Install and audit third-party skills: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/skills/install-audit
+- Create a Codex skill: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/skills/create
+
+## Publishing Scope And Boundaries
+
+- The public site currently publishes the Codex tutorial section.
+- Tutorials are engineer-oriented practical guides, not translations or copies of source documentation.
+- OpenAI product behavior, commands, versions, and limits use current official OpenAI sources or locally verified command output.
+- Community Skills and Plugins are not treated as OpenAI endorsements; readers must review source, permissions, dependencies, telemetry, and licenses.
 - CCWS registration, recharge, API Key creation, Base URL configuration, billing, and support instructions are canonical at https://docs.ccws.pro/.
-- Version-sensitive technical claims should include current primary sources and a verification date.
-- Examples must use placeholders and must not expose real API Keys or credentials.
-- Public pages should state the answer or intended outcome before detailed steps, and use canonical page URLs when cited.
+- Examples use placeholders and must not expose real API Keys, credentials, user data, or production systems.
+- External sending, publishing, payment, deployment, deletion, and permission changes require explicit human authorization.
