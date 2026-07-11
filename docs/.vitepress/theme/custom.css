@@ -5,11 +5,11 @@
   --vp-c-brand-soft: rgb(230 83 50 / 14%);
   --vp-home-hero-name-color: #25232a;
   --vp-home-hero-image-background-image:
-    radial-gradient(circle at 72% 22%, rgb(255 255 255 / 72%) 0 7%, transparent 7.5%),
-    linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--vp-c-brand-1) 15%, var(--vp-c-bg)) 0%,
-      color-mix(in srgb, #d9b9a9 12%, var(--vp-c-bg)) 100%
+    radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--vp-c-brand-1) 13%, transparent) 0%,
+      color-mix(in srgb, var(--vp-c-brand-1) 6%, transparent) 44%,
+      transparent 72%
     );
   --vp-home-hero-image-filter: none;
 }
@@ -21,48 +21,34 @@
   --vp-c-brand-soft: rgb(255 121 88 / 16%);
   --vp-home-hero-name-color: #f3efeb;
   --vp-home-hero-image-background-image:
-    radial-gradient(circle at 72% 22%, rgb(255 255 255 / 10%) 0 7%, transparent 7.5%),
-    linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--vp-c-brand-1) 17%, var(--vp-c-bg)) 0%,
-      color-mix(in srgb, #b48673 10%, var(--vp-c-bg)) 100%
+    radial-gradient(
+      ellipse at center,
+      color-mix(in srgb, var(--vp-c-brand-1) 18%, transparent) 0%,
+      color-mix(in srgb, var(--vp-c-brand-1) 7%, transparent) 46%,
+      transparent 72%
     );
 }
 
 .VPHero .image-bg {
   display: block;
-  width: min(370px, 82vw);
-  height: min(350px, 78vw);
-  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 18%, var(--vp-c-divider));
-  border-radius: 48% 52% 44% 56% / 55% 44% 56% 45%;
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 44%),
-    0 28px 72px color-mix(in srgb, var(--vp-c-brand-1) 10%, transparent);
-  transform: translate(-50%, -48%) rotate(-5deg);
-}
-
-.VPHero .image-container::before {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(390px, 86vw);
-  height: min(330px, 74vw);
-  border: 1px solid color-mix(in srgb, var(--vp-c-brand-1) 24%, transparent);
+  width: min(400px, 84vw);
+  height: min(340px, 72vw);
   border-radius: 50%;
-  content: '';
-  transform: translate(-48%, -46%) rotate(8deg);
+  filter: blur(18px);
+  opacity: 0.9;
+  transform: translate(-50%, -47%);
 }
 
 .VPHero .image-src {
   z-index: 1;
   max-width: min(400px, 84vw);
-  max-height: min(464px, 88vw);
-  filter: drop-shadow(0 24px 22px rgb(47 39 35 / 18%));
+  max-height: min(448px, 88vw);
+  filter: drop-shadow(0 20px 18px rgb(47 39 35 / 14%));
   transform: translate(-50%, -49%);
 }
 
 .dark .VPHero .image-src {
-  filter: drop-shadow(0 26px 24px rgb(0 0 0 / 32%));
+  filter: drop-shadow(0 22px 20px rgb(0 0 0 / 28%));
 }
 
 .VPHero .tagline {
@@ -75,6 +61,10 @@
 }
 
 @media (min-width: 960px) {
+  .VPHomeHero.VPHero {
+    padding-bottom: 104px;
+  }
+
   .VPHero.has-image .container {
     gap: clamp(32px, 5vw, 72px);
   }
