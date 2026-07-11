@@ -1,6 +1,13 @@
-# 小枫技术教程
+# 程序员小枫同学
 
-> 面向开发者的系统化技术教程，覆盖 AI 编程、大模型、AI Agent、Codex、Java、JavaScript、Go 与软件工程实践。
+> 程序员小枫同学的 Codex 系统教程，覆盖 Codex App、CLI、AGENTS.md、Skills、MCP、代码审查与真实项目工作流。
+
+## Identity
+
+- Site name: 程序员小枫同学
+- Creator and IP name: 程序员小枫同学
+- WeChat official account: 程序员小枫同学
+- Primary language: Simplified Chinese (zh-CN)
 
 ## Canonical Site
 
@@ -8,21 +15,19 @@
 - Planned custom domain: https://tech.xiaofengtongxue.com/
 - CCWS product documentation: https://docs.ccws.pro/
 
-## Primary Topics
+## Primary Topic
 
-- AI coding workflows: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/ai/
-- Large language models: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/llm/
-- AI agents: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/agents/
 - Codex tutorials: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/
-- Java: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/java/
-- JavaScript and TypeScript: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/javascript/
-- Go: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/go/
-- Software engineering: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/engineering/
-- Development tools: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/tools/
+
+## Current Publishing Scope
+
+- The public site currently publishes only the Codex tutorial section.
+- Other topic sections are intentionally excluded from navigation, search, build output, and sitemap until they are ready for publication.
 
 ## Content Boundaries
 
-- This site explains general developer technologies, workflows, and tools.
+- This site currently explains Codex concepts, workflows, and developer tooling.
 - CCWS registration, recharge, API Key creation, Base URL configuration, billing, and support instructions are canonical at https://docs.ccws.pro/.
 - Version-sensitive technical claims should include current primary sources and a verification date.
 - Examples must use placeholders and must not expose real API Keys or credentials.
+- Public pages should state the answer or intended outcome before detailed steps, and use canonical page URLs when cited.

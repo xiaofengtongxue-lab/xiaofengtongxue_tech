@@ -1,6 +1,6 @@
-# 小枫技术教程
+# 程序员小枫同学
 
-面向开发者的系统化技术教程站，覆盖 AI 编程、大模型、AI Agent、Codex、Java、JavaScript、Go、工程实践与开发工具。
+面向开发者的系统化技术教程站，当前首先公开 Codex 教程。
 
 ## 站点地址
 
@@ -24,20 +24,18 @@ npm run docs:build
 npm run docs:preview
 ```
 
-## 内容结构
+## 当前发布范围
 
-```text
-docs/
-├── ai/             AI 编程方法
-├── llm/            大模型技术
-├── agents/         AI Agent
-├── codex/          Codex 教程
-├── java/           Java 与 Spring
-├── javascript/     JavaScript 与 TypeScript
-├── go/             Go
-├── engineering/    软件工程实践
-└── tools/          开发工具
-```
+- 首页：`/`
+- Codex 教程：`/codex/`
+
+其他栏目暂不参与 VitePress 构建，也不会进入导航、站内搜索和 sitemap；对应源文件继续保留，待内容准备完成后再开放。
+
+## SEO 与 GEO 基础
+
+- 页面自动生成 title、description、canonical、Open Graph、Twitter Card 和 JSON-LD。
+- `sitemap.xml` 只收录当前公开页面，`llms.txt` 提供统一实体、权威入口和内容边界。
+- IP、公众号和网站名称统一为“程序员小枫同学”。
 
 仓库只保存正式文档、站点配置和部署所需文件。内容规划、选题、素材和草稿在本地知识库中维护。
 

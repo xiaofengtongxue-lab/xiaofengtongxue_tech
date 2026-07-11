@@ -13,6 +13,8 @@ GitHub Actions 会在 `main` 分支更新后构建并发布 `docs/.vitepress/dis
 
 在 GitHub 仓库设置中，将 Pages 的 Source 选择为 `GitHub Actions`。
 
+GitHub Pages 项目站阶段，`robots.txt` 和 `llms.txt` 位于 `/xiaofengtongxue_tech/` 子路径。页面会通过 sitemap 和 `<link rel="alternate">` 暴露对应入口；切换到正式域名后，这两个文件会位于域名根路径。
+
 ## 本地模拟 GitHub Pages
 
 ```bash

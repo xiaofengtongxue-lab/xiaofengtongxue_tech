@@ -1,8 +1,8 @@
-# AGENTS.md — 小枫技术教程站约定
+# AGENTS.md — 程序员小枫同学技术教程站约定
 
 ## Overview
 
-本仓库是“小枫技术教程”的 VitePress 发布站点，面向希望学习 AI、大模型、AI Agent、Codex、Java、JavaScript、TypeScript、Go 和软件工程实践的开发者。
+本仓库是“程序员小枫同学”的 VitePress 技术教程发布站点，面向希望学习 AI、大模型、AI Agent、Codex、Java、JavaScript、TypeScript、Go 和软件工程实践的开发者。
 
 这不是内容策划仓库，也不是 CCWS 产品说明书。仓库只保存准备公开发布的正式教程、站点配置和部署所需文件。
 
@@ -77,7 +77,7 @@ GitHub Pages 阶段：
 
 ## Brand And Positioning
 
-- 公开站点名称统一使用“小枫技术教程”。
+- IP、公众号和公开站点名称统一使用“程序员小枫同学”。
 - 站点定位是面向开发者的系统化技术教程，不是新闻聚合、泛科技资讯或工具功能搬运站。
 - 内容应帮助读者完成具体任务、理解技术原理、解决真实错误或建立可复用的工程方法。
 - AI 是核心内容之一，但不是唯一范围；Java、JavaScript、TypeScript、Go 和通用软件工程均属于正式内容范围。

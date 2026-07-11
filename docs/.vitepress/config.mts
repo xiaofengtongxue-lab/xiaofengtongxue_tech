@@ -9,8 +9,10 @@ const siteUrl = normalizeSiteUrl(
 const parsedSiteUrl = new URL(siteUrl)
 const siteOrigin = parsedSiteUrl.origin
 const sitePath = parsedSiteUrl.pathname.replace(/\/$/, '')
-const siteTitle = '小枫技术教程'
-const siteDescription = '面向开发者的系统化技术教程，覆盖 AI 编程、大模型、AI Agent、Codex、Java、JavaScript、Go 与软件工程实践。'
+const siteTitle = '程序员小枫同学'
+const siteDescription = '程序员小枫同学的 Codex 系统教程，覆盖 Codex App、CLI、AGENTS.md、Skills、MCP、代码审查与真实项目工作流。'
+const authorId = `${siteUrl}/#author`
+const websiteId = `${siteUrl}/#website`
 
 type SchemaNode = Record<string, unknown>
 
@@ -40,24 +42,47 @@ function structuredData(context: TransformContext): SchemaNode {
   const path = pagePath(pageData.relativePath)
   const url = pageUrl(pageData.relativePath)
   const isHome = path === '/'
+  const pageNode: SchemaNode = {
+    '@type': isHome ? 'WebPage' : 'TechArticle',
+    '@id': `${url}#webpage`,
+    url,
+    name: pageData.title || title,
+    description,
+    inLanguage: 'zh-CN',
+    isPartOf: { '@id': websiteId },
+    author: { '@id': authorId },
+    publisher: { '@id': authorId }
+  }
+
+  if (!isHome) {
+    pageNode.headline = pageData.title || title
+    pageNode.mainEntityOfPage = url
+    pageNode.isAccessibleForFree = true
+  }
+
+  if (pageData.lastUpdated) {
+    pageNode.dateModified = new Date(pageData.lastUpdated).toISOString()
+  }
+
   const graph: SchemaNode[] = [
     {
+      '@type': 'Person',
+      '@id': authorId,
+      name: siteTitle,
+      url: `${siteUrl}/`,
+      description: '“程序员小枫同学”网站与同名公众号的内容主体。'
+    },
+    {
       '@type': 'WebSite',
-      '@id': `${siteUrl}/#website`,
+      '@id': websiteId,
       url: `${siteUrl}/`,
       name: siteTitle,
       description: siteDescription,
-      inLanguage: 'zh-CN'
-    },
-    {
-      '@type': isHome ? 'WebPage' : 'TechArticle',
-      '@id': `${url}#webpage`,
-      url,
-      name: title,
-      description,
       inLanguage: 'zh-CN',
-      isPartOf: { '@id': `${siteUrl}/#website` }
-    }
+      creator: { '@id': authorId },
+      publisher: { '@id': authorId }
+    },
+    pageNode
   ]
 
   if (!isHome) {
@@ -95,9 +120,10 @@ function pageHead(context: TransformContext): HeadConfig[] {
 
   const url = pageUrl(pageData.relativePath)
   const isHome = pagePath(pageData.relativePath) === '/'
-
-  return [
-    ['meta', { name: 'robots', content: 'index,follow' }],
+  const robots = 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
+  const head: HeadConfig[] = [
+    ['meta', { name: 'robots', content: robots }],
+    ['meta', { name: 'googlebot', content: robots }],
     ['link', { rel: 'canonical', href: url }],
     ['meta', { property: 'og:type', content: isHome ? 'website' : 'article' }],
     ['meta', { property: 'og:title', content: title }],
@@ -108,6 +134,15 @@ function pageHead(context: TransformContext): HeadConfig[] {
     ['meta', { name: 'twitter:description', content: description }],
     ['script', { type: 'application/ld+json' }, JSON.stringify(structuredData(context))]
   ]
+
+  if (!isHome && pageData.lastUpdated) {
+    head.push([
+      'meta',
+      { property: 'article:modified_time', content: new Date(pageData.lastUpdated).toISOString() }
+    ])
+  }
+
+  return head
 }
 
 export default defineConfig({
@@ -115,6 +150,16 @@ export default defineConfig({
   title: siteTitle,
   description: siteDescription,
   base,
+  srcExclude: [
+    'agents/**',
+    'ai/**',
+    'engineering/**',
+    'go/**',
+    'java/**',
+    'javascript/**',
+    'llm/**',
+    'tools/**'
+  ],
   cleanUrls: true,
   lastUpdated: true,
   sitemap: {
@@ -126,7 +171,18 @@ export default defineConfig({
   },
   head: [
     ['meta', { name: 'author', content: siteTitle }],
-    ['meta', { property: 'og:site_name', content: siteTitle }]
+    ['meta', { name: 'application-name', content: siteTitle }],
+    ['meta', { property: 'og:site_name', content: siteTitle }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    [
+      'link',
+      {
+        rel: 'alternate',
+        type: 'text/plain',
+        href: `${siteUrl}/llms.txt`,
+        title: `${siteTitle} llms.txt`
+      }
+    ]
   ],
   transformHead: pageHead,
   markdown: {
@@ -141,112 +197,14 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      {
-        text: 'AI 与 Agent',
-        items: [
-          { text: 'AI 编程', link: '/ai/' },
-          { text: '大模型技术', link: '/llm/' },
-          { text: 'AI Agent', link: '/agents/' },
-          { text: 'Codex 教程', link: '/codex/' }
-        ]
-      },
-      {
-        text: '编程语言',
-        items: [
-          { text: 'Java', link: '/java/' },
-          { text: 'JavaScript / TypeScript', link: '/javascript/' },
-          { text: 'Go', link: '/go/' }
-        ]
-      },
-      { text: '工程实践', link: '/engineering/' },
-      { text: '开发工具', link: '/tools/' },
-      { text: 'CCWS 文档', link: 'https://docs.ccws.pro/' }
+      { text: 'Codex 教程', link: '/codex/' }
     ],
     sidebar: {
-      '/ai/': [
-        {
-          text: 'AI 编程',
-          items: [
-            { text: '栏目总览', link: '/ai/' },
-            { text: '大模型技术', link: '/llm/' },
-            { text: 'AI Agent', link: '/agents/' },
-            { text: 'Codex 教程', link: '/codex/' }
-          ]
-        }
-      ],
-      '/llm/': [
-        {
-          text: '大模型技术',
-          items: [
-            { text: '栏目总览', link: '/llm/' },
-            { text: 'AI 编程', link: '/ai/' },
-            { text: 'AI Agent', link: '/agents/' }
-          ]
-        }
-      ],
-      '/agents/': [
-        {
-          text: 'AI Agent',
-          items: [
-            { text: '栏目总览', link: '/agents/' },
-            { text: '大模型技术', link: '/llm/' },
-            { text: '开发工具', link: '/tools/' }
-          ]
-        }
-      ],
       '/codex/': [
         {
           text: 'Codex 教程',
           items: [
-            { text: '栏目总览', link: '/codex/' },
-            { text: 'AI 编程', link: '/ai/' },
-            { text: 'CCWS 接入文档', link: 'https://docs.ccws.pro/guide/codex' }
-          ]
-        }
-      ],
-      '/java/': [
-        {
-          text: 'Java',
-          items: [
-            { text: '栏目总览', link: '/java/' },
-            { text: '工程实践', link: '/engineering/' }
-          ]
-        }
-      ],
-      '/javascript/': [
-        {
-          text: 'JavaScript / TypeScript',
-          items: [
-            { text: '栏目总览', link: '/javascript/' },
-            { text: '工程实践', link: '/engineering/' }
-          ]
-        }
-      ],
-      '/go/': [
-        {
-          text: 'Go',
-          items: [
-            { text: '栏目总览', link: '/go/' },
-            { text: '工程实践', link: '/engineering/' }
-          ]
-        }
-      ],
-      '/engineering/': [
-        {
-          text: '工程实践',
-          items: [
-            { text: '栏目总览', link: '/engineering/' },
-            { text: '开发工具', link: '/tools/' }
-          ]
-        }
-      ],
-      '/tools/': [
-        {
-          text: '开发工具',
-          items: [
-            { text: '栏目总览', link: '/tools/' },
-            { text: 'Codex 教程', link: '/codex/' },
-            { text: '工程实践', link: '/engineering/' }
+            { text: '教程总览', link: '/codex/' }
           ]
         }
       ]
@@ -263,8 +221,8 @@ export default defineConfig({
       text: '最后更新'
     },
     footer: {
-      message: '小枫技术教程：AI、大模型、Agent 与现代软件开发实践。',
-      copyright: 'Copyright © 2026 小枫技术教程'
+      message: '程序员小枫同学：从 Codex 开始，完成真实开发任务。',
+      copyright: 'Copyright © 2026 程序员小枫同学'
     }
   }
 })
