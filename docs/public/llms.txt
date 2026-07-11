@@ -1,6 +1,6 @@
 # 程序员小枫同学
 
-> 面向开发者和知识工作者的 Codex 工程实战教程。内容从新手安全入门延伸到真实项目交付、团队自动化、PPT、电商、漫剧与 Skill 生态。
+> 面向普通工作者和开发者的 Codex 与 ChatGPT Work 实战教程。普通用户可以从办公文件、PPT、电商、漫剧、研究和内容工作开始，开发者可以进入代码项目与团队自动化路线。
 
 ## Identity
 
@@ -18,6 +18,17 @@
 ## Primary Codex Entry
 
 - Complete Codex tutorial: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/
+
+## Everyday Work Path For Non-Programmers
+
+- Complete everyday-work path: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/
+- First reviewable file without coding: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/first-result
+- Projects, tasks, attachments, and local folders: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/projects-files
+- Plain-language task briefs: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/task-brief
+- Review Word, PowerPoint, spreadsheets, and PDF files: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/review-revise
+- Privacy, permissions, and approvals: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/safety
+- Skills and plugins for non-programmers: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/skills-plugins
+- Turn a successful task into a repeatable workflow: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/codex/everyday/repeat-workflow
 
 ## Learning Path
 
@@ -76,7 +87,9 @@
 ## Publishing Scope And Boundaries
 
 - The public site currently publishes the Codex tutorial section.
-- Tutorials are engineer-oriented practical guides, not translations or copies of source documentation.
+- Tutorials provide separate non-programmer and developer paths. Non-programmer pages do not assume terminal, Git, code, Markdown, or scripting knowledge.
+- Chat is presented for quick conversations, ChatGPT Work for everyday reviewable deliverables, and Codex for software and technical tasks, following current official product guidance.
+- Tutorials are original practical guides, not translations or copies of source documentation.
 - OpenAI product behavior, commands, versions, and limits use current official OpenAI sources or locally verified command output.
 - Community Skills and Plugins are not treated as OpenAI endorsements; readers must review source, permissions, dependencies, telemetry, and licenses.
 - CCWS registration, recharge, API Key creation, Base URL configuration, billing, and support instructions are canonical at https://docs.ccws.pro/.

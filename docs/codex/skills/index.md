@@ -7,6 +7,8 @@ description: 理解 Skill、Plugin 和 MCP 的区别，按办公、开发、研�
 
 Skill 是一套可被 Codex 发现和复用的任务方法，通常由 `SKILL.md`、可选脚本、参考资料和模板组成。它的价值不是“增加一个提示词”，而是把稳定流程、质量门槛和工具使用方式放到每次任务都能复用的位置。
 
+普通用户不需要先理解 `SKILL.md` 或安装路径。你可以直接在 ChatGPT Work 或 Codex 的输入框中选择当前可用 Skill，用自然语言测试结果，甚至让 ChatGPT 帮你创建一个简单 Skill。请先阅读 [普通人怎样使用 Skill 和 Plugin](/codex/everyday/skills-plugins)。本页余下内容适合需要安装、审查、共享或开发 Skill 的读者。
+
 ## 本栏目怎样选 Skill
 
 我们不做“必装 100 个”的列表。Skill 越多，触发描述越容易互相竞争，也会占用初始上下文。推荐顺序：
@@ -31,6 +33,7 @@ Skill 是一套可被 Codex 发现和复用的任务方法，通常由 `SKILL.md
 
 ## Skill 怎样被触发
 
+- 普通用户：从输入框或 Skills 列表选择，或者直接描述匹配的工作；
 - 显式：在 CLI/IDE 使用 `/skills` 或输入 `$skill-name`；
 - 隐式：任务与 Skill 的 `description` 匹配时由 Codex选择。
 

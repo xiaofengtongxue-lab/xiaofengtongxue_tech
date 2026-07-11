@@ -7,6 +7,12 @@ description: 在 macOS、Linux 和 Windows 安装 Codex CLI，打开桌面应用
 
 本页的完成标准不是“安装命令没有报错”，而是你能在目标项目中启动 Codex、确认当前登录方式、知道实际执行的是哪个二进制文件，并通过一次健康检查排除路径和配置问题。
 
+## 普通用户不需要先安装 CLI
+
+如果你主要制作 PPT、Word、Excel、报告、电商或内容素材，只需要安装并登录 ChatGPT 桌面应用，选择 Chat 或 Work，完成附件上传和文件预览即可。不要为了“更专业”先配置终端、PATH、Git 或 API Key。
+
+普通用户请进入 [不用写代码完成第一份工作文件](/codex/everyday/first-result)。本页余下安装、版本、命令和仓库检查面向开发者。
+
 ## 安装前先决定登录方式
 
 Codex 本地客户端支持两种 OpenAI 登录方式：

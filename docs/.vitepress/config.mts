@@ -10,7 +10,7 @@ const parsedSiteUrl = new URL(siteUrl)
 const siteOrigin = parsedSiteUrl.origin
 const sitePath = parsedSiteUrl.pathname.replace(/\/$/, '')
 const siteTitle = '程序员小枫同学'
-const siteDescription = '程序员小枫同学的 Codex 实战教程，从新手到专家，覆盖真实项目开发、AGENTS.md、Skills、MCP、自动化、PPT、电商与漫剧工作流。'
+const siteDescription = '程序员小枫同学的 Codex 与 ChatGPT Work 实战教程，为普通工作者和开发者分别提供完整路线，覆盖办公文件、PPT、电商、漫剧、软件开发、Skills 与自动化。'
 const authorId = `${siteUrl}/#author`
 const websiteId = `${siteUrl}/#website`
 
@@ -197,24 +197,39 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: 'Codex 教程', link: '/codex/' },
-      { text: '技巧实战', link: '/codex/practice/' },
+      { text: '教程总览', link: '/codex/' },
+      { text: '普通人入门', link: '/codex/everyday/' },
+      { text: '场景实战', link: '/codex/practice/' },
       { text: 'Skill 推荐', link: '/codex/skills/' }
     ],
     sidebar: {
       '/codex/': [
         {
-          text: 'Codex 实战教程',
+          text: '先按身份选择',
           items: [
             { text: '教程总览', link: '/codex/' }
           ]
         },
         {
-          text: '第一阶段：安全入门',
+          text: '普通用户：不要求编程',
           collapsed: false,
           items: [
+            { text: '普通人完整学习路线', link: '/codex/everyday/' },
+            { text: '不用代码完成第一份文件', link: '/codex/everyday/first-result' },
+            { text: '项目、任务与本地文件', link: '/codex/everyday/projects-files' },
+            { text: '用普通话说清任务', link: '/codex/everyday/task-brief' },
+            { text: '检查 Word、PPT、表格和 PDF', link: '/codex/everyday/review-revise' },
+            { text: '隐私、权限与审批', link: '/codex/everyday/safety' },
+            { text: '使用 Skill 和 Plugin', link: '/codex/everyday/skills-plugins' },
+            { text: '复用和自动化工作流', link: '/codex/everyday/repeat-workflow' }
+          ]
+        },
+        {
+          text: '开发者路线一：安全入门',
+          collapsed: true,
+          items: [
             { text: 'Codex 是什么', link: '/codex/start/what-is-codex' },
-            { text: 'App、CLI、IDE 和云任务怎么选', link: '/codex/start/choose-surface' },
+            { text: 'Chat、Work 与 Codex 入口怎么选', link: '/codex/start/choose-surface' },
             { text: '安装、登录与环境检查', link: '/codex/start/install-login' },
             { text: '第一次可验证任务', link: '/codex/start/first-task' },
             { text: '提示词与任务说明', link: '/codex/start/prompting' },
@@ -222,8 +237,8 @@ export default defineConfig({
           ]
         },
         {
-          text: '第二阶段：真实项目工作流',
-          collapsed: false,
+          text: '开发者路线二：项目工作流',
+          collapsed: true,
           items: [
             { text: '读懂陌生代码库', link: '/codex/workflows/understand-codebase' },
             { text: '复现并修复 Bug', link: '/codex/workflows/fix-bugs' },
@@ -236,7 +251,7 @@ export default defineConfig({
           ]
         },
         {
-          text: '第三阶段：专家进阶',
+          text: '开发者路线三：专家进阶',
           collapsed: true,
           items: [
             { text: 'AGENTS.md 实战', link: '/codex/advanced/agents-md' },
@@ -254,7 +269,7 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Codex 技巧与场景实战',
+          text: '办公、商业与内容实战',
           collapsed: false,
           items: [
             { text: '场景实战总览', link: '/codex/practice/' },
@@ -270,7 +285,7 @@ export default defineConfig({
         },
         {
           text: 'Codex Skill 推荐',
-          collapsed: false,
+          collapsed: true,
           items: [
             { text: 'Skill 推荐总览', link: '/codex/skills/' },
             { text: '官方与高价值能力推荐', link: '/codex/skills/official' },
@@ -293,7 +308,7 @@ export default defineConfig({
       text: '最后更新'
     },
     footer: {
-      message: '程序员小枫同学：从 Codex 开始，完成真实开发任务。',
+      message: '程序员小枫同学：让普通工作与软件开发都走到真实交付。',
       copyright: 'Copyright © 2026 程序员小枫同学'
     }
   }

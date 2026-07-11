@@ -7,6 +7,8 @@ description: 在安装社区 Skill 前审查来源、许可证、SKILL.md、脚�
 
 Skill 不是纯文本收藏。它可以指导 Codex运行脚本、读取文件、访问网络和调用工具。安装前审计的目标是回答：它会在什么提示下触发、执行什么、接触哪些数据、写到哪里、怎样停用。
 
+> 本页需要 GitHub、终端和源码阅读，是技术审计教程。普通用户优先使用当前应用内置或管理员批准的能力，不要自行安装社区 Skill；先看 [普通人的 Skill 和 Plugin 入门](/codex/everyday/skills-plugins) 和 [隐私、权限与审批](/codex/everyday/safety)。
+
 ## 第一步：确认仓库身份
 
 使用 GitHub CLI：

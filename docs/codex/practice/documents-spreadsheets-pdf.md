@@ -9,11 +9,15 @@ description: 使用 Documents、Spreadsheets 和 PDF 能力完成源文件盘点
 
 ## 先查看当前可用文件能力
 
+普通用户打开 ChatGPT 桌面应用中的 Skills 或 Plugins 列表，查看是否提供 Documents、Spreadsheets、Presentations、PDF 或模板相关能力。也可以直接说明要生成 Word、Excel 或 PDF，让 Work 选择当前可用能力。
+
+开发者需要从终端检查 Plugin 时，可以运行下面命令；普通用户可跳过：
+
 ```bash
 codex plugin list --available --json
 ```
 
-常见内置或可安装能力包括 Documents、Spreadsheets、Presentations、PDF 和 Template Creator。实际名称、版本和可用性以你的环境为准。
+实际名称、版本和可用性以你的环境为准。没有对应文件能力时，先生成结构清楚的文本或 CSV，再使用 Word、Excel 或常用办公软件完成格式转换，不要从陌生网站安装来历不明的工具。
 
 ## 通用五步流程
 

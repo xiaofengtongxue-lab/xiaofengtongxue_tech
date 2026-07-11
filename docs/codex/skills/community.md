@@ -7,6 +7,8 @@ description: 按 PPT、社交图文、插画、架构图和学习工作流整理
 
 社区 Skill 能覆盖更细的中文内容和行业场景，但它们不是 OpenAI 官方背书。下面项目基于 2026 年 7 月 11 日公开仓库的用途、活跃度、目录和许可证整理；代码可能随时变化，安装前仍要按 [安全审计流程](/codex/skills/install-audit) 重新检查。
 
+> 普通用户不需要为了 PPT、办公或内容任务先安装社区项目，应优先使用当前应用内置能力；需要外部能力时先阅读 [普通人的 Skill 和 Plugin 入门](/codex/everyday/skills-plugins)。本页面向愿意审查源码和安装过程的读者。
+
 ## 先看一个导航型仓库
 
 ### ComposioHQ/awesome-codex-skills

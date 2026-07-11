@@ -2,7 +2,7 @@
 
 ## Overview
 
-本仓库是“程序员小枫同学”的 VitePress 技术教程发布站点，面向希望学习 AI、大模型、AI Agent、Codex、Java、JavaScript、TypeScript、Go 和软件工程实践的开发者。
+本仓库是“程序员小枫同学”的 VitePress 技术教程发布站点。站点既服务希望学习 AI、大模型、AI Agent、Codex、Java、JavaScript、TypeScript、Go 和软件工程实践的开发者，也服务希望使用 Codex 完成办公、运营、电商、内容创作、研究和管理任务的非程序员。
 
 这不是内容策划仓库，也不是 CCWS 产品说明书。仓库只保存准备公开发布的正式教程、站点配置和部署所需文件。
 
@@ -78,8 +78,10 @@ GitHub Pages 阶段：
 ## Brand And Positioning
 
 - IP、公众号和公开站点名称统一使用“程序员小枫同学”。
-- 站点定位是面向开发者的系统化技术教程，不是新闻聚合、泛科技资讯或工具功能搬运站。
+- 站点定位是面向开发者与普通工作者的系统化实操教程，不是新闻聚合、泛科技资讯或工具功能搬运站。
 - 内容应帮助读者完成具体任务、理解技术原理、解决真实错误或建立可复用的工程方法。
+- Codex 大栏目必须同时提供普通用户路线和开发者路线。普通用户路线默认不要求终端、Git、代码仓库、Markdown 或脚本经验，并优先使用桌面应用、自然语言、文件预览和人工验收完成真实工作。
+- 不把非程序员称为“小白”，也不默认他们缺乏业务能力；只解释完成任务所需的技术概念，并为高级操作提供渐进式入口。
 - AI 是核心内容之一，但不是唯一范围；Java、JavaScript、TypeScript、Go 和通用软件工程均属于正式内容范围。
 - 避免空泛营销语言、焦虑式标题和未经验证的绝对结论。
 
@@ -92,7 +94,7 @@ GitHub Pages 阶段：
 | AI 编程 | `/ai/` | AI 辅助开发、项目理解、任务拆分、调试和验证 |
 | 大模型技术 | `/llm/` | Token、上下文、推理、Tool Calling、RAG 和模型应用 |
 | AI Agent | `/agents/` | Agent 架构、工具、状态、记忆、工作流和评测 |
-| Codex | `/codex/` | App、CLI、AGENTS.md、Skills、MCP 和代码审查 |
+| Codex | `/codex/` | 普通用户办公与创作、App、CLI、AGENTS.md、Skills、MCP 和代码审查 |
 | Java | `/java/` | Java、Spring Boot、数据访问、并发和服务端工程 |
 | JavaScript | `/javascript/` | JavaScript、TypeScript、Node.js 和前端工程 |
 | Go | `/go/` | Go、并发、Web 服务和工程化实践 |

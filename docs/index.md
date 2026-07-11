@@ -1,31 +1,31 @@
 ---
 layout: home
 title: 程序员小枫同学
-description: 程序员小枫同学的 Codex 实战教程，从新手到专家，覆盖真实项目开发、AGENTS.md、Skills、MCP、自动化、PPT、电商与漫剧工作流。
+description: 程序员小枫同学的 Codex 与 ChatGPT Work 实战教程，普通工作者可以从办公文件、PPT、电商和内容创作开始，开发者可以学习完整工程工作流。
 
 hero:
   name: 程序员小枫同学
-  text: Codex 工程实战教程
-  tagline: 不做官方文档搬运，从第一次任务到自动化、PPT、电商和漫剧，所有章节都以真实交付和验证为终点
+  text: Codex 不止写代码
+  tagline: 不会编程也能从办公文件、PPT、电商和内容创作开始；开发者仍有完整的项目、调试与自动化路线
   actions:
     - theme: brand
-      text: 从新手开始
-      link: /codex/
+      text: 我不写代码
+      link: /codex/everyday/
     - theme: alt
-      text: 查看场景实战
-      link: /codex/practice/
+      text: 我是开发者
+      link: /codex/start/what-is-codex
 
 features:
-  - title: 从新手到专家
-    details: 安装、提示、权限、Bug、功能、测试、重构、审查、配置、MCP、云任务和 CI 形成一条完整学习路线。
-    link: /codex/
-  - title: 面向真实工程交付
-    details: 每章包含输入、步骤、提示模板、验证门槛、失败处理和安全边界，不用“代码已生成”冒充任务完成。
-    link: /codex/workflows/understand-codebase
-  - title: PPT、电商与漫剧
-    details: 把 Codex 用到演示文稿、电商运营、AI 漫剧、办公文件、研究、数据、Web 应用和内容视频。
+  - title: 普通人完整入门
+    details: 不学终端、Git 和代码，先用 ChatGPT Work 完成一个可预览、可修改、可下载的真实工作文件。
+    link: /codex/everyday/
+  - title: 开发者工程路线
+    details: 从安装、提示和权限，到 Bug、功能、测试、重构、代码审查、MCP、云任务和 CI。
+    link: /codex/start/what-is-codex
+  - title: 办公、商业与创作
+    details: 完整学习 PPT、电商运营、AI 漫剧、Word、Excel、PDF、研究、数据、Web 应用和内容视频工作流。
     link: /codex/practice/
-  - title: Skill 推荐与创建
-    details: 选择官方和社区 Skill，审查脚本、权限与许可证，并把自己的稳定流程制作成可复用 Skill。
-    link: /codex/skills/
+  - title: Skill、Plugin 与复用
+    details: 普通用户可以从界面选择能力和自然语言创建工作流，技术用户再深入安装审计、脚本和团队共享。
+    link: /codex/everyday/skills-plugins
 ---

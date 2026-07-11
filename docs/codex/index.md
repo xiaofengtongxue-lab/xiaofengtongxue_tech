@@ -1,26 +1,60 @@
 ---
 title: Codex 实战教程
-description: 从第一次打开项目到团队自动化的 Codex 系统实战教程，覆盖 App、CLI、IDE、AGENTS.md、Skills、MCP、代码审查与非代码工作流。
+description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Work 实战教程，覆盖办公文件、PPT、电商、内容创作、软件开发、Skills、MCP 和自动化。
 ---
 
-# Codex 实战教程
+# Codex 实战教程：普通人和开发者双路线
 
-这套教程写给希望让 Codex 真正参与交付的人。你不会只学到一组命令或名词，而是会依次完成项目理解、问题复现、代码修改、测试验证、代码审查、自动化和跨工具协作，最终形成一套可以重复使用的工程工作流。
+这套教程不再假设每位读者都是程序员。普通工作者可以从 ChatGPT Work、文件预览、PPT、电商、研究和内容创作开始；开发者可以从 Codex、代码库、调试、测试和自动化开始。两条路线都以真实交付、人工验收和安全边界为终点。
 
-> 内容核验日期：2026 年 7 月 11 日。涉及命令的页面以 Codex CLI `0.144.1` 和当日 OpenAI 官方资料为基线；如果你的界面或参数不同，请先运行 `codex --version` 和 `codex --help`。
+> 内容核验日期：2026 年 7 月 11 日。普通用户路线以当日 ChatGPT 桌面应用官方资料为基线；开发者命令以 Codex CLI `0.144.1` 为验证基线。产品入口会随版本、套餐和工作区策略变化，以你当前界面和官方说明为准。
 
-## 先选你的入口
+## 先按你要完成的工作选择
 
-- 完全没用过 Codex：从 [Codex 是什么](/codex/start/what-is-codex) 开始。
-- 已经安装，但回答经常跑偏：直接学习 [怎样给 Codex 写任务](/codex/start/prompting)。
-- 正在接手真实项目：进入 [读懂陌生代码库](/codex/workflows/understand-codebase)。
-- 已经能完成普通改动：进入 [AGENTS.md 实战](/codex/advanced/agents-md) 和 [Codex 配置实战](/codex/advanced/config)。
-- 想用 Codex 做 PPT、电商或漫剧：进入 [Codex 技巧与场景实战](/codex/practice/)。
-- 想安装或制作 Skill：进入 [Codex Skill 推荐](/codex/skills/)。
+### 我不写代码，只想把工作做完
 
-## 从新手到专家的完整路线
+进入 [普通人完整学习路线](/codex/everyday/)。你会先在 20–30 分钟内完成一个真实文件，再学习项目与附件、任务说明、Word/PPT/表格/PDF 验收、隐私权限、Skills、Plugins 和复用工作流。
 
-### 第一阶段：安全地完成第一次任务
+这条路线默认不要求终端、Git、代码、Markdown 或脚本经验。
+
+### 我是开发者，要让 Codex 参与项目
+
+从 [Codex 是什么](/codex/start/what-is-codex) 开始，依次完成安全入门、真实项目工作流和专家进阶。你会使用 App、CLI、IDE、代码库、测试、AGENTS.md、MCP、Hooks、Subagents 和 CI。
+
+### 我已经有具体目标
+
+- PPT、电商、漫剧、办公文件、研究或内容制作：进入 [场景实战](/codex/practice/)。
+- 只想学会给任务说清要求：普通用户看 [任务说明法](/codex/everyday/task-brief)，开发者看 [Codex 提示与任务设计](/codex/start/prompting)。
+- 想使用现成能力：普通用户看 [Skill 和 Plugin 入门](/codex/everyday/skills-plugins)，技术用户看 [Codex Skill 推荐](/codex/skills/)。
+- 正在接手代码项目：进入 [读懂陌生代码库](/codex/workflows/understand-codebase)。
+
+## 为什么普通办公任务不一定要选 Codex
+
+当前官方产品把入口分得很清楚：
+
+| 入口 | 适合任务 |
+| --- | --- |
+| Chat | 快速问题、解释、头脑风暴和短草稿 |
+| ChatGPT Work | PPT、报告、表格、研究、计划和其他可审核成品 |
+| Codex | 软件开发、代码库和开发工具任务 |
+
+如果你以前已经使用 Codex 完成非编程工作，可以继续；但普通用户第一次做文件和办公任务时，Work 往往更直观。本站把这些教程放在 Codex 大栏目中，是为了提供一套从文件能力到 Skills、Plugins 和自动化的连续学习路径，不是为了把所有工作都叫作编程。
+
+## 普通用户完整路线
+
+1. [不用写代码完成第一份工作文件](/codex/everyday/first-result)
+2. [理解项目、任务、附件和本地文件夹](/codex/everyday/projects-files)
+3. [用普通话说清任务](/codex/everyday/task-brief)
+4. [检查 Word、PPT、表格和 PDF](/codex/everyday/review-revise)
+5. [保护隐私，读懂权限和审批](/codex/everyday/safety)
+6. [使用 Skill 和 Plugin](/codex/everyday/skills-plugins)
+7. [把一次成功任务变成可复用工作流](/codex/everyday/repeat-workflow)
+
+完成后，你应该能在不依赖技术同事的情况下准备资料、生成草稿、局部修改、下载文件、验证事实，并把发送、发布、付款和删除留在人工批准前。
+
+## 开发者从新手到专家路线
+
+### 第一阶段：安全地完成第一次代码任务
 
 1. [认识 Codex 的工作方式](/codex/start/what-is-codex)
 2. [选择 App、CLI、IDE 还是云任务](/codex/start/choose-surface)
@@ -59,9 +93,9 @@ description: 从第一次打开项目到团队自动化的 Codex 系统实战教
 11. [团队安全与数据边界](/codex/advanced/security)
 12. [常见故障的分层排查](/codex/advanced/troubleshooting)
 
-### 第四阶段：把 Codex 用到更多工作里
+## 办公、商业与创作实战
 
-[Codex 技巧与场景实战](/codex/practice/)不是提示词展览，而是完整生产流程。每个场景都包含输入准备、中间产物、质量检查和人工审核点：
+[场景实战](/codex/practice/)不是提示词展览。每个场景都提供不写代码的起步方式，并把脚本、自动化和程序化验证标为可选增强：
 
 - [制作可交付的 PPT](/codex/practice/ppt)
 - [搭建电商运营工作流](/codex/practice/ecommerce)
@@ -72,20 +106,20 @@ description: 从第一次打开项目到团队自动化的 Codex 系统实战教
 - [从想法做到可运行 Web 应用](/codex/practice/web-app)
 - [制作图文、短视频与内容素材](/codex/practice/content-video)
 
-## 这套教程怎样判断“学会了”
+## 两条路线共同的完成标准
 
 每章都尽量给出五类信息：
 
 1. **要交付什么**：先定义成品，而不是先背命令。
-2. **给 Codex 什么上下文**：文件、错误、截图、数据和业务限制。
-3. **允许它做什么**：修改范围、网络访问和外部操作边界。
-4. **怎样验证**：命令、页面、差异、数据或人工审核清单。
+2. **给任务什么资料**：文件、错误、截图、数据和业务限制。
+3. **允许它做什么**：文件范围、网络、应用和外部操作边界。
+4. **怎样验证**：预览、来源、原生软件、命令、页面或人工审核清单。
 5. **失败怎样处理**：常见症状、原因和下一步检查。
 
-如果一个任务只有“Codex 说完成了”，却没有可重复的检查结果，就还没有真正完成。
+如果一个任务只有“AI 说完成了”，却没有能打开的成品、来源对照或可重复的检查结果，就还没有真正完成。
 
 ## 关于账号、模型和第三方服务
 
-本站讲通用 Codex 方法。OpenAI 账号、套餐、模型可用性和产品界面可能变化，请以当日官方页面为准。涉及第三方插件、MCP 或社区 Skill 时，先阅读其源码、权限、许可证和隐私条款，再决定是否连接真实数据。
+本站讲 ChatGPT Work 与 Codex 的通用方法。OpenAI 账号、套餐、模型可用性和产品界面可能变化，请以当日官方页面为准。普通用户连接 Plugin 前先看数据范围和读写权限；技术用户安装第三方 MCP 或社区 Skill 时还要审查源码、脚本、许可证和隐私条款。
 
 如果你需要配置 Codex 使用 CCWS，请前往 [CCWS Codex 配置文档](https://docs.ccws.pro/guide/codex)。本站不会重复 CCWS 的注册、充值、API Key、计费和售后步骤。

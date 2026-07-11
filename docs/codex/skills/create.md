@@ -7,6 +7,8 @@ description: 以 release-readiness 为例，从真实触发样本、目录和 SK
 
 最值得做成 Skill 的不是你偶尔问一次的问题，而是已经手动跑通、输入输出稳定、经常重复且容易漏步骤的工作。本页把“发布前检查”制作成仓库级 `release-readiness` Skill。
 
+> 本页会手工创建目录和 `SKILL.md`，属于技术版教程。普通用户可以先用自然语言让 ChatGPT 创建周报、会议跟进或内容规范 Skill，不需要写文件；请先看 [普通人怎样使用 Skill 和 Plugin](/codex/everyday/skills-plugins)。
+
 ## 第一步：收集真实使用样本
 
 先写三类提示：

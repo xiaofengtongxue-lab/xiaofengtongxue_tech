@@ -1,20 +1,24 @@
 ---
-title: Codex 官方与高价值 Skill、Plugin 推荐
-description: 按办公文件、开发、浏览器、设计、数据、电商和视频场景整理 OpenAI 内置能力与官方精选 Plugins，并给出安装和使用边界。
+title: ChatGPT 与 Codex 官方及高价值 Skill、Plugin 推荐
+description: 面向普通用户和开发者，按办公文件、开发、浏览器、设计、数据、电商和视频场景整理内置能力与官方精选 Plugins，并给出使用边界。
 ---
 
-# Codex 官方与高价值 Skill、Plugin 推荐
+# ChatGPT 与 Codex 官方及高价值 Skill、Plugin 推荐
 
 本页优先推荐 OpenAI 内置能力和官方 Marketplace/Plugins 仓库中的能力。可用列表会随版本、登录方式、套餐和工作区策略变化，以下内容核验于 2026 年 7 月 11 日，安装前以你本机列表为准。
 
 ## 先查看本机可用项
+
+普通用户先打开 ChatGPT 桌面应用中的 Skills 或 Plugins 列表，也可以在输入框中选择能力。ChatGPT / Work 常用 `@` 选择 Plugin，Codex 常用 `$` 选择 Skill；以当前界面实际显示为准。
+
+下面命令只用于开发者检查本机 Plugin，普通用户可跳过：
 
 ```bash
 codex plugin marketplace list
 codex plugin list --available --json
 ```
 
-在任务里使用 `/skills` 或 `$` 查看 Skill。不要根据文章中的旧名称直接安装。
+不要根据文章中的旧名称直接安装。普通用户建议先看 [Skill 和 Plugin 入门](/codex/everyday/skills-plugins)。
 
 ## 第一组：每个 Codex 用户都值得了解
 
