@@ -11,6 +11,7 @@ const siteOrigin = parsedSiteUrl.origin
 const sitePath = parsedSiteUrl.pathname.replace(/\/$/, '')
 const siteTitle = '程序员小枫同学'
 const siteDescription = '程序员小枫同学的 Codex 与 ChatGPT Work 实战教程，为普通工作者和开发者分别提供完整路线，覆盖办公文件、PPT、电商、漫剧、软件开发、Skills 与自动化。'
+const brandImageUrl = `${siteUrl}/programmer-xiaofeng-ip.png`
 const authorId = `${siteUrl}/#author`
 const websiteId = `${siteUrl}/#website`
 
@@ -48,6 +49,7 @@ function structuredData(context: TransformContext): SchemaNode {
     url,
     name: pageData.title || title,
     description,
+    image: brandImageUrl,
     inLanguage: 'zh-CN',
     isPartOf: { '@id': websiteId },
     author: { '@id': authorId },
@@ -70,7 +72,8 @@ function structuredData(context: TransformContext): SchemaNode {
       '@id': authorId,
       name: siteTitle,
       url: `${siteUrl}/`,
-      description: '“程序员小枫同学”网站与同名公众号的内容主体。'
+      description: '“程序员小枫同学”网站与同名公众号的内容主体。',
+      image: brandImageUrl
     },
     {
       '@type': 'WebSite',
@@ -78,6 +81,7 @@ function structuredData(context: TransformContext): SchemaNode {
       url: `${siteUrl}/`,
       name: siteTitle,
       description: siteDescription,
+      image: brandImageUrl,
       inLanguage: 'zh-CN',
       creator: { '@id': authorId },
       publisher: { '@id': authorId }
@@ -129,9 +133,15 @@ function pageHead(context: TransformContext): HeadConfig[] {
     ['meta', { property: 'og:title', content: title }],
     ['meta', { property: 'og:description', content: description }],
     ['meta', { property: 'og:url', content: url }],
-    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { property: 'og:image', content: brandImageUrl }],
+    ['meta', { property: 'og:image:width', content: '1254' }],
+    ['meta', { property: 'og:image:height', content: '1254' }],
+    ['meta', { property: 'og:image:alt', content: `${siteTitle} IP 形象` }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:title', content: title }],
     ['meta', { name: 'twitter:description', content: description }],
+    ['meta', { name: 'twitter:image', content: brandImageUrl }],
+    ['meta', { name: 'twitter:image:alt', content: `${siteTitle} IP 形象` }],
     ['script', { type: 'application/ld+json' }, JSON.stringify(structuredData(context))]
   ]
 
@@ -172,6 +182,7 @@ export default defineConfig({
   head: [
     ['meta', { name: 'author', content: siteTitle }],
     ['meta', { name: 'application-name', content: siteTitle }],
+    ['meta', { name: 'theme-color', content: '#e65332' }],
     ['meta', { property: 'og:site_name', content: siteTitle }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
     [

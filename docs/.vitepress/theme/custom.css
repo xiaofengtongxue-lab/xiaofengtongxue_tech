@@ -1,0 +1,76 @@
+:root {
+  --vp-c-brand-1: #e65332;
+  --vp-c-brand-2: #ca4328;
+  --vp-c-brand-3: #a93621;
+  --vp-c-brand-soft: rgb(230 83 50 / 14%);
+  --vp-home-hero-name-color: #25232a;
+  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-filter: none;
+}
+
+.dark {
+  --vp-c-brand-1: #ff7958;
+  --vp-c-brand-2: #ef6442;
+  --vp-c-brand-3: #d84c2e;
+  --vp-c-brand-soft: rgb(255 121 88 / 16%);
+  --vp-home-hero-name-color: #f3efeb;
+}
+
+.VPHero .image-bg {
+  display: none;
+}
+
+.VPHero .image-src {
+  max-width: min(420px, 88vw);
+  max-height: min(420px, 88vw);
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 72%, transparent);
+  border-radius: 30px;
+  background: #fbfaf8;
+  box-shadow:
+    0 28px 64px rgb(47 39 35 / 14%),
+    0 8px 22px rgb(47 39 35 / 8%);
+}
+
+.dark .VPHero .image-src {
+  border-color: rgb(255 255 255 / 12%);
+  box-shadow:
+    0 30px 72px rgb(0 0 0 / 38%),
+    0 8px 24px rgb(0 0 0 / 24%);
+}
+
+.VPHero .tagline {
+  max-width: 680px;
+  line-height: 1.72;
+}
+
+.VPButton.brand {
+  box-shadow: 0 8px 20px rgb(230 83 50 / 18%);
+}
+
+@media (min-width: 960px) {
+  .VPHero.has-image .container {
+    gap: clamp(32px, 5vw, 72px);
+  }
+
+  .VPHero .image-container {
+    transform: translate(8px, -8px);
+  }
+}
+
+@media (max-width: 639px) {
+  .VPHero .image {
+    height: 300px;
+    margin: -48px -24px 28px;
+  }
+
+  .VPHero .image-container {
+    width: 300px;
+    height: 300px;
+  }
+
+  .VPHero .image-src {
+    max-width: min(300px, 82vw);
+    max-height: min(300px, 82vw);
+    border-radius: 24px;
+  }
+}
