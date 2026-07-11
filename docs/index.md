@@ -8,7 +8,7 @@ hero:
   text: Codex 不止写代码
   tagline: 不会编程也能从办公文件、PPT、电商和内容创作开始；开发者仍有完整的项目、调试与自动化路线
   image:
-    src: /programmer-xiaofeng-ip.png
+    src: /programmer-xiaofeng-hero.webp
     alt: 程序员小枫同学 IP 形象，戴黑色棒球帽、穿黑色连帽衫，在电脑前与小猫一起工作
   actions:
     - theme: brand

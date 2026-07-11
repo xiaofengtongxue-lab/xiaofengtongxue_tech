@@ -183,6 +183,7 @@ export default defineConfig({
     ['meta', { name: 'author', content: siteTitle }],
     ['meta', { name: 'application-name', content: siteTitle }],
     ['meta', { name: 'theme-color', content: '#e65332' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
     ['meta', { property: 'og:site_name', content: siteTitle }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
     [
