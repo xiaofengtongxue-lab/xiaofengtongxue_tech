@@ -25,6 +25,16 @@ npm run docs:build
 npm run docs:preview
 ```
 
+## 自动部署
+
+当前提交同时发布到 GitHub Pages 和正式服务器：
+
+```bash
+npm run deploy
+```
+
+脚本会等待 GitHub Actions、原子切换服务器版本并执行线上验收。详细环境变量和回退行为见 [DEPLOYMENT.md](./DEPLOYMENT.md)。
+
 ## 当前发布范围
 
 - 首页：`/`

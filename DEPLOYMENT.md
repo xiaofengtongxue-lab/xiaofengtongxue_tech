@@ -49,6 +49,66 @@ Nginx 配置保存在 `deploy/nginx/programmer-xiaofeng-blog.conf`。服务器�
 
 `current` 是指向当前发布版本的软链接。正式域名构建时，需要同步检查 Nginx 的 `server_name`、证书域名、canonical、sitemap、`robots.txt` 和 `llms.txt`。IP 地址继续保留 HTTP 访问用于应急排查。
 
+## 一键发布到 GitHub 与服务器
+
+自动化脚本会按同一个 Git 提交完成以下流程：
+
+1. 检查当前分支、未提交修改和未跟踪的站点文件。
+2. 分别构建并验证 GitHub Pages 与正式域名产物。
+3. 推送 `main`，等待 GitHub Actions 完成 Pages 发布。
+4. 将正式产物上传到新的版本目录，原子切换 `current` 软链接。
+5. 检查首页、Codex、AI Agent、静态资源、sitemap、robots 和域名跳转。
+6. 正式站验收失败时，自动切回上一个服务器版本。
+
+首次使用前确认 GitHub CLI 已登录：
+
+```bash
+gh auth status
+```
+
+推荐先把本机 SSH 公钥添加到服务器，然后直接运行：
+
+```bash
+npm run deploy
+```
+
+没有配置 SSH Key 时，可以临时通过环境变量提供密码。脚本只把密码交给 `sshpass`，不会打印或写入仓库：
+
+```bash
+read -s DEPLOY_PASSWORD
+export DEPLOY_PASSWORD
+npm run deploy
+unset DEPLOY_PASSWORD
+```
+
+只验证构建和发布包、不改变 GitHub 与服务器：
+
+```bash
+npm run deploy -- --dry-run
+```
+
+单独检查正式站：
+
+```bash
+npm run deploy:verify
+```
+
+常用环境变量：
+
+| 变量 | 默认值 | 用途 |
+| --- | --- | --- |
+| `DEPLOY_HOST` | `43.138.176.186` | 服务器地址 |
+| `DEPLOY_USER` | `ubuntu` | SSH 用户 |
+| `DEPLOY_ROOT` | `/var/www/programmer-xiaofeng-blog` | 版本目录与 `current` 所在目录 |
+| `DEPLOY_SSH_KEY` | 空 | 指定 SSH 私钥路径 |
+| `DEPLOY_PASSWORD` | 空 | 未配置 SSH Key 时的临时密码 |
+| `DEPLOY_GIT_REMOTE` | `origin` | 需要推送的 Git 远程仓库 |
+| `DEPLOY_BRANCH` | `main` | 允许发布的分支 |
+| `DEPLOY_GITHUB_WORKFLOW` | `deploy.yml` | GitHub Pages 工作流文件名 |
+| `DEPLOY_WAIT_GITHUB` | `1` | 是否等待并验收 GitHub Pages |
+
+脚本要求当前分支为 `main`，且所有会参与构建的修改都已提交。它不会自动暂存或提交文件，也不会删除旧版本目录。
+
 ## 搜索平台验证
 
 站点支持在构建时注入 Google 和百度的验证 Meta。验证值由平台后台生成，不要把真实值直接写入仓库：
