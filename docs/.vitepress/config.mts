@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 import type { HeadConfig, TransformContext } from 'vitepress'
 
-const defaultBase = '/xiaofengtongxue_tech/'
+const defaultBase = '/'
 const defaultSiteUrl = 'https://www.xiaofengtongxue.com'
 const base = normalizeBase(process.env.VITEPRESS_BASE || defaultBase)
 const siteUrl = normalizeSiteUrl(process.env.SITE_URL || defaultSiteUrl)

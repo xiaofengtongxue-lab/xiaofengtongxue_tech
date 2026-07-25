@@ -5,7 +5,7 @@ import process from 'node:process'
 const projectRoot = process.cwd()
 const distRoot = path.join(projectRoot, 'docs/.vitepress/dist')
 const expectedOrigin = (process.env.SITE_URL || 'https://www.xiaofengtongxue.com').replace(/\/$/, '')
-const base = normalizeBase(process.env.VITEPRESS_BASE || '/xiaofengtongxue_tech/')
+const base = normalizeBase(process.env.VITEPRESS_BASE || '/')
 const expectedHomeTitle = '程序员小枫同学 | AI 编程、AI Agent 与软件工程教程'
 const requiredUrls = [
   `${expectedOrigin}/`,

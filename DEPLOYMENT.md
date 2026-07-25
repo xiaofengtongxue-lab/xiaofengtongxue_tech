@@ -1,19 +1,19 @@
 # 部署与域名切换
 
-## GitHub Pages 阶段
+## GitHub Pages 教程域名
 
 默认配置：
 
 ```text
 SITE_URL=https://www.xiaofengtongxue.com
-VITEPRESS_BASE=/xiaofengtongxue_tech/
+VITEPRESS_BASE=/
 ```
 
-GitHub Actions 会在 `main` 分支更新后构建并发布 `docs/.vitepress/dist`。镜像页的静态资源使用 `/xiaofengtongxue_tech/`，页面 canonical 仍指向正式主域，避免形成重复内容。
+GitHub Actions 会在 `main` 分支更新后构建并发布 `docs/.vitepress/dist`。GitHub Pages 使用教程域名 `https://tutorial.xiaofengtongxue.com/`，静态资源从域名根路径加载；页面 canonical 仍指向正式主域，避免形成重复内容。
 
-在 GitHub 仓库设置中，将 Pages 的 Source 选择为 `GitHub Actions`。
+DNS 使用 `tutorial CNAME xiaofengtongxue-lab.github.io`，仓库通过 `docs/public/CNAME` 声明自定义域名。在 GitHub 仓库设置中，将 Pages 的 Source 选择为 `GitHub Actions`，Custom domain 设置为 `tutorial.xiaofengtongxue.com`，证书签发后启用 Enforce HTTPS。
 
-GitHub Pages 项目站阶段，`robots.txt` 和 `llms.txt` 位于 `/xiaofengtongxue_tech/` 子路径。页面会通过 sitemap 和 `<link rel="alternate">` 暴露对应入口；切换到正式域名后，这两个文件会位于域名根路径。
+GitHub Pages 的 `robots.txt`、`llms.txt` 和静态资源均位于域名根路径。sitemap、canonical 和结构化数据继续使用正式主域 `https://www.xiaofengtongxue.com/`。
 
 ## 本地模拟 GitHub Pages
 
@@ -106,6 +106,8 @@ npm run deploy:verify
 | `DEPLOY_BRANCH` | `main` | 允许发布的分支 |
 | `DEPLOY_GITHUB_WORKFLOW` | `deploy.yml` | GitHub Pages 工作流文件名 |
 | `DEPLOY_WAIT_GITHUB` | `1` | 是否等待并验收 GitHub Pages |
+| `GITHUB_PAGES_TARGET` | `https://tutorial.xiaofengtongxue.com` | GitHub Pages 线上验收地址 |
+| `GITHUB_PAGES_BASE` | `/` | GitHub Pages 静态资源基础路径 |
 
 脚本要求当前分支为 `main`，且所有会参与构建的修改都已提交。它不会自动暂存或提交文件，也不会删除旧版本目录。
 

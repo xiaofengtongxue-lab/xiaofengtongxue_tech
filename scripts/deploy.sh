@@ -3,8 +3,8 @@
 set -Eeuo pipefail
 
 CANONICAL_SITE="${SITE_URL:-https://www.xiaofengtongxue.com}"
-GITHUB_TARGET="${GITHUB_PAGES_TARGET:-https://xiaofengtongxue-lab.github.io}"
-GITHUB_BASE="${GITHUB_PAGES_BASE:-/xiaofengtongxue_tech/}"
+GITHUB_TARGET="${GITHUB_PAGES_TARGET:-https://tutorial.xiaofengtongxue.com}"
+GITHUB_BASE="${GITHUB_PAGES_BASE:-/}"
 GIT_REMOTE="${DEPLOY_GIT_REMOTE:-origin}"
 GIT_BRANCH="${DEPLOY_BRANCH:-main}"
 GITHUB_WORKFLOW="${DEPLOY_GITHUB_WORKFLOW:-deploy.yml}"

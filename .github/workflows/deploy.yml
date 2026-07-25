@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SITE_URL: https://www.xiaofengtongxue.com
-      VITEPRESS_BASE: /xiaofengtongxue_tech/
+      VITEPRESS_BASE: /
       GOOGLE_SITE_VERIFICATION: ${{ secrets.GOOGLE_SITE_VERIFICATION }}
       BAIDU_SITE_VERIFICATION: ${{ secrets.BAIDU_SITE_VERIFICATION }}
     steps:

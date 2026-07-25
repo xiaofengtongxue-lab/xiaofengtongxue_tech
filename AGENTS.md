@@ -60,8 +60,8 @@
 
 GitHub Pages 阶段：
 
-- 站点地址：`https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/`
-- VitePress Base：`/xiaofengtongxue_tech/`
+- 站点地址：`https://tutorial.xiaofengtongxue.com/`
+- VitePress Base：`/`
 
 备案后的正式地址：
 
@@ -73,7 +73,7 @@ GitHub Pages 阶段：
 - `SITE_URL`
 - `VITEPRESS_BASE`
 
-正式域名启用前不要添加 `docs/public/CNAME`。切换域名时，必须同时检查 canonical、sitemap、`robots.txt`、`llms.txt`、静态资源路径和 GitHub Pages 设置。
+GitHub Pages 自定义域名通过 `docs/public/CNAME` 声明为 `tutorial.xiaofengtongxue.com`。切换域名时，必须同时检查 canonical、sitemap、`robots.txt`、`llms.txt`、静态资源路径和 GitHub Pages 设置。
 
 ## Brand And Positioning
 
@@ -171,7 +171,7 @@ GitHub Pages 阶段：
 
 - `docs/public/robots.txt`：当前站点抓取规则和 sitemap 地址
 - `docs/public/llms.txt`：站点范围、主要栏目、权威入口和内容边界
-- `docs/public/CNAME`：仅在正式自定义域名启用后创建
+- `docs/public/CNAME`：GitHub Pages 自定义域名，当前为 `tutorial.xiaofengtongxue.com`
 
 不要把内部规划、私有素材、凭证、用户数据或未发布事实写入这些公开文件。
 
@@ -188,7 +188,7 @@ git diff --check
 
 - 新增页面是否出现在导航、侧边栏和生成的 sitemap 中
 - canonical 是否使用当前正确域名和路径
-- GitHub Pages 阶段的静态资源是否包含 `/xiaofengtongxue_tech/`
+- GitHub Pages 的静态资源是否使用根路径，并且不再包含 `/xiaofengtongxue_tech/`
 - 内部链接、外部链接和标题锚点是否有效
 - 是否出现真实密钥、账号、密码、Token、Cookie 或其他敏感信息
 - 是否混入内容规划、素材笔记、草稿、旧品牌或不相关项目名称

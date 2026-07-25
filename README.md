@@ -5,7 +5,7 @@
 ## 站点地址
 
 - 正式地址：`https://www.xiaofengtongxue.com/`
-- GitHub Pages 镜像：`https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/`
+- GitHub Pages 教程域名：`https://tutorial.xiaofengtongxue.com/`
 - 兼容跳转域名：`https://www.xinge.ac.cn/`
 - CCWS 产品文档：`https://docs.ccws.pro/`
 
@@ -16,7 +16,7 @@ npm install
 npm run docs:dev
 ```
 
-默认开发地址为 `http://localhost:5173/xiaofengtongxue_tech/`。
+默认开发地址为 `http://localhost:5173/`。
 
 ## 构建验证
 
