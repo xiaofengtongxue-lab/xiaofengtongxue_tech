@@ -5,11 +5,11 @@
 默认配置：
 
 ```text
-SITE_URL=https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech
+SITE_URL=https://www.xiaofengtongxue.com
 VITEPRESS_BASE=/xiaofengtongxue_tech/
 ```
 
-GitHub Actions 会在 `main` 分支更新后构建并发布 `docs/.vitepress/dist`。
+GitHub Actions 会在 `main` 分支更新后构建并发布 `docs/.vitepress/dist`。镜像页的静态资源使用 `/xiaofengtongxue_tech/`，页面 canonical 仍指向正式主域，避免形成重复内容。
 
 在 GitHub 仓库设置中，将 Pages 的 Source 选择为 `GitHub Actions`。
 
@@ -19,20 +19,70 @@ GitHub Pages 项目站阶段，`robots.txt` 和 `llms.txt` 位于 `/xiaofengtong
 
 ```bash
 npm run docs:build
+npm run docs:check
 npm run docs:preview
 ```
 
-## 切换正式域名
+## 正式服务器域名
 
-备案和 DNS 准备完成后：
+当前规范主域名为：
 
-1. 将 `tech.xiaofengtongxue.com` 的 CNAME 指向 `xiaofengtongxue-lab.github.io`。
-2. 在 GitHub Pages 设置中填写 Custom domain：`tech.xiaofengtongxue.com`。
-3. 在仓库变量中设置 `SITE_URL=https://tech.xiaofengtongxue.com`。
-4. 在仓库变量中设置 `VITEPRESS_BASE=/`。
-5. 新增 `docs/public/CNAME`，内容为 `tech.xiaofengtongxue.com`。
-6. 将 `docs/public/robots.txt` 和 `docs/public/llms.txt` 中的旧地址替换为正式域名。
-7. 重新部署并检查 canonical、静态资源、sitemap 和内部链接。
-8. 在搜索平台添加新站点并提交新的 sitemap。
+```text
+https://www.xiaofengtongxue.com/
+```
+
+`http://xiaofengtongxue.com/`、`https://xiaofengtongxue.com/` 和 `http://www.xiaofengtongxue.com/` 均使用 `301` 跳转到对应的 `https://www.xiaofengtongxue.com/` 路径。证书 `programmer-xiaofeng-blog-xiaofengtongxue` 同时覆盖裸域名与 www 域名。
+
+使用服务器根路径构建：
+
+```bash
+SITE_URL=https://www.xiaofengtongxue.com VITEPRESS_BASE=/ npm run docs:build
+SITE_URL=https://www.xiaofengtongxue.com VITEPRESS_BASE=/ npm run docs:check
+```
+
+Nginx 配置保存在 `deploy/nginx/programmer-xiaofeng-blog.conf`。服务器使用版本化发布目录：
+
+```text
+/var/www/programmer-xiaofeng-blog/releases/
+/var/www/programmer-xiaofeng-blog/current
+```
+
+`current` 是指向当前发布版本的软链接。正式域名构建时，需要同步检查 Nginx 的 `server_name`、证书域名、canonical、sitemap、`robots.txt` 和 `llms.txt`。IP 地址继续保留 HTTP 访问用于应急排查。
+
+## 搜索平台验证
+
+站点支持在构建时注入 Google 和百度的验证 Meta。验证值由平台后台生成，不要把真实值直接写入仓库：
+
+```bash
+GOOGLE_SITE_VERIFICATION=<google-verification-value> \
+BAIDU_SITE_VERIFICATION=<baidu-verification-value> \
+SITE_URL=https://www.xiaofengtongxue.com \
+VITEPRESS_BASE=/ \
+npm run docs:build
+```
+
+GitHub Pages 镜像可以在仓库 Secrets 中设置同名变量。正式服务器构建完成后，应重新抓取首页，确认验证 Meta、canonical 和静态资源路径同时正确。
+
+## 百度链接提交
+
+先完成正式域名构建，再预览准备提交的 URL 数量：
+
+```bash
+npm run seo:submit:baidu
+```
+
+确认百度搜索资源平台中的站点与主域一致后，使用环境变量提交：
+
+```bash
+BAIDU_SITE=https://www.xiaofengtongxue.com \
+BAIDU_PUSH_TOKEN=<baidu-push-token> \
+npm run seo:submit:baidu -- --submit
+```
+
+脚本不会打印 Token。没有 `--submit` 时只读取本地 sitemap，不会向百度发送请求。
+
+## 兼容域名
+
+`xinge.ac.cn` 与 `www.xinge.ac.cn` 仅作为历史兼容域名使用。两个域名的 HTTP/HTTPS 请求都应使用 `301` 跳转到 `https://www.xiaofengtongxue.com`，并保留原始路径和查询参数。页面、sitemap、robots、llms 和结构化数据不得继续把 xinge 域名声明为 canonical。
 
 不要改变已发布文章的路径，只切换域名和站点根路径。

@@ -4,8 +4,9 @@
 
 ## 站点地址
 
-- GitHub Pages 阶段：`https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/`
-- 备案后的正式地址：`https://tech.xiaofengtongxue.com/`
+- 正式地址：`https://www.xiaofengtongxue.com/`
+- GitHub Pages 镜像：`https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/`
+- 兼容跳转域名：`https://www.xinge.ac.cn/`
 - CCWS 产品文档：`https://docs.ccws.pro/`
 
 ## 本地运行

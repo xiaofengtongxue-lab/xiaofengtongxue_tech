@@ -2,20 +2,39 @@ import { defineConfig } from 'vitepress'
 import type { HeadConfig, TransformContext } from 'vitepress'
 
 const defaultBase = '/xiaofengtongxue_tech/'
+const defaultSiteUrl = 'https://www.xiaofengtongxue.com'
 const base = normalizeBase(process.env.VITEPRESS_BASE || defaultBase)
-const siteUrl = normalizeSiteUrl(
-  process.env.SITE_URL || `https://xiaofengtongxue-lab.github.io${base}`
-)
+const siteUrl = normalizeSiteUrl(process.env.SITE_URL || defaultSiteUrl)
 const parsedSiteUrl = new URL(siteUrl)
 const siteOrigin = parsedSiteUrl.origin
 const sitePath = parsedSiteUrl.pathname.replace(/\/$/, '')
 const siteTitle = '程序员小枫同学'
-const siteDescription = '程序员小枫同学的 Codex 与 ChatGPT Work 实战教程，为普通工作者和开发者分别提供完整路线，覆盖办公文件、PPT、电商、漫剧、软件开发、Skills 与自动化。'
+const siteDescription = '程序员小枫同学面向 AI 时代的工程师与技术实践者，分享 AI 编程、AI Agent、Skill、MCP、编程语言与软件工程方法。'
 const brandImageUrl = `${siteUrl}/programmer-xiaofeng-ip.png`
 const authorId = `${siteUrl}/#author`
+const authorUrl = `${siteUrl}/about`
 const websiteId = `${siteUrl}/#website`
+const authorSameAs = ['https://github.com/xiaofengtongxue-lab']
+const googleSiteVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim()
+const baiduSiteVerification = process.env.BAIDU_SITE_VERIFICATION?.trim()
 
 type SchemaNode = Record<string, unknown>
+type PageFrontmatter = Record<string, unknown>
+
+type FaqItem = {
+  question: string
+  answer: string
+}
+
+type HowToStep = {
+  name: string
+  text: string
+}
+
+type BreadcrumbItem = {
+  name: string
+  path: string
+}
 
 function normalizeBase(value: string) {
   const withLeadingSlash = value.startsWith('/') ? value : `/${value}`
@@ -38,16 +57,80 @@ function pageUrl(relativePath: string) {
   return `${siteUrl}${pagePath(relativePath)}`
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
+}
+
+function readFaq(frontmatter: PageFrontmatter): FaqItem[] {
+  if (!Array.isArray(frontmatter.faq)) return []
+
+  return frontmatter.faq.flatMap((item) => {
+    if (!isRecord(item) || typeof item.question !== 'string' || typeof item.answer !== 'string') {
+      return []
+    }
+
+    const question = item.question.trim()
+    const answer = item.answer.trim()
+    return question && answer ? [{ question, answer }] : []
+  })
+}
+
+function readHowTo(frontmatter: PageFrontmatter): { name?: string; steps: HowToStep[] } {
+  if (!isRecord(frontmatter.howTo) || !Array.isArray(frontmatter.howTo.steps)) {
+    return { steps: [] }
+  }
+
+  const steps = frontmatter.howTo.steps.flatMap((item) => {
+    if (!isRecord(item) || typeof item.name !== 'string' || typeof item.text !== 'string') {
+      return []
+    }
+
+    const name = item.name.trim()
+    const text = item.text.trim()
+    return name && text ? [{ name, text }] : []
+  })
+
+  return {
+    name: typeof frontmatter.howTo.name === 'string' ? frontmatter.howTo.name.trim() : undefined,
+    steps
+  }
+}
+
+function readBreadcrumbs(frontmatter: PageFrontmatter): BreadcrumbItem[] {
+  if (!Array.isArray(frontmatter.breadcrumbs)) return []
+
+  return frontmatter.breadcrumbs.flatMap((item) => {
+    if (!isRecord(item) || typeof item.name !== 'string' || typeof item.path !== 'string') {
+      return []
+    }
+
+    const name = item.name.trim()
+    const path = item.path.trim()
+    return name && path.startsWith('/') ? [{ name, path }] : []
+  })
+}
+
+function toIsoDate(value: unknown) {
+  if (typeof value !== 'string' || !value.trim()) return undefined
+
+  const date = new Date(value)
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString()
+}
+
 function structuredData(context: TransformContext): SchemaNode {
   const { pageData, title, description } = context
   const path = pagePath(pageData.relativePath)
   const url = pageUrl(pageData.relativePath)
   const isHome = path === '/'
+  const frontmatter = pageData.frontmatter as PageFrontmatter
+  const isProfile = frontmatter.schemaType === 'ProfilePage'
+  const isArticle = !isHome && !isProfile
+  const pageName = isHome ? siteTitle : pageData.title || title
   const pageNode: SchemaNode = {
-    '@type': isHome ? 'WebPage' : 'TechArticle',
+    '@type': isHome ? 'WebPage' : isProfile ? 'ProfilePage' : 'TechArticle',
     '@id': `${url}#webpage`,
     url,
-    name: pageData.title || title,
+    name: pageName,
     description,
     image: brandImageUrl,
     inLanguage: 'zh-CN',
@@ -56,10 +139,19 @@ function structuredData(context: TransformContext): SchemaNode {
     publisher: { '@id': authorId }
   }
 
-  if (!isHome) {
-    pageNode.headline = pageData.title || title
+  if (isArticle) {
+    pageNode.headline = pageName
     pageNode.mainEntityOfPage = url
     pageNode.isAccessibleForFree = true
+  }
+
+  if (isProfile) {
+    pageNode.mainEntity = { '@id': authorId }
+  }
+
+  const datePublished = toIsoDate(frontmatter.datePublished)
+  if (isArticle && datePublished) {
+    pageNode.datePublished = datePublished
   }
 
   if (pageData.lastUpdated) {
@@ -71,9 +163,12 @@ function structuredData(context: TransformContext): SchemaNode {
       '@type': 'Person',
       '@id': authorId,
       name: siteTitle,
-      url: `${siteUrl}/`,
-      description: '“程序员小枫同学”网站与同名公众号的内容主体。',
-      image: brandImageUrl
+      url: authorUrl,
+      description: '“程序员小枫同学”网站与同名公众号的内容主体，持续整理 AI 编程、AI Agent 与软件工程实操教程。',
+      image: brandImageUrl,
+      jobTitle: '技术教程作者',
+      sameAs: authorSameAs,
+      knowsAbout: ['AI 编程', 'AI Agent', 'Model Context Protocol', 'Agent Skills', '软件工程']
     },
     {
       '@type': 'WebSite',
@@ -90,23 +185,65 @@ function structuredData(context: TransformContext): SchemaNode {
   ]
 
   if (!isHome) {
+    const breadcrumbs = readBreadcrumbs(frontmatter)
+    const breadcrumbElements = [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: siteTitle,
+        item: `${siteUrl}/`
+      },
+      ...breadcrumbs.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 2,
+        name: item.name,
+        item: `${siteUrl}${item.path}`
+      })),
+      {
+        '@type': 'ListItem',
+        position: breadcrumbs.length + 2,
+        name: pageName,
+        item: url
+      }
+    ]
+
     graph.push({
       '@type': 'BreadcrumbList',
       '@id': `${url}#breadcrumb`,
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: siteTitle,
-          item: `${siteUrl}/`
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: pageData.title || title,
-          item: url
+      itemListElement: breadcrumbElements
+    })
+  }
+
+  const faq = readFaq(frontmatter)
+  if (faq.length > 0) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer
         }
-      ]
+      }))
+    })
+  }
+
+  const howTo = readHowTo(frontmatter)
+  if (howTo.steps.length > 0) {
+    graph.push({
+      '@type': 'HowTo',
+      '@id': `${url}#howto`,
+      name: howTo.name || pageName,
+      description,
+      inLanguage: 'zh-CN',
+      step: howTo.steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step.name,
+        text: step.text
+      }))
     })
   }
 
@@ -124,12 +261,16 @@ function pageHead(context: TransformContext): HeadConfig[] {
 
   const url = pageUrl(pageData.relativePath)
   const isHome = pagePath(pageData.relativePath) === '/'
-  const robots = 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
+  const frontmatter = pageData.frontmatter as PageFrontmatter
+  const isProfile = frontmatter.schemaType === 'ProfilePage'
+  const robots = frontmatter.noindex === true
+    ? 'noindex,follow'
+    : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
   const head: HeadConfig[] = [
     ['meta', { name: 'robots', content: robots }],
     ['meta', { name: 'googlebot', content: robots }],
     ['link', { rel: 'canonical', href: url }],
-    ['meta', { property: 'og:type', content: isHome ? 'website' : 'article' }],
+    ['meta', { property: 'og:type', content: isHome ? 'website' : isProfile ? 'profile' : 'article' }],
     ['meta', { property: 'og:title', content: title }],
     ['meta', { property: 'og:description', content: description }],
     ['meta', { property: 'og:url', content: url }],
@@ -152,6 +293,11 @@ function pageHead(context: TransformContext): HeadConfig[] {
     ])
   }
 
+  const datePublished = toIsoDate(frontmatter.datePublished)
+  if (!isHome && !isProfile && datePublished) {
+    head.push(['meta', { property: 'article:published_time', content: datePublished }])
+  }
+
   return head
 }
 
@@ -161,7 +307,6 @@ export default defineConfig({
   description: siteDescription,
   base,
   srcExclude: [
-    'agents/**',
     'ai/**',
     'engineering/**',
     'go/**',
@@ -174,10 +319,12 @@ export default defineConfig({
   lastUpdated: true,
   sitemap: {
     hostname: siteOrigin,
-    transformItems: (items) => items.map((item) => ({
-      ...item,
-      url: `${sitePath}/${item.url}`.replace(/\/{2,}/g, '/')
-    }))
+    transformItems: (items) => items
+      .filter((item) => item.url !== 'agents/')
+      .map((item) => ({
+        ...item,
+        url: `${sitePath}/${item.url}`.replace(/\/{2,}/g, '/')
+      }))
   },
   head: [
     ['meta', { name: 'author', content: siteTitle }],
@@ -186,6 +333,12 @@ export default defineConfig({
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}favicon.svg` }],
     ['meta', { property: 'og:site_name', content: siteTitle }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ...(googleSiteVerification
+      ? [['meta', { name: 'google-site-verification', content: googleSiteVerification }] as HeadConfig]
+      : []),
+    ...(baiduSiteVerification
+      ? [['meta', { name: 'baidu-site-verification', content: baiduSiteVerification }] as HeadConfig]
+      : []),
     [
       'link',
       {
@@ -209,10 +362,30 @@ export default defineConfig({
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: '教程总览', link: '/codex/' },
-      { text: '普通人入门', link: '/codex/everyday/' },
-      { text: '场景实战', link: '/codex/practice/' },
-      { text: 'Skill 推荐', link: '/codex/skills/' }
+      {
+        text: 'Codex 教程',
+        activeMatch: '^/codex/',
+        items: [
+          {
+            text: '学习路线',
+            items: [
+              { text: '教程总览', link: '/codex/' },
+              { text: '普通用户路线', link: '/codex/everyday/' },
+              { text: '开发者入门', link: '/codex/start/what-is-codex' }
+            ]
+          },
+          {
+            text: '实践与进阶',
+            items: [
+              { text: '项目工作流', link: '/codex/workflows/understand-codebase' },
+              { text: '场景实战', link: '/codex/practice/' },
+              { text: 'Skill 推荐', link: '/codex/skills/' },
+              { text: '高级能力', link: '/codex/advanced/agents-md' }
+            ]
+          }
+        ]
+      },
+      { text: 'AI Agent', link: '/agents/' }
     ],
     sidebar: {
       '/codex/': [
@@ -320,8 +493,8 @@ export default defineConfig({
       text: '最后更新'
     },
     footer: {
-      message: '程序员小枫同学：让普通工作与软件开发都走到真实交付。',
-      copyright: 'Copyright © 2026 程序员小枫同学'
+      message: `程序员小枫同学：用好新工具，练好工程内功，做出可靠交付。 · <a href="${base}about">关于本站</a>`,
+      copyright: 'Copyright © 2026 程序员小枫同学 · <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">粤ICP备2024331172号</a>'
     }
   }
 })

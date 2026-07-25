@@ -65,7 +65,7 @@ GitHub Pages 阶段：
 
 备案后的正式地址：
 
-- 站点地址：`https://tech.xiaofengtongxue.com/`
+- 站点地址：`https://www.xiaofengtongxue.com/`
 - VitePress Base：`/`
 
 站点通过环境变量切换两种发布方式：
@@ -197,7 +197,7 @@ git diff --check
 修改域名、Base、canonical 或部署配置时，额外运行正式域名构建验证：
 
 ```bash
-SITE_URL=https://tech.xiaofengtongxue.com VITEPRESS_BASE=/ npm run docs:build
+SITE_URL=https://www.xiaofengtongxue.com VITEPRESS_BASE=/ npm run docs:build
 ```
 
 验证正式域名构建后，再运行一次默认 `npm run docs:build`，确保本地输出恢复为当前 GitHub Pages 配置。

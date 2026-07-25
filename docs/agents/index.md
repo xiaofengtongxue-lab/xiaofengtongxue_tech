@@ -1,21 +1,15 @@
 ---
-title: AI Agent 教程
-description: 学习 AI Agent 的架构、工具调用、状态、记忆、工作流、权限边界和可靠性评测方法。
+title: AI Agent
+description: AI Agent 教程目录。
+noindex: true
+sidebar: false
+outline: false
+lastUpdated: false
+prev: false
+next: false
+author: false
 ---
 
-# AI Agent 教程
+# AI Agent
 
-本栏目用于系统整理 AI Agent 的设计与实现方法，帮助开发者区分普通聊天、固定工作流和具备自主决策能力的 Agent 系统。
-
-## 核心主题
-
-- Agent 的模型、提示、工具和运行环境
-- 固定工作流与自主 Agent 的区别
-- 状态、短期记忆和长期记忆
-- MCP、API 和本地工具接入
-- 权限、审批、沙箱和凭证安全
-- 失败恢复、日志、追踪和评测
-
-## 推荐前置知识
-
-建议先了解 [大模型技术](/llm/) 中的上下文、Tool Calling 和结构化输出，再进入具体 Agent 框架和工程实践。
+该目录暂为空。

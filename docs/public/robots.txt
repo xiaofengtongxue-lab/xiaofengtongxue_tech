@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://xiaofengtongxue-lab.github.io/xiaofengtongxue_tech/sitemap.xml
+Sitemap: https://www.xiaofengtongxue.com/sitemap.xml
