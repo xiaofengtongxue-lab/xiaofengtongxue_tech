@@ -16,8 +16,8 @@ hero:
       text: 了解学习方向
       link: '#learning-directions'
     - theme: alt
-      text: 查看已发布教程
-      link: /codex/
+      text: 学习 AI Agent
+      link: /agents/
 ---
 
 <HomeSections />

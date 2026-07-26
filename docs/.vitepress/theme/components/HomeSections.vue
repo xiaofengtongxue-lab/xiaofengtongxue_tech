@@ -30,6 +30,50 @@ import { withBase } from 'vitepress'
       </div>
     </section>
 
+    <section class="home-foundations" aria-labelledby="home-agents-title">
+      <div class="home-shell">
+        <header class="home-section-heading">
+          <h2 id="home-agents-title">AI Agent 大白话教程</h2>
+          <p>从会和 AI 对话开始，亲手做出能调用工具、保存状态、请求审批并通过评测的可靠 Agent。</p>
+        </header>
+
+        <div class="home-article-list">
+          <article class="home-article">
+            <a :href="withBase('/agents/')">
+              <span class="home-article-topic">完整路线</span>
+              <span class="home-article-copy">
+                <strong>按 A、B、C 三种起点选择教程</strong>
+                <span>零基础导读、真实项目主线和工程进阶彼此独立，通过前置与深入链接连接。</span>
+              </span>
+              <span class="home-article-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="home-article">
+            <a :href="withBase('/agents/build/from-chat-to-agent')">
+              <span class="home-article-topic">项目主线</span>
+              <span class="home-article-copy">
+                <strong>先跑通第一个资料盘点 Agent</strong>
+                <span>从 Tool Calling 一路增加循环、状态、审批、验证和基础评测，每一步都能自己检查。</span>
+              </span>
+              <span class="home-article-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+
+          <article class="home-article">
+            <a :href="withBase('/agents/advanced/system-design')">
+              <span class="home-article-topic">工程进阶</span>
+              <span class="home-article-copy">
+                <strong>把单 Agent 放进可上线的系统</strong>
+                <span>深入 MCP、上下文、记忆、评测、多 Agent、安全边界与生产架构。</span>
+              </span>
+              <span class="home-article-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="home-foundations" aria-labelledby="home-foundations-title">
       <div class="home-shell">
         <header class="home-section-heading">
@@ -100,10 +144,21 @@ import { withBase } from 'vitepress'
       <div class="home-shell">
         <header class="home-section-heading">
           <h2 id="home-latest-title">从一篇能动手的教程开始</h2>
-          <p>先从 Codex 讲起，在真实任务里慢慢弄懂 Skill、MCP 和 Agent 工作流。工具会不会用只是第一步，更重要的是会检查结果、发现问题，把事情真正做完。</p>
+          <p>可以从 Agent 原理或 Codex 实战进入。工具会不会用只是第一步，更重要的是会检查结果、发现问题，把事情真正做完。</p>
         </header>
 
         <div class="home-article-list">
+          <article class="home-article">
+            <a :href="withBase('/agents/start/what-is-agent')">
+              <span class="home-article-topic">Agent 导读</span>
+              <span class="home-article-copy">
+                <strong>AI Agent 到底是什么：跟着一个任务走完闭环</strong>
+                <span>不要求终端、Git 或编程基础，先看懂观察、决策、工具、反馈和验收。</span>
+              </span>
+              <span class="home-article-arrow" aria-hidden="true">↗</span>
+            </a>
+          </article>
+
           <article class="home-article">
             <a :href="withBase('/codex/everyday/first-result')">
               <span class="home-article-topic">普通人入门</span>

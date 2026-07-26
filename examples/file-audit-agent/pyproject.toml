@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "file-audit-agent"
+version = "0.1.0"
+description = "Companion project for the Programmer Xiaofeng AI Agent tutorial"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "openai==2.48.0",
+]
+
+[project.scripts]
+file-audit-agent = "file_audit_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["file_audit_agent*"]

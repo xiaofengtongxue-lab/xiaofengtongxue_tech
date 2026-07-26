@@ -975,3 +975,61 @@ body:has(.VPHome) .VPNavBarHamburger {
     transition: none;
   }
 }
+
+.agent-diagram {
+  margin: 28px 0;
+  color: var(--vp-c-text-2);
+  text-align: center;
+}
+
+.agent-diagram img {
+  display: block;
+  width: 100%;
+  max-height: 760px;
+  margin: 0 auto;
+  padding: 18px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: #fff;
+  object-fit: contain;
+}
+
+.agent-diagram-compact img {
+  max-width: 760px;
+  max-height: 420px;
+}
+
+.agent-diagram figcaption {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .agent-diagram {
+    margin: 22px -8px;
+  }
+
+  .agent-diagram img {
+    padding: 10px;
+  }
+
+  .agent-diagram:not(.agent-diagram-compact) {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+  }
+
+  .agent-diagram:not(.agent-diagram-compact) img {
+    width: 800px;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+  }
+
+  .agent-diagram:not(.agent-diagram-compact) figcaption {
+    position: sticky;
+    left: 0;
+    width: 100%;
+  }
+}

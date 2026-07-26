@@ -25,7 +25,32 @@
 ## Primary Entries
 
 - Complete Codex tutorial: https://www.xiaofengtongxue.com/codex/
+- Complete AI Agent tutorial: https://www.xiaofengtongxue.com/agents/
 - Author and site methodology: https://www.xiaofengtongxue.com/about
+
+## AI Agent Learning Path
+
+- Complete route map: https://www.xiaofengtongxue.com/agents/
+- Zero-foundation introduction: https://www.xiaofengtongxue.com/agents/start/what-is-agent
+- Terminal, Git, Python, and API preparation: https://www.xiaofengtongxue.com/agents/start/prepare
+- First verified file-audit agent: https://www.xiaofengtongxue.com/agents/build/from-chat-to-agent
+- Tool Calling loop: https://www.xiaofengtongxue.com/agents/build/tool-calling
+- Agent Loop and stopping conditions: https://www.xiaofengtongxue.com/agents/build/agent-loop
+- Tool schemas and permission boundaries: https://www.xiaofengtongxue.com/agents/build/tool-design
+- State, context, and checkpoints: https://www.xiaofengtongxue.com/agents/build/state-checkpoints
+- Human approval and result verification: https://www.xiaofengtongxue.com/agents/build/approval-verification
+- Introductory agent evaluation: https://www.xiaofengtongxue.com/agents/build/evaluation
+
+## Advanced AI Agent Engineering
+
+- Advanced Tool Calling: https://www.xiaofengtongxue.com/agents/advanced/tool-calling
+- MCP architecture and security boundaries: https://www.xiaofengtongxue.com/agents/advanced/mcp
+- Context engineering: https://www.xiaofengtongxue.com/agents/advanced/context
+- Memory lifecycle and governance: https://www.xiaofengtongxue.com/agents/advanced/memory
+- Trace and evaluation workflows: https://www.xiaofengtongxue.com/agents/advanced/evaluation
+- Multi-agent architecture and selection: https://www.xiaofengtongxue.com/agents/advanced/multi-agent
+- Agent security: https://www.xiaofengtongxue.com/agents/advanced/security
+- Production system design: https://www.xiaofengtongxue.com/agents/advanced/system-design
 
 ## Everyday Work Path For Non-Programmers
 
@@ -95,8 +120,8 @@
 ## Publishing Scope And Boundaries
 
 - The site's full scope covers new tools, programming languages, engineering fundamentals, and technical judgment.
-- The public site currently publishes the complete Codex tutorial section.
-- AI Agent is reserved as a future top-level section and does not currently contain public tutorials.
+- The public site currently publishes complete Codex and AI Agent tutorial sections.
+- The AI Agent section uses an independent zero-foundation introduction, a B-level hands-on single-agent path, and a C-level engineering path; individual pages do not mix all three teaching gradients.
 - The current Codex section treats Codex as one concrete AI coding tool example for teaching broader AI programming, Skill, MCP, Agent workflow, and engineering concepts.
 - Tutorials provide separate non-programmer and developer paths. Non-programmer pages do not assume terminal, Git, code, Markdown, or scripting knowledge.
 - Chat is presented for quick conversations, ChatGPT Work for everyday reviewable deliverables, and Codex for software and technical tasks, following current official product guidance.

@@ -10,7 +10,7 @@
     "docs:check": "node scripts/check-seo.mjs",
     "docs:verify": "npm run docs:build && npm run docs:check",
     "deploy": "bash scripts/deploy.sh",
-    "deploy:verify": "node scripts/verify-deployment.mjs --target https://www.xiaofengtongxue.com --base / --canonical https://www.xiaofengtongxue.com --expect-agents-noindex true --expect-agents-sitemap false --check-redirects",
+    "deploy:verify": "node scripts/verify-deployment.mjs --target https://www.xiaofengtongxue.com --base / --canonical https://www.xiaofengtongxue.com --expect-agents-noindex false --expect-agents-sitemap true --check-redirects",
     "seo:submit:baidu": "node scripts/submit-baidu.mjs"
   },
   "devDependencies": {

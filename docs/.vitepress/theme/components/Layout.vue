@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, nextTick, onMounted, watch } from 'vue'
 import { useData, withBase } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 
@@ -12,6 +12,24 @@ const showAuthor = computed(() => {
     && page.value.relativePath !== 'about.md'
     && !page.value.isNotFound
 })
+
+const centerScrollableDiagrams = () => {
+  if (!window.matchMedia('(max-width: 640px)').matches) return
+
+  document
+    .querySelectorAll<HTMLElement>('.agent-diagram:not(.agent-diagram-compact)')
+    .forEach((diagram) => {
+      diagram.scrollLeft = (diagram.scrollWidth - diagram.clientWidth) / 2
+    })
+}
+
+const scheduleDiagramCentering = async () => {
+  await nextTick()
+  window.requestAnimationFrame(centerScrollableDiagrams)
+}
+
+onMounted(scheduleDiagramCentering)
+watch(() => page.value.relativePath, scheduleDiagramCentering)
 </script>
 
 <template>

@@ -320,7 +320,6 @@ export default defineConfig({
   sitemap: {
     hostname: siteOrigin,
     transformItems: (items) => items
-      .filter((item) => item.url !== 'agents/')
       .map((item) => ({
         ...item,
         url: `${sitePath}/${item.url}`.replace(/\/{2,}/g, '/')
@@ -385,9 +384,73 @@ export default defineConfig({
           }
         ]
       },
-      { text: 'AI Agent', link: '/agents/' }
+      {
+        text: 'AI Agent',
+        activeMatch: '^/agents/',
+        items: [
+          {
+            text: '按起点学习',
+            items: [
+              { text: '教程总览', link: '/agents/' },
+              { text: '零基础导读', link: '/agents/start/what-is-agent' },
+              { text: 'B 级项目主线', link: '/agents/build/from-chat-to-agent' }
+            ]
+          },
+          {
+            text: '工程进阶',
+            items: [
+              { text: 'Tool Calling 深入', link: '/agents/advanced/tool-calling' },
+              { text: 'MCP 架构', link: '/agents/advanced/mcp' },
+              { text: '生产系统设计', link: '/agents/advanced/system-design' }
+            ]
+          }
+        ]
+      }
     ],
     sidebar: {
+      '/agents/': [
+        {
+          text: '先选学习路线',
+          items: [
+            { text: 'AI Agent 教程总览', link: '/agents/' }
+          ]
+        },
+        {
+          text: 'A 级：完全零基础导读',
+          collapsed: false,
+          items: [
+            { text: 'AI Agent 到底是什么', link: '/agents/start/what-is-agent' },
+            { text: '终端、Git、Python 和 API Key', link: '/agents/start/prepare' }
+          ]
+        },
+        {
+          text: 'B 级：做出可靠单 Agent',
+          collapsed: false,
+          items: [
+            { text: '跑通第一个资料盘点 Agent', link: '/agents/build/from-chat-to-agent' },
+            { text: 'Tool Calling 完整闭环', link: '/agents/build/tool-calling' },
+            { text: 'Agent Loop 与停止条件', link: '/agents/build/agent-loop' },
+            { text: 'Schema 与工具边界', link: '/agents/build/tool-design' },
+            { text: '状态、上下文与检查点', link: '/agents/build/state-checkpoints' },
+            { text: '人工审批与结果验证', link: '/agents/build/approval-verification' },
+            { text: '建立 Agent 评测', link: '/agents/build/evaluation' }
+          ]
+        },
+        {
+          text: 'C 级：机制与系统进阶',
+          collapsed: true,
+          items: [
+            { text: 'Tool Calling 深入', link: '/agents/advanced/tool-calling' },
+            { text: 'MCP 架构与边界', link: '/agents/advanced/mcp' },
+            { text: '上下文工程', link: '/agents/advanced/context' },
+            { text: 'Agent 记忆系统', link: '/agents/advanced/memory' },
+            { text: 'Agent 评测进阶', link: '/agents/advanced/evaluation' },
+            { text: '多 Agent 架构与选型', link: '/agents/advanced/multi-agent' },
+            { text: 'Agent 安全', link: '/agents/advanced/security' },
+            { text: '生产级系统设计', link: '/agents/advanced/system-design' }
+          ]
+        }
+      ],
       '/codex/': [
         {
           text: '先按身份选择',

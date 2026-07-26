@@ -1,0 +1,32 @@
+%%{init: {"theme":"base","themeCSS":"#container { background-color: #ffffff; }","themeVariables":{"fontFamily":"Arial, sans-serif","primaryColor":"#FFF4EF","primaryBorderColor":"#E65332","primaryTextColor":"#27272A","lineColor":"#71717A","secondaryColor":"#EEF5FF","tertiaryColor":"#F4F4F5"}}}%%
+flowchart TD
+  U["用户目标"] --> CLI["CLI 入口"]
+
+  subgraph Runtime["Agent 运行时"]
+    LOOP["决策与工具循环"]
+    STATE["检查点与事件"]
+    MODEL["模型适配器"]
+    LOOP <--> MODEL
+    LOOP <--> STATE
+  end
+
+  CLI --> LOOP
+  LOOP --> REG["工具注册表<br/>Schema + 分发器"]
+  REG --> READ["只读工具<br/>列目录 / 读文本 / 搜索"]
+  REG --> DRAFT["受限写工具<br/>只写草稿区"]
+  READ --> WS[("指定工作目录")]
+  DRAFT --> DP[(".agent/drafts")]
+  DP --> VERIFY["确定性验证器"]
+  VERIFY -->|"不通过"| LOOP
+  VERIFY -->|"通过"| APPROVE{"人工确认<br/>绑定草稿哈希"}
+  APPROVE -->|"批准"| REPORT[("reports/inventory.md")]
+  APPROVE -->|"拒绝或已变化"| DP
+
+  classDef edge fill:#FFF4EF,stroke:#E65332,color:#27272A,stroke-width:2px;
+  classDef runtime fill:#EEF5FF,stroke:#3973B7,color:#27272A;
+  classDef data fill:#F4F4F5,stroke:#71717A,color:#27272A;
+  classDef gate fill:#FFF8DB,stroke:#B7791F,color:#27272A,stroke-width:2px;
+  class U,CLI edge;
+  class LOOP,STATE,MODEL,REG,READ,DRAFT,VERIFY runtime;
+  class WS,DP,REPORT data;
+  class APPROVE gate;

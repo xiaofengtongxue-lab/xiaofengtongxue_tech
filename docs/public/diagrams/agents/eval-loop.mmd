@@ -1,0 +1,22 @@
+%%{init: {"theme":"base","themeCSS":"#container { background-color: #ffffff; }","themeVariables":{"fontFamily":"Arial, sans-serif","primaryColor":"#FFF4EF","primaryBorderColor":"#E65332","primaryTextColor":"#27272A","lineColor":"#71717A","secondaryColor":"#EEF5FF","tertiaryColor":"#F4F4F5"}}}%%
+flowchart TD
+  TRACE["看一次失败 Trace<br/>定位错在哪一步"] --> CASE["把失败变成测试样例<br/>输入、环境、预期、禁区"]
+  CASE --> RUN["批量运行候选版本"]
+  RUN --> G1["结果评分<br/>任务是否完成"]
+  RUN --> G2["过程评分<br/>工具、参数、顺序是否合理"]
+  RUN --> G3["安全评分<br/>是否越权或泄露"]
+  G1 & G2 & G3 --> COMPARE{"相对基线真的更好吗？"}
+  COMPARE -->|"否"| DIAG["回到 Trace 分析失败簇"]
+  DIAG --> CASE
+  COMPARE -->|"是"| SHIP["小流量发布并持续监控"]
+  SHIP --> PROD["收集新的真实失败"]
+  PROD --> TRACE
+
+  classDef inspect fill:#EEF5FF,stroke:#3973B7,color:#27272A;
+  classDef score fill:#F4F4F5,stroke:#71717A,color:#27272A;
+  classDef gate fill:#FFF8DB,stroke:#B7791F,color:#27272A,stroke-width:2px;
+  classDef ship fill:#EAF7EE,stroke:#2F855A,color:#27272A;
+  class TRACE,CASE,RUN,DIAG,PROD inspect;
+  class G1,G2,G3 score;
+  class COMPARE gate;
+  class SHIP ship;

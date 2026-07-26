@@ -1,0 +1,32 @@
+%%{init: {"theme":"base","themeCSS":"#container { background-color: #ffffff; }","themeVariables":{"fontFamily":"Arial, sans-serif","primaryColor":"#FFF4EF","primaryBorderColor":"#E65332","primaryTextColor":"#27272A","lineColor":"#71717A","secondaryColor":"#EEF5FF","tertiaryColor":"#F4F4F5"}}}%%
+flowchart LR
+  U["用户"] --> H["Host<br/>Agent 应用"]
+
+  subgraph Host["Host 内部"]
+    H --> A["Agent Runtime<br/>模型、上下文、循环、审批"]
+    A --> C1["MCP Client A"]
+    A --> C2["MCP Client B"]
+  end
+
+  C1 <-->|"JSON-RPC<br/>本地 stdio 或远程 HTTP"| S1["MCP Server<br/>文件资料"]
+  C2 <-->|"JSON-RPC<br/>本地 stdio 或远程 HTTP"| S2["MCP Server<br/>业务系统"]
+  S1 --> T1["Tools"]
+  S1 --> R1["Resources"]
+  S1 --> P1["Prompts"]
+  S2 --> T2["Tools"]
+  S2 --> R2["Resources"]
+  S2 --> P2["Prompts"]
+
+  N["MCP 统一的是上下文和能力交换协议<br/>不替 Host 决定任务规划、记忆和安全策略"]
+  A -.-> N
+
+  classDef host fill:#FFF4EF,stroke:#E65332,color:#27272A,stroke-width:2px;
+  classDef client fill:#EEF5FF,stroke:#3973B7,color:#27272A;
+  classDef server fill:#EAF7EE,stroke:#2F855A,color:#27272A;
+  classDef capability fill:#F4F4F5,stroke:#71717A,color:#27272A;
+  classDef note fill:#FFF8DB,stroke:#B7791F,color:#27272A;
+  class H,A host;
+  class C1,C2 client;
+  class S1,S2 server;
+  class T1,R1,P1,T2,R2,P2 capability;
+  class N note;

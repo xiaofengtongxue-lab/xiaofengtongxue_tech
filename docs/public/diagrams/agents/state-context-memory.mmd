@@ -1,0 +1,22 @@
+%%{init: {"theme":"base","themeCSS":"#container { background-color: #ffffff; }","themeVariables":{"fontFamily":"Arial, sans-serif","primaryColor":"#FFF4EF","primaryBorderColor":"#E65332","primaryTextColor":"#27272A","lineColor":"#71717A","secondaryColor":"#EEF5FF","tertiaryColor":"#F4F4F5"}}}%%
+flowchart TD
+  H["History<br/>实际发生过的原始记录"] --> C
+  S["Workflow State<br/>进度、错误、审批、检查点"] --> C
+  M["Long-term Memory<br/>跨任务仍有价值的信息"] -->|"按权限和相关性检索"| C
+  R["RAG / 外部知识<br/>当前任务需要的事实证据"] -->|"按需检索"| C
+  RULES["当前规则与安全边界"] --> C
+  U["本轮用户输入"] --> C
+  C["Context<br/>这一次模型真正看到的输入"] --> L["模型决策"]
+  L --> E["新消息、工具调用与结果"]
+  E --> H
+  E --> S
+  E -. "候选 → 校验 → 去重" .-> M
+
+  classDef record fill:#F4F4F5,stroke:#71717A,color:#27272A;
+  classDef active fill:#EEF5FF,stroke:#3973B7,color:#27272A,stroke-width:2px;
+  classDef guard fill:#FFF4EF,stroke:#E65332,color:#27272A,stroke-width:2px;
+  classDef external fill:#EAF7EE,stroke:#2F855A,color:#27272A;
+  class H,S,M record;
+  class C,L,E active;
+  class RULES,U guard;
+  class R external;

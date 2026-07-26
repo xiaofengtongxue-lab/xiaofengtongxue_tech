@@ -1,0 +1,42 @@
+%%{init: {"theme":"base","themeCSS":"#container { background-color: #ffffff; }","themeVariables":{"fontFamily":"Arial, sans-serif","primaryColor":"#FFF4EF","primaryBorderColor":"#E65332","primaryTextColor":"#27272A","lineColor":"#71717A","secondaryColor":"#EEF5FF","tertiaryColor":"#F4F4F5"}}}%%
+flowchart TD
+  UI["Web / App / API"] --> GATE["身份、租户、限流<br/>输入安全检查"]
+  GATE --> WF["确定性 Workflow<br/>必经步骤与审批节点"]
+
+  subgraph Control["控制面"]
+    PROMPT["Prompt / Tool / Policy 版本"]
+    EVAL["数据集、评测与发布门槛"]
+    OBS["Trace、指标、日志、告警"]
+  end
+
+  subgraph Runtime["执行面"]
+    WF --> AGENT["Agent Runtime<br/>计划、决策、停止"]
+    AGENT <--> STATE[("State / Checkpoint")]
+    AGENT --> EXEC["Tool Executor<br/>Schema、权限、超时、幂等"]
+    EXEC --> READ["只读系统"]
+    EXEC --> WRITE["有副作用系统"]
+    WRITE --> HUMAN{"人工审批"}
+    HUMAN -->|"批准"| WRITE
+    HUMAN -->|"拒绝"| AGENT
+  end
+
+  PROMPT --> AGENT
+  EVAL --> PROMPT
+  AGENT --> OBS
+  EXEC --> OBS
+  STATE --> OBS
+  WF --> OUT["结果验证与响应"]
+  AGENT --> OUT
+  OUT --> UI
+  OBS --> EVAL
+
+  classDef edge fill:#FFF4EF,stroke:#E65332,color:#27272A,stroke-width:2px;
+  classDef runtime fill:#EEF5FF,stroke:#3973B7,color:#27272A;
+  classDef control fill:#F4F4F5,stroke:#71717A,color:#27272A;
+  classDef gate fill:#FFF8DB,stroke:#B7791F,color:#27272A,stroke-width:2px;
+  classDef data fill:#EAF7EE,stroke:#2F855A,color:#27272A;
+  class UI,GATE,OUT edge;
+  class WF,AGENT,EXEC,READ,WRITE runtime;
+  class PROMPT,EVAL,OBS control;
+  class HUMAN gate;
+  class STATE data;

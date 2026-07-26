@@ -10,6 +10,10 @@ const expectedHomeTitle = '程序员小枫同学 | AI 编程、AI Agent 与软�
 const requiredUrls = [
   `${expectedOrigin}/`,
   `${expectedOrigin}/about`,
+  `${expectedOrigin}/agents/`,
+  `${expectedOrigin}/agents/start/what-is-agent`,
+  `${expectedOrigin}/agents/build/from-chat-to-agent`,
+  `${expectedOrigin}/agents/advanced/system-design`,
   `${expectedOrigin}/codex/`,
   `${expectedOrigin}/codex/everyday/`,
   `${expectedOrigin}/codex/practice/`,
@@ -167,6 +171,8 @@ function localPageTarget(href) {
 
   const clean = decodeURIComponent(pathname).replace(/^\/+|\/+$/g, '')
   if (!clean) return ['index.html']
+
+  if (path.posix.extname(clean)) return [clean]
 
   return [`${clean}.html`, `${clean}/index.html`]
 }
