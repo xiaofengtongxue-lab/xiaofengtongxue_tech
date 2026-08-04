@@ -11,6 +11,8 @@ VITEPRESS_BASE=/
 
 GitHub Actions 会在 `main` 分支更新后构建并发布 `docs/.vitepress/dist`。GitHub Pages 使用教程域名 `https://tutorial.xiaofengtongxue.com/`，静态资源从域名根路径加载；页面 canonical 仍指向正式主域，避免形成重复内容。
 
+工作流使用 `fetch-depth: 0` 拉取完整 Git 历史。公开构建会根据每篇 Markdown 的 `publishedRevision` 读取定稿正文；缺少定稿指针的页面只生成受保护的赶稿页。
+
 DNS 使用 `tutorial CNAME xiaofengtongxue-lab.github.io`，仓库通过 `docs/public/CNAME` 声明自定义域名。在 GitHub 仓库设置中，将 Pages 的 Source 选择为 `GitHub Actions`，Custom domain 设置为 `tutorial.xiaofengtongxue.com`，证书签发后启用 Enforce HTTPS。
 
 GitHub Pages 的 `robots.txt`、`llms.txt` 和静态资源均位于域名根路径。sitemap、canonical 和结构化数据继续使用正式主域 `https://www.xiaofengtongxue.com/`。
@@ -18,6 +20,7 @@ GitHub Pages 的 `robots.txt`、`llms.txt` 和静态资源均位于域名根路�
 ## 本地模拟 GitHub Pages
 
 ```bash
+npm run content:status
 npm run docs:build
 npm run docs:check
 npm run docs:preview
@@ -53,8 +56,8 @@ Nginx 配置保存在 `deploy/nginx/programmer-xiaofeng-blog.conf`。服务器�
 
 自动化脚本会按同一个 Git 提交完成以下流程：
 
-1. 检查当前分支、未提交修改和未跟踪的站点文件。
-2. 分别构建并验证 GitHub Pages 与正式域名产物。
+1. 检查当前分支、未提交修改、未跟踪的站点文件和定稿指针。
+2. 在临时目录物化已确认正文，分别构建并验证 GitHub Pages 与正式域名产物。
 3. 推送 `main`，等待 GitHub Actions 完成 Pages 发布。
 4. 将正式产物上传到新的版本目录，原子切换 `current` 软链接。
 5. 检查首页、Codex、AI Agent、静态资源、sitemap、robots 和域名跳转。
@@ -110,6 +113,8 @@ npm run deploy:verify
 | `GITHUB_PAGES_BASE` | `/` | GitHub Pages 静态资源基础路径 |
 
 脚本要求当前分支为 `main`，且所有会参与构建的修改都已提交。它不会自动暂存或提交文件，也不会删除旧版本目录。
+
+部署前的正文确认流程是：先提交正文，再运行 `npm run content:approve -- docs/path.md`，最后单独提交 `publishedRevision` 变更。仅仅提交正文不会改变线上文章；后续继续编辑也不会覆盖已经确认的版本。
 
 ## 搜索平台验证
 

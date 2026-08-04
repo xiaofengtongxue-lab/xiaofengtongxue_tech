@@ -4,7 +4,7 @@
 
 本仓库是“程序员小枫同学”的 VitePress 技术教程发布站点。站点既服务希望学习 AI、大模型、AI Agent、Codex、Java、JavaScript、TypeScript、Go 和软件工程实践的开发者，也服务希望使用 Codex 完成办公、运营、电商、内容创作、研究和管理任务的非程序员。
 
-这不是内容策划仓库，也不是 CCWS 产品说明书。仓库只保存准备公开发布的正式教程、站点配置和部署所需文件。
+这不是内容策划仓库，也不是 CCWS 产品说明书。仓库保存教程正文、站点配置和部署所需文件；教程可以继续编辑，但公开构建只读取明确确认过的 Git 版本。
 
 ## Worktree Safety
 
@@ -18,7 +18,7 @@
 
 本仓库允许保存：
 
-- `docs/` 下准备公开发布的正式教程和栏目页
+- `docs/` 下主题明确的教程正文和栏目页，包括定稿后的继续编辑版本
 - VitePress 配置、主题和公开静态资源
 - `README.md`、`AGENTS.md` 和必要的部署说明
 - `package.json`、锁文件和 GitHub Actions 工作流
@@ -27,11 +27,11 @@
 
 - 内容规划、选题库、发布排期和运营方案
 - 未整理的素材、调研笔记、聊天记录和参考资料归档
-- 未完成或未验证的文章草稿
+- 只有零散片段、聊天记录或素材堆积的文章草稿
 - 等待筛选的截图、附件和临时输出
 - 真实 API Key、账号、密码、Cookie、Token 或其他凭证
 
-本机的规划、选题、素材和草稿统一放在：
+本机的规划、选题、素材和调研笔记统一放在：
 
 ```text
 /Users/xiaofengtongxue/Coding/knowledge-workspace/knowledge-base/我的知识库/自媒体/公众号/小枫同学AI/技术教程站/
@@ -43,7 +43,7 @@
 00-技术教程站内容规划.md
 ```
 
-从知识库向本仓库发布内容时，只迁入已经完成事实核验、示例验证、敏感信息检查和公开表达整理的版本。不要直接批量复制整个素材目录。
+从知识库向本仓库迁入内容时，只迁入主题和文章结构已经明确、适合继续整理为公开教程的正文。不要直接批量复制整个素材目录。
 
 ## Tech Stack
 
@@ -54,7 +54,21 @@
 - GitHub Pages 工作流：`.github/workflows/deploy.yml`
 - 本地开发：`npm run docs:dev`
 - 构建验证：`npm run docs:build`
+- 草稿产物预览：`npm run docs:build:drafts`
 - 本地预览：`npm run docs:preview`
+
+## Content Publication Workflow
+
+- 每篇教程只维护 `docs/` 下这一份 Markdown，不创建永久的“草稿版”和“发布版”副本。
+- 日常提交只表示保存编辑记录，不等于公开定稿。
+- `publishedRevision` 保存这篇文章当前确认公开的完整 Git commit SHA；该字段只能由 `npm run content:approve -- <文件>` 修改，不要手工填写或改写。
+- 没有 `publishedRevision` 的页面在公开构建中只生成“文章正在拼命赶稿中”占位页，并设置 `noindex,follow`，同时排除 sitemap、站内搜索和 `llms.txt`。
+- 有 `publishedRevision` 的页面由构建脚本通过 `git show <revision>:<path>` 读取定稿正文。当前 Markdown 后续继续编辑时，线上仍保持旧定稿，直到再次确认。
+- 确认一篇文章时，先提交正文得到提交 A，再运行 `npm run content:approve -- docs/path.md`，检查只改动了 `publishedRevision`，最后把这个指针变更提交为提交 B。
+- `npm run content:status` 用来区分“与定稿一致”“继续编辑中”“未定稿”和“配置无效”。
+- GitHub Actions 必须保留完整 Git 历史（`fetch-depth: 0`），否则无法读取旧定稿。
+- 仓库若为公开仓库，未定稿正文虽然不会进入网站产物，仍可从 GitHub 源码和 Git 历史中看到；敏感信息任何时候都不能写进仓库。
+- 已发布正文引用的图片和下载文件使用稳定、版本化文件名；确认新版本前不要覆盖或删除旧资源。
 
 ## Deployment URLs
 
@@ -135,7 +149,7 @@ GitHub Pages 自定义域名通过 `docs/public/CNAME` 声明为 `tutorial.xiaof
 - 教程优先包含前置条件、操作步骤、可复制命令、预期结果、验证方法和故障排查。
 - 代码块应标注语言；命令、路径、环境变量和配置字段必须保持精确。
 - 不要求读者把真实密钥粘贴到聊天窗口，示例统一使用明显的占位符。
-- 不发布只有标题、关键词和“后续补充”的薄页面。未完成内容继续留在本地知识库。
+- 不把只有标题、关键词和零散素材的薄内容标记为定稿；未定稿页面由公开构建统一生成占位页。
 - 不把内容规划、栏目排期或内部运营说明写进公开教程。
 - 内部链接应帮助读者找到前置知识、下一步和相关故障排查，而不是为了堆叠关键词。
 
@@ -180,13 +194,17 @@ GitHub Pages 自定义域名通过 `docs/public/CNAME` 声明为 `tutorial.xiaof
 完成文档或配置修改后，根据变更范围执行：
 
 ```bash
+npm run content:test
+npm run content:status
 npm run docs:build
+npm run docs:check
 git diff --check
 ```
 
 还需要检查：
 
 - 新增页面是否出现在导航、侧边栏和生成的 sitemap 中
+- 未定稿页面是否为 `noindex,follow`，并且没有进入 sitemap、搜索索引和 `llms.txt`
 - canonical 是否使用当前正确域名和路径
 - GitHub Pages 的静态资源是否使用根路径，并且不再包含 `/xiaofengtongxue_tech/`
 - 内部链接、外部链接和标题锚点是否有效

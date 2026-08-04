@@ -4,6 +4,10 @@ import process from 'node:process'
 
 const projectRoot = process.cwd()
 const distRoot = path.join(projectRoot, 'docs/.vitepress/dist')
+const publicationManifestPath = path.join(
+  projectRoot,
+  'docs/.vitepress/cache/published-content-manifest.json'
+)
 const expectedOrigin = (process.env.SITE_URL || 'https://www.xiaofengtongxue.com').replace(/\/$/, '')
 const base = normalizeBase(process.env.VITEPRESS_BASE || '/')
 const expectedHomeTitle = '程序员小枫同学 | AI 编程、AI Agent 与软件工程教程'
@@ -22,10 +26,15 @@ const requiredUrls = [
 
 const errors = []
 const warnings = []
+const publicationManifest = await readPublicationManifest()
+const draftUrlSet = new Set(
+  publicationManifest.drafts.map((page) => canonicalUrl(page.route))
+)
 const htmlFiles = (await walk(distRoot)).filter((file) => file.endsWith('.html'))
 const allFiles = new Set(await walk(distRoot))
 const pageCache = new Map()
 const noindexUrls = new Set()
+const builtDraftUrls = new Set()
 let checkedLinks = 0
 let structuredDataBlocks = 0
 
@@ -42,6 +51,8 @@ for (const relativeFile of htmlFiles) {
   const description = firstMatch(html, /<meta\s+name="description"\s+content="([^"]*)"/i)
   const canonicals = [...html.matchAll(/<link\s+rel="canonical"\s+href="([^"]+)"/gi)].map((match) => match[1])
   const h1Count = (html.match(/<h1(?:\s|>)/gi) || []).length
+  const isNoindex = /<meta\s+name="robots"\s+content="noindex(?:,[^"]*)?"/i.test(html)
+  const isDraftPage = html.includes('data-published-draft')
 
   if (!title) errors.push(`${relativeFile}: missing <title>`)
   if (!description) errors.push(`${relativeFile}: missing meta description`)
@@ -49,14 +60,23 @@ for (const relativeFile of htmlFiles) {
     errors.push(`${relativeFile}: expected one canonical, found ${canonicals.length}`)
   } else if (!canonicals[0].startsWith(`${expectedOrigin}/`)) {
     errors.push(`${relativeFile}: canonical uses an unexpected origin: ${canonicals[0]}`)
-  } else if (/<meta\s+name="robots"\s+content="noindex(?:,[^"]*)?"/i.test(html)) {
-    noindexUrls.add(canonicals[0])
+  } else {
+    if (isNoindex) noindexUrls.add(canonicals[0])
+    if (isDraftPage) builtDraftUrls.add(canonicals[0])
   }
 
   if (h1Count !== 1) errors.push(`${relativeFile}: expected one h1, found ${h1Count}`)
 
   const schemaScripts = [...html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)]
-  if (schemaScripts.length === 0) errors.push(`${relativeFile}: missing JSON-LD`)
+  if (isDraftPage) {
+    if (!isNoindex) errors.push(`${relativeFile}: draft page must use noindex,follow`)
+    if (schemaScripts.length > 0) errors.push(`${relativeFile}: draft page must not expose JSON-LD`)
+    if (canonicals[0] && !draftUrlSet.has(canonicals[0])) {
+      errors.push(`${relativeFile}: draft page is missing from the publication manifest`)
+    }
+  } else if (schemaScripts.length === 0) {
+    errors.push(`${relativeFile}: missing JSON-LD`)
+  }
 
   for (const match of schemaScripts) {
     structuredDataBlocks += 1
@@ -110,6 +130,10 @@ if (sitemap) {
   for (const url of noindexUrls) {
     if (sitemapUrls.includes(url)) errors.push(`sitemap.xml: contains noindex URL ${url}`)
   }
+
+  for (const url of draftUrlSet) {
+    if (sitemapUrls.includes(url)) errors.push(`sitemap.xml: contains draft URL ${url}`)
+  }
 }
 
 const robots = await readPublicFile('robots.txt')
@@ -119,8 +143,46 @@ if (robots && !robots.includes(`Sitemap: ${expectedOrigin}/sitemap.xml`)) {
 
 const llms = await readPublicFile('llms.txt')
 if (llms) {
+  const llmsUrls = new Set(
+    [...llms.matchAll(/https?:\/\/[^\s)>]+/g)].flatMap((match) => {
+      try {
+        return [canonicalUrl(new URL(match[0].replace(/[.,;:!?]+$/, '')).pathname)]
+      } catch {
+        return []
+      }
+    })
+  )
+
   for (const url of requiredUrls) {
     if (!llms.includes(url)) warnings.push(`llms.txt: does not mention ${url}`)
+  }
+
+  for (const url of draftUrlSet) {
+    if (llmsUrls.has(url)) errors.push(`llms.txt: contains draft URL ${url}`)
+  }
+}
+
+for (const draft of publicationManifest.drafts) {
+  const url = canonicalUrl(draft.route)
+  const candidates = pageFileCandidates(draft.route)
+  const isBuilt = candidates.some((candidate) => pageCache.has(candidate))
+
+  if (isBuilt && !builtDraftUrls.has(url)) {
+    errors.push(`${draft.relativePath}: generated draft page is missing its protected empty state`)
+  }
+}
+
+const searchIndexFiles = [...allFiles].filter((file) => (
+  file.includes('@localSearchIndex') && file.endsWith('.js')
+))
+const searchIndex = (await Promise.all(
+  searchIndexFiles.map((file) => readFile(path.join(distRoot, file), 'utf8'))
+)).join('\n')
+
+for (const url of builtDraftUrls) {
+  const route = new URL(url).pathname
+  if (searchIndex.includes(`"${route}#`)) {
+    errors.push(`local search index contains draft route ${route}`)
   }
 }
 
@@ -184,4 +246,31 @@ async function readPublicFile(name) {
     errors.push(`missing generated ${name}`)
     return undefined
   }
+}
+
+async function readPublicationManifest() {
+  try {
+    const source = await readFile(publicationManifestPath, 'utf8')
+    const manifest = JSON.parse(source)
+    if (manifest.version !== 1 || !Array.isArray(manifest.published) || !Array.isArray(manifest.drafts)) {
+      throw new Error('unsupported manifest format')
+    }
+    return manifest
+  } catch (error) {
+    errors.push(`missing or invalid publication manifest: ${error.message}`)
+    return { published: [], drafts: [] }
+  }
+}
+
+function canonicalUrl(route) {
+  let pathname = route.split(/[?#]/, 1)[0] || '/'
+  if (!pathname.startsWith('/')) pathname = `/${pathname}`
+  pathname = pathname.replace(/\/{2,}/g, '/')
+  return `${expectedOrigin}${pathname}`
+}
+
+function pageFileCandidates(route) {
+  const clean = route.replace(/^\/+|\/+$/g, '')
+  if (!clean) return ['index.html']
+  return [`${clean}.html`, `${clean}/index.html`]
 }

@@ -18,12 +18,35 @@ npm run docs:dev
 
 默认开发地址为 `http://localhost:5173/`。
 
+本地开发直接显示正在编辑的正文，方便持续修改。公开构建不会直接使用当前正文，而是读取每篇文章确认过的 Git 版本。
+
+## 内容定稿
+
+查看当前状态：
+
+```bash
+npm run content:status
+```
+
+日常提交只用于保存编辑记录。正文确认后，先提交正文，再更新定稿指针：
+
+```bash
+npm run content:approve -- docs/path/to/article.md
+```
+
+命令只修改文章 frontmatter 中的 `publishedRevision`，不会自动提交。没有定稿指针的页面在线上显示“文章正在拼命赶稿中”，并且不会进入 sitemap、站内搜索或 `llms.txt`。
+
+仓库如果公开，草稿源码仍能在 GitHub 中看到，不能把密码、Token、真实密钥或私有资料写进 Markdown。
+
 ## 构建验证
 
 ```bash
 npm run docs:build
+npm run docs:check
 npm run docs:preview
 ```
+
+`docs:build` 构建公开定稿；需要检查全部当前编辑内容时，使用 `npm run docs:build:drafts`。
 
 ## 自动部署
 
@@ -49,6 +72,6 @@ npm run deploy
 - `sitemap.xml` 只收录当前公开页面，`llms.txt` 提供统一实体、权威入口和内容边界。
 - IP、公众号和网站名称统一为“程序员小枫同学”。
 
-仓库只保存正式文档、站点配置和部署所需文件。内容规划、选题、素材和草稿在本地知识库中维护。
+仓库保存教程正文、站点配置和部署所需文件。内容规划、选题、素材和调研笔记仍在本地知识库中维护。
 
 部署和域名切换步骤见 [DEPLOYMENT.md](./DEPLOYMENT.md)。

@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -37,6 +39,12 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Test publication workflow
+        run: npm run content:test
+
+      - name: Check content revisions
+        run: npm run content:check
 
       - name: Build site
         run: npm run docs:build
