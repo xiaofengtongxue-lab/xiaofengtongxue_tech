@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Agent 记忆系统：保存、召回与遗忘
 description: 设计 Agent 长短期记忆的写入、校验、检索、冲突、TTL、删除和安全评测，避免把对话历史或 RAG 当成记忆。
 datePublished: 2026-07-26

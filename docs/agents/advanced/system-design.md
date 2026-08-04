@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 把 Agent 送上生产：架构与运行时设计
 description: 将确定性 Workflow、Agent Runtime、Tool Executor、状态、审批、可观测性、评测和发布控制组合成可上线、可恢复的 Agent 系统。
 datePublished: 2026-07-26

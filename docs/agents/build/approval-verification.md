@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Agent 能写文件了，怎么保证它不乱来
 description: 把写操作拆成草稿、确定性验证和绑定内容哈希的人工确认，避免模型自评完成或复用过期授权。
 datePublished: 2026-07-26

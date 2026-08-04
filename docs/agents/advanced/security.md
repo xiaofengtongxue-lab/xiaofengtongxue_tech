@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Agent 被攻击了怎么办：注入、越权与数据边界
 description: 系统处理直接与间接 Prompt Injection、工具越权、敏感数据外传、审批、沙箱、MCP 供应链、记忆投毒和安全评测。
 datePublished: 2026-07-26

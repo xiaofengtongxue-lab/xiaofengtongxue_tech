@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 给 Agent 建一套考试：从偶然成功到稳定可靠
 description: 为资料盘点 Agent 建立分层评测：先测工具和安全边界，再用固定任务集比较完成率、路径准确度、工具轨迹、成本和人工接管。
 datePublished: 2026-07-26

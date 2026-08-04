@@ -1,5 +1,5 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
+publishedRevision: "9f4da12a686dc6c8298764c7d50c5ec760998f28"
 title: 不会编程也能用：ChatGPT Work 与 Codex 入门
 description: 面向职场办公、运营、电商、内容创作、研究和管理人员的完整入门路线，不要求终端、Git 或代码经验，先完成真实文件，再学习 Skills、权限和复用工作流。
 ---

@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 十分钟跑通第一个 AI Agent
 description: 用 Java 或 Python 下载并运行本地资料盘点 Agent，先看到工具调用、草稿、确定性验收和人工审批，再逐章拆解实现。
 datePublished: 2026-07-26

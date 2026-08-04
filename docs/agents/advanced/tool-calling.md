@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Tool Calling 进阶：上线时会踩的坑
 description: 面向已有 Agent 实践的开发者，系统讲解 Function Calling 的协议状态、严格 Schema、并行调用、错误契约、幂等和评测边界。
 datePublished: 2026-07-26

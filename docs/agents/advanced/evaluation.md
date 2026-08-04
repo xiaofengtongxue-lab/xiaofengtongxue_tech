@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Agent 评测进阶：Trace、数据集和发布闭环
 description: 从单次 Trace 调试走向可重复数据集、结果与过程 Grader、随机性控制、版本对比、发布门槛和线上质量闭环。
 datePublished: 2026-07-26

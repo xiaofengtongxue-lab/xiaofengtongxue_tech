@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: AI Agent 上下文工程教程
 description: 为长任务 Agent 设计 Context Budget，分清手动重放、previous_response_id、Conversations API 和 Compaction，并避免长上下文噪声。
 datePublished: 2026-07-26

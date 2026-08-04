@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Tool Calling 到底是什么：模型的手和脚
 description: 拆开一次完整 Tool Calling：定义工具 Schema、接收 function_call、应用层执行函数，再把 function_call_output 返回模型。
 datePublished: 2026-07-26

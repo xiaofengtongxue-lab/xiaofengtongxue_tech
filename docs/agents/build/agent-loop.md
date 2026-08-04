@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Agent 怎样循环干活：Loop、停止与失败处理
 description: 在 Tool Calling 之上实现可控 Agent Loop，处理多轮工具调用、错误反馈、最大轮次、无进展检测和最终结果验收。
 datePublished: 2026-07-26

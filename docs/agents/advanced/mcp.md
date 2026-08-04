@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: MCP 入门：它统一了什么，没解决什么
 description: 从 Host、Client、Server、数据层和传输层理解 MCP，分清 Tools、Resources、Prompts，并处理远程授权、审批和供应链风险。
 datePublished: 2026-07-26

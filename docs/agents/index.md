@@ -1,5 +1,5 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
+publishedRevision: "9f4da12a686dc6c8298764c7d50c5ec760998f28"
 title: AI Agent 教程：从聊天到干活
 description: 从会和 AI 聊天，到用 Java 或 Python 亲手做出能调用工具、保存状态、请求审批并通过评测的可靠 AI Agent。
 datePublished: 2026-07-26

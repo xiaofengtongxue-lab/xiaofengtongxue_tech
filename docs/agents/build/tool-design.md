@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 给 Agent 设计工具：做窄而不是做大
 description: 用资料盘点 Agent 学会把工具做窄：单一职责、严格参数、工作目录边界、内容限制、结构化错误和受限写入。
 datePublished: 2026-07-26

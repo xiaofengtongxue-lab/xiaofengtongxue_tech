@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 多 Agent 值得吗：拆分信号与选型
 description: 从单 Agent 基线出发，判断 Router、Handoff、Orchestrator-Workers、Evaluator 和 Pipeline 的真实适用条件、协调契约与评测方法。
 datePublished: 2026-07-26

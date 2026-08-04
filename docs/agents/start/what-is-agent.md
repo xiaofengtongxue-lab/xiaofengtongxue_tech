@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: AI Agent 和聊天模型有什么区别
 description: 不要求终端、Git 或编程基础，跟着一次资料整理任务看懂 AI Agent 的观察、决策、行动、反馈和验收循环。
 datePublished: 2026-07-26

@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Agent 任务中断后怎样恢复：状态与检查点
 description: 分清对话历史、模型上下文、任务状态和长期记忆，并为多步 Agent 保存可恢复检查点和工具事件。
 datePublished: 2026-07-26

@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 写 Agent 前要装好的四样东西
 description: 面向第一次动手写 Agent 的读者，准备终端、JDK 或 Python、Git 和 API Key；Java 为默认主线，Python 可切换。
 datePublished: 2026-07-26
