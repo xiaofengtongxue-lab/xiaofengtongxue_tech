@@ -1,55 +1,65 @@
 ---
-title: 跑通第一个 AI Agent
-description: 下载并运行本地资料盘点 Agent，先看到工具调用、草稿、确定性验收和人工审批的完整结果，再逐章拆解实现。
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
+title: 十分钟跑通第一个 AI Agent
+description: 用 Java 或 Python 下载并运行本地资料盘点 Agent，先看到工具调用、草稿、确定性验收和人工审批，再逐章拆解实现。
 datePublished: 2026-07-26
 breadcrumbs:
   - name: AI Agent 教程
     path: /agents/
 ---
 
-# 从会聊天到会干活：先跑通第一个资料盘点 Agent
+# 跑起来再说：十分钟让 Agent 完成一次真实盘点
 
-这篇是 B 级主线的起点。你已经会使用 AI 对话，也能运行基本 Python 命令，但还没有亲手做过 Agent。我们先不从架构图背起，而是把完整项目跑起来：**让 Agent 盘点一个隔离的示例目录，生成报告草稿，通过程序验收，然后停在人工确认之前。**
+这篇是动手路线的起点。你已经会使用 AI 对话，也能运行基本 Java 或 Python 命令，但还没有亲手做过 Agent。我们不从架构图开始，直接把完整项目跑起来：**让 Agent 盘点一个隔离的示例目录，生成报告草稿，通过程序验收，然后停在人工确认之前。**
 
 > 如果终端、虚拟环境或 API Key 还不熟，先看 [环境准备](/agents/start/prepare)。
 
+<AgentLanguageSwitch />
+
 ## 先下载项目，别急着读完所有代码
 
-[下载配套项目 ZIP](/downloads/file-audit-agent.zip)，解压后进入目录：
+[下载 Java 版项目](/downloads/file-audit-agent-java.zip)或 [下载 Python 版项目](/downloads/file-audit-agent-python.zip)，解压后进入对应目录：
 
-```bash
-cd /path/to/file-audit-agent
+::: code-group
+```bash [Java]
+cd /path/to/file-audit-agent-java
 ```
 
-创建并激活虚拟环境：
-
-```bash
+```bash [Python]
+cd /path/to/file-audit-agent-python
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
 ```
+:::
 
-Windows PowerShell：
+先别调用模型，先运行确定性测试。Java 路线会同时打包可执行 JAR，Python 路线在上一步安装后可以直接运行：
 
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install -e .
+::: code-group
+```bash [Java]
+mvn test
+mvn -q -DskipTests package
 ```
 
-安装完成后，先别调用模型，直接跑测试：
-
-```bash
+```bash [Python]
 python -m unittest discover -s tests -v
 ```
+:::
 
-你应该看到八个测试全部是 `ok`，结尾类似：
+两套项目都应该通过 8 个测试。结尾分别类似：
 
-```text
+::: code-group
+```text [Java]
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+BUILD SUCCESS
+```
+
+```text [Python]
 Ran 8 tests in ...s
 
 OK
 ```
+:::
 
 这一次可验证成功很重要。它证明路径边界、报告验证、人工确认和无进展停止机制在没有模型参与时已经能工作。如果测试没过，先修环境，不要把问题混进 API 调用里。
 
@@ -90,14 +100,20 @@ git commit -m "chore: record tutorial baseline"
 
 ```bash
 export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
-export OPENAI_MODEL="gpt-5.6-terra"
+export OPENAI_MODEL="deepseek-v4-pro"
 ```
 
-然后运行：
+然后运行所选版本：
 
-```bash
+::: code-group
+```bash [Java]
+java -jar target/file-audit-agent.jar --root sample-workspace --draft-only
+```
+
+```bash [Python]
 file-audit-agent --root sample-workspace --draft-only
 ```
+:::
 
 真实模型的措辞和工具轮数可能不同，但成功结果至少应该包含：
 
@@ -135,18 +151,24 @@ Get-Content sample-workspace\.agent\drafts\inventory.md
 2. 它调用 `search_text` 查找 `TODO` 或 `FIXME`，拿到路径和行号。
 3. 必要时调用 `read_text_file` 理解少量上下文。
 4. 它调用 `save_report_draft`，只能写入 `.agent/drafts/`。
-5. 模型输出结束后，`verify_report` 重新统计目录并检查证据路径。
+5. 模型输出结束后，确定性验证器重新统计目录并核实引用的路径是否真实存在。
 6. 验收通过后，程序状态只是 `ready_for_approval`，并没有正式发布。
 
-这六步里，只有“下一步选哪个工具、报告怎样组织”交给了模型。安全边界和完成条件仍由普通 Python 代码负责。
+这六步里，只有“下一步选哪个工具、报告怎样组织”交给了模型。安全边界和完成条件仍由普通应用代码负责。
 
 ## 再跑一次完整的人工确认
 
 确认草稿内容没有问题后，去掉 `--draft-only`：
 
-```bash
+::: code-group
+```bash [Java]
+java -jar target/file-audit-agent.jar --root sample-workspace
+```
+
+```bash [Python]
 file-audit-agent --root sample-workspace
 ```
+:::
 
 程序会显示一段随机确认文字，例如：
 
@@ -179,15 +201,21 @@ git status --short
 
 三个原始资料文件不应该出现修改标记。再运行测试：
 
-```bash
-python -m unittest discover -s tests -v
+::: code-group
+```bash [Java]
+mvn test
 ```
 
-到这里，你已经拿到了三种不同证据：
+```bash [Python]
+python -m unittest discover -s tests -v
+```
+:::
 
-- **工具证据**：报告引用了真实路径和搜索结果；
-- **程序证据**：确定性验证器和 8 个测试通过；
-- **人工证据**：你检查了草稿，并对具体内容做了一次确认。
+到这里，你已经有了三重确认：
+
+- **工具的结果**：报告引用了真实路径和搜索结果；
+- **程序验证**：确定性验证器和 8 个测试通过；
+- **你自己看过**：你检查了草稿，并对具体内容做了一次确认。
 
 ## 没有 API Key，也能先学到一半吗
 
@@ -195,19 +223,21 @@ python -m unittest discover -s tests -v
 
 ## 最常见的三个失败
 
-### `file-audit-agent: command not found`
+### 找不到可执行入口
 
-先确认虚拟环境已激活，再运行：
+Java 版先确认已经打包；Python 版先确认虚拟环境已激活并安装当前项目：
 
-```bash
-python -m pip install -e .
+::: code-group
+```bash [Java]
+mvn -q -DskipTests package
+java -jar target/file-audit-agent.jar --help
 ```
 
-也可以绕过命令入口：
-
-```bash
+```bash [Python]
+python -m pip install -e .
 python -m file_audit_agent.cli --root sample-workspace --draft-only
 ```
+:::
 
 ### 提示 `缺少 OPENAI_API_KEY`
 
@@ -221,8 +251,9 @@ python -m file_audit_agent.cli --root sample-workspace --draft-only
 
 ## 版本与验证记录
 
-- 本页核验日期：2026 年 7 月 26 日。
-- 完整项目在全新虚拟环境中完成 `pip install -e .`，8 个测试通过，OpenAI SDK 适配器导入成功。
+- 本页核验日期：2026 年 7 月 27 日。
+- Java 项目已在 JDK 21.0.5、Maven 3.6.3 和 OpenAI Java SDK 4.45.0 下完成打包，8 个测试通过。
+- Python 项目已在全新虚拟环境中完成 `pip install -e .`，8 个测试通过，OpenAI Python SDK 版本为 2.48.0。
 - 本地没有使用用户的真实 API Key 代跑付费请求，因此不同账号、模型和限流策略下的实际输出仍需读者自己验证。
 - [OpenAI：Function calling](https://developers.openai.com/api/docs/guides/function-calling)
 - [OpenAI：Agents SDK 与 Responses API](https://developers.openai.com/api/docs/guides/agents)

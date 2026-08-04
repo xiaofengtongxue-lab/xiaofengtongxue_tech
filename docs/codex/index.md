@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 实战教程
 description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Work 实战教程，覆盖办公文件、PPT、电商、内容创作、软件开发、Skills、MCP 和自动化。
 ---
@@ -124,4 +125,4 @@ description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Wor
 
 本站讲的是 ChatGPT Work 和 Codex 的通用方法，不绑定某个特定套餐。OpenAI 账号、套餐、模型能不能用、产品界面长什么样，这些一直在变，以你打开官网看到的为准。普通用户连 Plugin 之前先看一眼数据范围和读写权限；技术用户装第三方 MCP 或社区 Skill 的时候，记得翻翻源码、脚本、许可证和隐私条款——这个习惯救过我至少两次。
 
-如果你需要配置 Codex 使用 CCWS，直接看 [CCWS Codex 配置文档](https://docs.ccws.pro/guide/codex)。本站不重复写 CCWS 的注册、充值、API Key、计费和售后这些步骤。
+感谢 CCWS 的赞助。如果你正在寻找中转站以使用 Codex，可以使用 CCWS 提供的服务，具体看 [CCWS Codex 配置文档](https://docs.ccws.pro/guide/codex)。

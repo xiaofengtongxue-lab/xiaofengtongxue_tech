@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 搭建电商运营工作流
 description: 从产品事实表、竞品研究和利润模型开始，用 Codex 完成 Listing、详情页素材、Shopify 页面、客服草稿和数据复盘，并保留人工上架门槛。
 ---

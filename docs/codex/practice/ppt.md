@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 制作可交付的 PPT
 description: 从汇报目标、证据包和页级故事线开始，用 Presentations、Google Slides、Canva 或社区 Skill 生成 PPTX，并完成渲染、可编辑性与内容一致性检查。
 ---

@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 根据截图实现并迭代界面
 description: 把截图变成能跑、能响应、能无障碍访问的页面——用上现有的设计系统，浏览器里真实验证，每个尺寸都检查到位。
 ---

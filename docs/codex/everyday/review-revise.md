@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 怎样检查 AI 生成的 Word、PPT、表格和 PDF
 description: 用来源对照、文件预览、局部批注、原生软件复查和交付清单检查 ChatGPT Work 或 Codex 生成的文档、演示文稿、表格和 PDF。
 ---

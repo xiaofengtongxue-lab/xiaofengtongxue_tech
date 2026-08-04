@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: codex exec 与 GitHub Actions 自动化实战
 description: 使用 codex exec 做非交互任务、JSONL 和结构化输出，并用 openai/codex-action@v1 在最小权限下运行代码审查或候选修复。
 ---

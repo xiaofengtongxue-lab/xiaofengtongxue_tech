@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 import { defineConfig } from 'vitepress'
 import type { HeadConfig, TransformContext } from 'vitepress'
 
@@ -36,6 +37,37 @@ type BreadcrumbItem = {
   path: string
 }
 
+type PublishedPage = {
+  relativePath: string
+  route: string
+  lastUpdated: string
+}
+
+type DraftPage = {
+  relativePath: string
+  route: string
+}
+
+type PublishedContentManifest = {
+  version: number
+  published: PublishedPage[]
+  drafts: DraftPage[]
+}
+
+const publishedContentManifest = readPublishedContentManifest()
+const publishedPageByPath = new Map(
+  publishedContentManifest?.published.map((page) => [page.relativePath, page]) || []
+)
+const publishedPageByRoute = new Map(
+  publishedContentManifest?.published.map((page) => [routeKey(page.route), page]) || []
+)
+const draftPathSet = new Set(
+  publishedContentManifest?.drafts.map((page) => page.relativePath) || []
+)
+const draftRouteSet = new Set(
+  publishedContentManifest?.drafts.map((page) => routeKey(page.route)) || []
+)
+
 function normalizeBase(value: string) {
   const withLeadingSlash = value.startsWith('/') ? value : `/${value}`
   return withLeadingSlash.endsWith('/') ? withLeadingSlash : `${withLeadingSlash}/`
@@ -43,6 +75,29 @@ function normalizeBase(value: string) {
 
 function normalizeSiteUrl(value: string) {
   return value.replace(/\/$/, '')
+}
+
+function routeKey(value: string) {
+  let route = value.split(/[?#]/, 1)[0] || '/'
+  if (!route.startsWith('/')) route = `/${route}`
+  route = route.replace(/\/{2,}/g, '/')
+  if (route !== '/') route = route.replace(/\/$/, '')
+  return route
+}
+
+function readPublishedContentManifest(): PublishedContentManifest | undefined {
+  const filename = process.env.PUBLISHED_CONTENT_MANIFEST
+  if (!filename) return undefined
+
+  try {
+    const manifest = JSON.parse(readFileSync(filename, 'utf8')) as PublishedContentManifest
+    if (manifest.version !== 1 || !Array.isArray(manifest.published) || !Array.isArray(manifest.drafts)) {
+      throw new Error('unsupported manifest format')
+    }
+    return manifest
+  } catch (error) {
+    throw new Error(`无法读取发布内容清单 ${filename}: ${(error as Error).message}`)
+  }
 }
 
 function pagePath(relativePath: string) {
@@ -263,6 +318,7 @@ function pageHead(context: TransformContext): HeadConfig[] {
   const isHome = pagePath(pageData.relativePath) === '/'
   const frontmatter = pageData.frontmatter as PageFrontmatter
   const isProfile = frontmatter.schemaType === 'ProfilePage'
+  const isDraft = frontmatter.publishedDraft === true
   const robots = frontmatter.noindex === true
     ? 'noindex,follow'
     : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'
@@ -270,7 +326,7 @@ function pageHead(context: TransformContext): HeadConfig[] {
     ['meta', { name: 'robots', content: robots }],
     ['meta', { name: 'googlebot', content: robots }],
     ['link', { rel: 'canonical', href: url }],
-    ['meta', { property: 'og:type', content: isHome ? 'website' : isProfile ? 'profile' : 'article' }],
+    ['meta', { property: 'og:type', content: isHome || isDraft ? 'website' : isProfile ? 'profile' : 'article' }],
     ['meta', { property: 'og:title', content: title }],
     ['meta', { property: 'og:description', content: description }],
     ['meta', { property: 'og:url', content: url }],
@@ -282,11 +338,14 @@ function pageHead(context: TransformContext): HeadConfig[] {
     ['meta', { name: 'twitter:title', content: title }],
     ['meta', { name: 'twitter:description', content: description }],
     ['meta', { name: 'twitter:image', content: brandImageUrl }],
-    ['meta', { name: 'twitter:image:alt', content: `${siteTitle} IP 形象` }],
-    ['script', { type: 'application/ld+json' }, JSON.stringify(structuredData(context))]
+    ['meta', { name: 'twitter:image:alt', content: `${siteTitle} IP 形象` }]
   ]
 
-  if (!isHome && pageData.lastUpdated) {
+  if (!isDraft) {
+    head.push(['script', { type: 'application/ld+json' }, JSON.stringify(structuredData(context))])
+  }
+
+  if (!isHome && !isDraft && pageData.lastUpdated) {
     head.push([
       'meta',
       { property: 'article:modified_time', content: new Date(pageData.lastUpdated).toISOString() }
@@ -294,7 +353,7 @@ function pageHead(context: TransformContext): HeadConfig[] {
   }
 
   const datePublished = toIsoDate(frontmatter.datePublished)
-  if (!isHome && !isProfile && datePublished) {
+  if (!isHome && !isProfile && !isDraft && datePublished) {
     head.push(['meta', { property: 'article:published_time', content: datePublished }])
   }
 
@@ -317,11 +376,23 @@ export default defineConfig({
   ],
   cleanUrls: true,
   lastUpdated: true,
+  transformPageData: (pageData) => {
+    if (draftPathSet.has(pageData.relativePath)) {
+      return { lastUpdated: undefined }
+    }
+
+    const publishedPage = publishedPageByPath.get(pageData.relativePath)
+    if (!publishedPage) return undefined
+
+    return { lastUpdated: Date.parse(publishedPage.lastUpdated) }
+  },
   sitemap: {
     hostname: siteOrigin,
     transformItems: (items) => items
+      .filter((item) => !draftRouteSet.has(routeKey(item.url)))
       .map((item) => ({
         ...item,
+        lastmod: publishedPageByRoute.get(routeKey(item.url))?.lastUpdated || item.lastmod,
         url: `${sitePath}/${item.url}`.replace(/\/{2,}/g, '/')
       }))
   },
@@ -393,7 +464,7 @@ export default defineConfig({
             items: [
               { text: '教程总览', link: '/agents/' },
               { text: '零基础导读', link: '/agents/start/what-is-agent' },
-              { text: 'B 级项目主线', link: '/agents/build/from-chat-to-agent' }
+              { text: '上手做一个 Agent', link: '/agents/build/from-chat-to-agent' }
             ]
           },
           {
@@ -416,38 +487,38 @@ export default defineConfig({
           ]
         },
         {
-          text: 'A 级：完全零基础导读',
+          text: '零基础：先建立正确直觉',
           collapsed: false,
           items: [
-            { text: 'AI Agent 到底是什么', link: '/agents/start/what-is-agent' },
-            { text: '终端、Git、Python 和 API Key', link: '/agents/start/prepare' }
+            { text: 'AI Agent 和聊天有什么区别', link: '/agents/start/what-is-agent' },
+            { text: '装好四样东西再开始', link: '/agents/start/prepare' }
           ]
         },
         {
-          text: 'B 级：做出可靠单 Agent',
+          text: '动手做：做出一个可靠的单 Agent',
           collapsed: false,
           items: [
-            { text: '跑通第一个资料盘点 Agent', link: '/agents/build/from-chat-to-agent' },
-            { text: 'Tool Calling 完整闭环', link: '/agents/build/tool-calling' },
-            { text: 'Agent Loop 与停止条件', link: '/agents/build/agent-loop' },
-            { text: 'Schema 与工具边界', link: '/agents/build/tool-design' },
-            { text: '状态、上下文与检查点', link: '/agents/build/state-checkpoints' },
-            { text: '人工审批与结果验证', link: '/agents/build/approval-verification' },
-            { text: '建立 Agent 评测', link: '/agents/build/evaluation' }
+            { text: '十分钟跑通第一个 Agent', link: '/agents/build/from-chat-to-agent' },
+            { text: 'Tool Calling 到底是什么', link: '/agents/build/tool-calling' },
+            { text: 'Agent 怎样循环干活', link: '/agents/build/agent-loop' },
+            { text: '给 Agent 设计工具', link: '/agents/build/tool-design' },
+            { text: '任务中断了怎样恢复', link: '/agents/build/state-checkpoints' },
+            { text: 'Agent 能写文件了，怎么不乱来', link: '/agents/build/approval-verification' },
+            { text: '给 Agent 建一套考试', link: '/agents/build/evaluation' }
           ]
         },
         {
-          text: 'C 级：机制与系统进阶',
+          text: '往深走：把演示项目变成工程系统',
           collapsed: true,
           items: [
-            { text: 'Tool Calling 深入', link: '/agents/advanced/tool-calling' },
-            { text: 'MCP 架构与边界', link: '/agents/advanced/mcp' },
+            { text: 'Tool Calling 进阶', link: '/agents/advanced/tool-calling' },
+            { text: 'MCP 是什么', link: '/agents/advanced/mcp' },
             { text: '上下文工程', link: '/agents/advanced/context' },
             { text: 'Agent 记忆系统', link: '/agents/advanced/memory' },
             { text: 'Agent 评测进阶', link: '/agents/advanced/evaluation' },
-            { text: '多 Agent 架构与选型', link: '/agents/advanced/multi-agent' },
-            { text: 'Agent 安全', link: '/agents/advanced/security' },
-            { text: '生产级系统设计', link: '/agents/advanced/system-design' }
+            { text: '多 Agent 值得吗', link: '/agents/advanced/multi-agent' },
+            { text: 'Agent 被攻击了怎么办', link: '/agents/advanced/security' },
+            { text: '把 Agent 送上生产', link: '/agents/advanced/system-design' }
           ]
         }
       ],

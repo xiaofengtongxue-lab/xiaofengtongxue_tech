@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 权限、沙箱与工作区安全实战
 description: 搞清楚 sandbox 和 approval 怎么配合，保护未提交修改、凭证、网络和外部系统，不同任务选不同的安全权限。
 ---

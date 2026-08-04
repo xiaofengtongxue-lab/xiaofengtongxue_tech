@@ -31,8 +31,9 @@
 ## AI Agent Learning Path
 
 - Complete route map: https://www.xiaofengtongxue.com/agents/
+- Main implementation route: Java is the default track, with equivalent Python examples available through a synchronized language switch.
 - Zero-foundation introduction: https://www.xiaofengtongxue.com/agents/start/what-is-agent
-- Terminal, Git, Python, and API preparation: https://www.xiaofengtongxue.com/agents/start/prepare
+- Terminal, Git, JDK/Maven or Python, and API preparation: https://www.xiaofengtongxue.com/agents/start/prepare
 - First verified file-audit agent: https://www.xiaofengtongxue.com/agents/build/from-chat-to-agent
 - Tool Calling loop: https://www.xiaofengtongxue.com/agents/build/tool-calling
 - Agent Loop and stopping conditions: https://www.xiaofengtongxue.com/agents/build/agent-loop

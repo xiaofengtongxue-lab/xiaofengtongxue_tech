@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex Skill 推荐与学习路线
 description: 理解 Skill、Plugin 和 MCP 的区别，按办公、开发、研究、设计、电商和视频场景选择能力，并学习安装审计和自定义 Skill。
 ---

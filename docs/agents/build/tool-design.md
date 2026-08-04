@@ -1,5 +1,6 @@
 ---
-title: AI Agent 工具设计教程
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
+title: 给 Agent 设计工具：做窄而不是做大
 description: 用资料盘点 Agent 学会把工具做窄：单一职责、严格参数、工作目录边界、内容限制、结构化错误和受限写入。
 datePublished: 2026-07-26
 breadcrumbs:
@@ -7,11 +8,13 @@ breadcrumbs:
     path: /agents/
 ---
 
-# 把工具做窄：Schema、路径边界和错误契约
+# 工具不是越万能越好：做窄、做安全、做可预测
 
 Agent 一直选错工具，不一定是模型能力差。更常见的原因是开发者给了它一个叫 `manage_files` 的万能工具，里面同时支持读取、改名、覆盖、删除、上传，参数还有三层嵌套。模型面对的不是能力，而是一团模糊的权限。
 
 资料盘点项目只暴露四个工具：列文件、读文本、搜索文本、保存草稿。每个工具只做一件事，而且能单独限制风险。
+
+<AgentLanguageSwitch />
 
 ## 先从真实任务反推工具，而不是从后端接口搬目录
 
@@ -43,19 +46,38 @@ Agent 一直选错工具，不一定是模型能力差。更常见的原因是�
 把盘点结果保存到受限草稿区，不会覆盖原资料，也不会直接发布。
 ```
 
-工具名、描述和实际权限必须一致。把工具叫 `save_draft`，内部却直接覆盖正式报告，是在破坏系统契约。
+工具名、描述和实际权限必须一致。把工具叫 `save_draft`，内部却直接覆盖正式报告——这是在破坏系统契约。
 
 ## 路径参数必须经过应用层重新解析
 
 下面这种代码看起来省事，实际上允许 `../../` 越界：
 
-```python
-Path(root, model_path).read_text()
+::: code-group
+```java [Java]
+Files.readString(root.resolve(modelPath));
 ```
 
-项目里的 `_resolve` 做了四件事：
+```python [Python]
+Path(root, model_path).read_text()
+```
+:::
 
-```python
+两套项目的路径解析器都会拒绝绝对路径、目录穿越和符号链接。核心判断是：
+
+::: code-group
+```java [Java]
+Path requested = Path.of(relativePath);
+if (requested.isAbsolute()) {
+    throw new ToolException("只允许使用工作目录内的相对路径");
+}
+
+Path resolved = root.resolve(requested).normalize().toAbsolutePath();
+if (!resolved.startsWith(root)) {
+    throw new ToolException("路径越过了工作目录边界");
+}
+```
+
+```python [Python]
 requested = Path(relative_path)
 if requested.is_absolute():
     raise ToolError("只允许使用工作目录内的相对路径")
@@ -64,6 +86,7 @@ resolved = (root / requested).resolve(strict=False)
 if not resolved.is_relative_to(root):
     raise ToolError("路径越过了工作目录边界")
 ```
+:::
 
 完整实现还会检查路径上的符号链接。这样下面几种输入都会被挡住：
 
@@ -71,17 +94,17 @@ if not resolved.is_relative_to(root):
 - `../../secret.txt` 之类的目录穿越；
 - 指向工作目录外部的符号链接。
 
-模型能否“理解不该越界”不是安全边界，代码拒绝才是。
+模型能否“理解不该越界”不是安全边界。代码拒绝才是。
 
 ## 读取能力也要有预算
 
 即使路径合法，也不能默认把所有内容送给模型。示例做了三层限制：
 
-1. 只支持 `.md`、`.txt`、`.csv`、`.json`、`.yaml`、`.yml` 和 `.py`；
+1. 只支持常见文本格式，并额外允许当前路线的 `.java` 或 `.py` 源文件；
 2. 单文件最多返回 6000 个字符，并标记 `truncated`；
 3. 列目录最多返回 200 个文件，搜索最多返回 30 个命中。
 
-这些数字不是行业标准，而是教学项目的显式预算。你的系统可能按 Token、文件大小、租户套餐或数据敏感度限制。关键是**让上限存在、可配置、可观察**。
+这些数字不是行业标准，只是教学项目的显式预算。你的系统可能按 Token、文件大小、租户套餐或数据敏感度限制。关键只有一条：**让上限存在、可配置、可观察**。
 
 ## 外部内容是数据，不是新指令
 
@@ -100,7 +123,7 @@ if not resolved.is_relative_to(root):
 - 写工具只能进入草稿区；
 - 正式发布还要人工确认。
 
-Prompt 提醒和代码权限要同时存在。
+Prompt 提醒和代码权限要同时存在，缺一不可。
 
 ## 错误结果要让下一步变得更清楚
 
@@ -112,7 +135,7 @@ Prompt 提醒和代码权限要同时存在。
 | 临时错误 | 网络超时、服务忙 | 在次数和退避限制内重试 |
 | 权限错误 | 目录越界、无权写入 | 停止或请求正确授权 |
 
-所以错误返回至少要包含稳定 `error_code`、可读 `message` 和是否可重试。不要把所有问题都压成 `Something went wrong`，也不要把完整内部异常直接暴露给模型。
+错误返回至少要包含稳定 `error_code`、可读 `message` 和是否可重试。不要把所有问题都压成 `Something went wrong`，也不要把完整内部异常直接暴露给模型。
 
 ## 草稿区是一种很好用的权限降级
 
@@ -139,18 +162,31 @@ Prompt 提醒和代码权限要同时存在。
 
 示例记录工具参数时，如果发现 `content`，只保存长度和 SHA-256：
 
-```python
+::: code-group
+```java [Java]
+value.put("content_characters", content.length());
+value.put("content_sha256", FileSupport.sha256(content));
+```
+
+```python [Python]
 value["content_characters"] = len(content)
 value["content_sha256"] = hashlib.sha256(content.encode("utf-8")).hexdigest()
 ```
+:::
 
 这样能判断两次写入是不是同一份内容，又不会在检查点里复制完整报告。生产系统还需要按字段做脱敏、访问控制和保留期限。
 
 ## 用三条测试检查工具边界
 
-```bash
+::: code-group
+```bash [Java]
+mvn -Dtest=WorkspaceToolsTest test
+```
+
+```bash [Python]
 python -m unittest tests.test_tools -v
 ```
+:::
 
 三个测试分别检查：
 
@@ -166,10 +202,10 @@ Agent 运行十轮后会积累用户输入、模型 Item、工具结果、错误
 
 下一篇讲 [状态、上下文与检查点](/agents/build/state-checkpoints)，先把这三个常被混用的概念拆开。
 
-## 版本与事实来源
+## 参考与版本
 
-- 本页代码核验日期：2026 年 7 月 26 日。
-- 路径边界测试基于 Python 3.14.2；项目声明支持 Python 3.11 及以上版本。
+- 本页代码核验日期：2026 年 7 月 27 日。
+- 路径边界测试已在 JDK 21.0.5 和 Python 3.14.2 下通过；Python 项目声明支持 3.11 及以上版本。
 - [OpenAI：Function calling best practices](https://developers.openai.com/api/docs/guides/function-calling)
 - [OpenAI：Safety in building agents](https://developers.openai.com/api/docs/guides/agent-builder-safety)
 - [OWASP：LLM Top 10](https://genai.owasp.org/llm-top-10/)

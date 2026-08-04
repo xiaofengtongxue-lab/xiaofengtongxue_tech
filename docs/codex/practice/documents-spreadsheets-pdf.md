@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 处理 Word、Excel 和 PDF
 description: 使用 Documents、Spreadsheets 和 PDF 能力完成源文件盘点、结构化提取、可编辑文件生成、公式核验与逐页渲染检查。
 ---

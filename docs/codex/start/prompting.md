@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 提示词实战：目标、上下文、边界和验证
 description: 不需要"咒语"，用工程工单的方式写任务说明，掌握目标、上下文、边界和验证五要素，附带调试、功能、审查和文档模板。
 ---

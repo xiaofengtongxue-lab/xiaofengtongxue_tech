@@ -1,5 +1,6 @@
 ---
-title: 生产级 AI Agent 系统设计
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
+title: 把 Agent 送上生产：架构与运行时设计
 description: 将确定性 Workflow、Agent Runtime、Tool Executor、状态、审批、可观测性、评测和发布控制组合成可上线、可恢复的 Agent 系统。
 datePublished: 2026-07-26
 breadcrumbs:
@@ -7,9 +8,9 @@ breadcrumbs:
     path: /agents/
 ---
 
-# 生产级 Agent 系统设计：Workflow、运行时和控制面
+# 把 Agent 送上生产：架构、运行时和发布控制
 
-一个 Agent Demo 通常只有模型、几个工具和 `while` 循环。生产系统还要同时处理身份、租户、状态恢复、长任务、审批、幂等、版本、观测、评测和回滚。关键不是把它拆成多少微服务，而是每一类责任有没有明确所有者和可验证边界。
+一个 Agent Demo 通常只有模型、几个工具和一个 `while` 循环。生产系统还要同时处理身份、租户、状态恢复、长任务、审批、幂等、版本、观测、评测和回滚。关键不是拆成多少微服务，而是每类责任有没有明确所有者和可验证边界。
 
 <figure class="agent-diagram">
   <img src="/diagrams/agents/production-system.svg" alt="生产级 Agent 系统的入口、确定性 Workflow、Agent Runtime、Tool Executor、状态检查点、审批和控制面架构图">
@@ -90,7 +91,7 @@ breadcrumbs:
 
 ## 长任务要进入可靠任务系统
 
-秒级请求可以同步完成；分钟级到小时级任务需要：
+秒级请求可以同步完成。分钟级到小时级任务需要：
 
 - 持久任务队列；
 - Worker 租约或心跳；
@@ -101,7 +102,7 @@ breadcrumbs:
 - 人工等待状态；
 - 部分结果和失败原因。
 
-不要用一个 HTTP 请求一直挂着，也不要让重启后的 Worker 从头重复全部副作用。
+别用一个 HTTP 请求一直挂着。也别让重启后的 Worker 从头重复全部副作用。
 
 ## 控制面管理版本和发布
 
@@ -127,7 +128,7 @@ eval_dataset_version
 - 模型路由、预算和降级；
 - 审计谁在何时修改了什么。
 
-不要在生产容器里手改 Prompt，然后失去可复现性。
+别在生产容器里手改 Prompt 然后失去可复现性。
 
 ## 可观测性要覆盖一条任务链
 
@@ -150,7 +151,7 @@ eval_dataset_version
 
 ### Logs
 
-记录结构化事件和关联 ID，不把敏感原文无差别复制。高基数字段和原始 Tool Output 进入受控存储，不直接作为监控标签。
+记录结构化事件和关联 ID，别无差别复制敏感原文。高基数字段和原始 Tool Output 进受控存储，不直接当监控标签。
 
 ## SLO 要从任务结果定义
 
@@ -240,9 +241,9 @@ Workflow 固定必经边界
 Trace 和 Eval 推动版本改进
 ```
 
-如果你能把自己的 Agent 放进这七层，并拿出每层的验证证据，就已经具备从 Demo 走向生产的完整地图。可以回到 [AI Agent 教程总览](/agents/) 按项目需要复查具体章节。
+如果你能把自己的 Agent 放进这七层，每层都有测试或日志作为验证，就已经具备从 Demo 走向生产的完整地图了。可以回到 [AI Agent 教程总览](/agents/) 按项目需要复查具体章节。
 
-## 版本与事实来源
+## 参考与版本
 
 - 本页核验日期：2026 年 7 月 26 日。
 - 架构图是通用责任划分，不要求每个方框都部署成独立服务。

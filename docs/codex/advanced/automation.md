@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 定时任务与持续目标实战
 description: 先把流程在普通任务中跑稳定，再使用 Goal mode 和 Scheduled tasks 持续推进或周期执行，并控制 worktree、权限、通知与失败处理。
 ---

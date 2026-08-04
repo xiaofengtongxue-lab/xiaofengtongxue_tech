@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 普通人如何整理 ChatGPT 项目、任务和本地文件
 description: 用资料柜和工作单的方式理解项目、任务、附件和本地文件夹，学会准备安全副本、限制访问范围并保持长期工作不混乱。
 ---

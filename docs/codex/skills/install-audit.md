@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 第三方 Codex Skill 安装与安全审计
 description: 在安装社区 Skill 前审查来源、许可证、SKILL.md、脚本、依赖、网络、凭证和写入路径，并用小样本测试触发与产物。
 ---

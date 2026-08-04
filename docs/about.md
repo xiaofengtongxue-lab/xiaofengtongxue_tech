@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 关于程序员小枫同学
 description: 了解程序员小枫同学技术教程站的作者身份、内容范围、写作原则、事实核验方式与公开账号。
 schemaType: ProfilePage

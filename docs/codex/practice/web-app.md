@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 从想法做到可运行 Web 应用
 description: 从用户任务、视觉方向和技术边界开始，用 Codex 完成垂直切片、浏览器验证、数据与支付接入，并部署可回退预览版本。
 ---

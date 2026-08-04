@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 普通人怎样使用 ChatGPT Skill 和 Plugin
 description: 用白话理解 Skill 与 Plugin，在 ChatGPT Work 或 Codex 中选择办公、PPT、表格和重复工作能力，审查外部连接，并用自然语言创建自己的简单 Skill。
 ---

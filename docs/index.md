@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 layout: home
 title: 程序员小枫同学 | AI 编程、AI Agent 与软件工程教程
 titleTemplate: false

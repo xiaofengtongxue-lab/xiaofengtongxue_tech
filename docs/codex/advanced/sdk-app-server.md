@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex SDK 与 App Server 集成实战
 description: 在 codex exec、TypeScript/Python SDK、MCP Server 和 App Server 之间做选择，用最小示例创建线程、流式处理事件并控制工作目录与沙箱。
 ---

@@ -2,11 +2,11 @@
 sequenceDiagram
   autonumber
   participant U as 用户
-  participant A as 应用层 Agent Loop
+  participant A as 应用层（Agent Loop）
   participant M as 模型
   participant T as 本地工具
 
-  U->>A: 盘点目录并生成报告
+  U->>A: 帮我盘点目录，生成报告
   A->>M: 目标 + 工具 Schema + 当前状态
   M-->>A: function_call(name, arguments, call_id)
   Note over A: 解析参数、校验权限和路径
@@ -14,5 +14,5 @@ sequenceDiagram
   T-->>A: 结构化结果或错误码
   A->>M: function_call_output(call_id, result)
   M-->>A: 下一次工具调用或最终说明
-  A->>A: 确定性验收报告
+  A->>A: 程序自动验收报告
   A-->>U: 草稿、证据和待确认动作

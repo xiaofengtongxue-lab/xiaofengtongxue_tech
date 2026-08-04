@@ -1,25 +1,28 @@
 ---
-title: 写 AI Agent 前的环境准备
-description: 面向没用过终端、Git 或 Python 的读者，用可验证的小步骤准备 AI Agent 教程环境，并正确处理 API Key。
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
+title: 写 Agent 前要装好的四样东西
+description: 面向第一次动手写 Agent 的读者，准备终端、JDK 或 Python、Git 和 API Key；Java 为默认主线，Python 可切换。
 datePublished: 2026-07-26
 breadcrumbs:
   - name: AI Agent 教程
     path: /agents/
 ---
 
-# 第一次写 Agent 前，补齐终端、Git、Python 和 API Key 基础
+# 装好这四样东西，再开始写第一个 Agent
 
-如果你看懂了 Agent 的工作循环，却被“打开终端”“创建虚拟环境”“设置 API Key”卡住，这篇就是那块垫脚石。我们只学后面马上会用到的四件事，每做一步都有一个能自己确认的结果。
+看懂了 Agent 循环，轮到动手时却被终端、JDK、虚拟环境或 API Key 卡住了？这篇只准备后面马上会用到的东西，每一步都有能对照的结果。
 
-> 本教程示例以 Python 3.11 及以上版本为目标。命令在 macOS、Linux 和 Windows PowerShell 上都能完成；只有虚拟环境的激活命令不同。
+<AgentLanguageSwitch />
+
+> Java 是默认主线，使用 JDK 21 和 Maven；Python 版要求 Python 3.11 及以上。选一条跑通即可，不需要同时安装两套环境。
 
 ## 先认识终端：它只是另一种操作电脑的方式
 
-平时你双击文件夹，是通过图形界面告诉电脑“打开这里”。终端做的是同一件事，只是把动作写成文字。
+平时你双击文件夹，用图形界面告诉电脑"打开这里"。终端做的事一模一样，只是把动作写成了文字。
 
 打开系统自带终端：
 
-- macOS：打开“终端”应用。
+- macOS：打开"终端"应用。
 - Windows：打开 PowerShell。
 - Linux：打开你发行版自带的 Terminal。
 
@@ -35,7 +38,7 @@ macOS 和 Linux 会显示当前目录。PowerShell 对应的命令是：
 Get-Location
 ```
 
-你应该看到一个真实路径。路径就是“你现在站在哪个文件夹里”。后面所有命令都在这个位置执行，所以不要跳过确认。
+屏幕上是一个真实路径。路径的意思很简单：你现在站在哪个文件夹里。后面的命令都在这个位置执行，别跳过这一步。
 
 ## 建一个不会碰到真实资料的练习目录
 
@@ -54,65 +57,78 @@ pwd
 
 PowerShell 仍然可以用 `mkdir` 和 `cd`，最后用 `Get-Location` 查看。
 
-如果路径末尾出现 `agent-learning`，这一步就成功了。我们专门建练习目录，是为了让第一次 Agent 实验跟你的桌面、照片和工作文件隔开。
+路径末尾出现 `agent-learning`，这一步就搞定。专门建练习目录只有一个目的：让 Agent 实验跟你的桌面、照片、工作文件隔开。
 
-## 检查 Python，而不是直接开始装库
+## 检查你选择的运行环境
 
-运行：
+先运行对应命令：
 
-```bash
-python3 --version
+::: code-group
+```bash [Java]
+java -version
+mvn -version
 ```
 
-Windows 常见命令是：
+```bash [Python]
+python3 --version
+```
+:::
+
+Windows 上的 Python 命令通常是：
 
 ```powershell
 python --version
 ```
 
-期望看到类似：
+Java 路线应看到 JDK 21 或更高版本，并且 `mvn -version` 能显示 Maven 信息，例如：
+
+```text
+openjdk version "21.0.5"
+Apache Maven 3.6.3
+```
+
+Python 路线应看到 3.11 或更高版本，例如：
 
 ```text
 Python 3.14.2
 ```
 
-版本号不必跟示例完全一样，但需要是 Python 3.11 或更高版本。如果系统提示找不到命令，请到 [Python 官方下载页](https://www.python.org/downloads/) 安装当前受支持版本，再重新打开终端验证。Windows 安装界面记得勾选把 Python 加入 PATH。
+版本号不必跟示例完全一样。Java 缺少 JDK 时，从 [Eclipse Temurin](https://adoptium.net/temurin/releases/) 或你信任的 JDK 发行版安装 JDK 21；Maven 缺失时查看 [Apache Maven 安装文档](https://maven.apache.org/install.html)。Python 缺失时，从 [Python 官方下载页](https://www.python.org/downloads/) 安装当前受支持版本。
 
-## 为什么还要创建虚拟环境
+## 两条路线为什么准备方式不同
 
-你可能在想：Python 已经能用了，为什么不直接装 `openai`？
+Java 项目的依赖版本写在 `pom.xml`，Maven 会在第一次构建时下载到本机缓存，不需要创建 Python 式虚拟环境。先确认 Maven 可用即可：
 
-因为不同项目需要的库版本可能不同。虚拟环境相当于给这个练习项目准备一个独立工具箱，不会把系统里的其他 Python 项目搅在一起。
+::: code-group
+```bash [Java]
+mvn -version
+```
 
-在 `agent-learning` 目录运行：
-
-```bash
+```bash [Python]
 python3 -m venv .venv
-```
-
-macOS 或 Linux 激活：
-
-```bash
 source .venv/bin/activate
-```
-
-Windows PowerShell 激活：
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-激活后，终端提示符前通常会出现 `(.venv)`。再运行：
-
-```bash
 python --version
 ```
+:::
 
-这次统一使用 `python` 即可。能看到版本号，说明你的独立环境已经工作。
+Windows PowerShell：
+
+::: code-group
+```powershell [Java]
+mvn -version
+```
+
+```powershell [Python]
+.venv\Scripts\Activate.ps1
+python --version
+```
+:::
+
+Python 激活成功后，终端提示符前通常会出现 `(.venv)`。Java 路线没有这个标记，后面在项目目录直接运行 `mvn test`。
 
 ## Git 在这里不是为了把代码发到网上
 
-Git 首先是本地修改记录工具。Agent 会读写文件时，它能帮你回答两个关键问题：开始前目录是什么状态，结束后到底改了什么。
+Git 首先是本地记录工具。Agent 读写文件的时候，它能回答两个问题：开始前目录是什么状态，结束后到底改了什么。
 
 先检查：
 
@@ -137,7 +153,7 @@ git status --short --branch
 
 ## API Key 是门卡，不是聊天内容
 
-代码通过模型 API 发请求时，需要一把属于你自己项目的门卡，这就是 API Key。它可能产生费用，也可能访问你账号下允许的资源，因此不能写进教程截图、Git 仓库、群聊或发给 Agent。
+代码通过模型 API 发请求，需要一把门卡——这就是 API Key。它可能产生费用，也能访问你账号下的资源。所以不能写进截图、Git 仓库、群聊，更不能发给 Agent。
 
 从你使用的模型平台创建 Key 后，只在当前终端设置。macOS 或 Linux：
 
@@ -154,7 +170,13 @@ $env:OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
 上面的占位符必须替换成你自己的值，但不要把真实值粘贴到聊天窗口。验证变量是否存在时，也不要打印完整内容：
 
 ```bash
-python -c "import os; print('已设置' if os.getenv('OPENAI_API_KEY') else '未设置')"
+test -n "$OPENAI_API_KEY" && echo "已设置" || echo "未设置"
+```
+
+PowerShell：
+
+```powershell
+if ($env:OPENAI_API_KEY) { "已设置" } else { "未设置" }
 ```
 
 期望输出：
@@ -170,37 +192,50 @@ python -c "import os; print('已设置' if os.getenv('OPENAI_API_KEY') else '未
 模型名称和账号权限会变化，不要把教程里的字符串埋进业务代码。先在终端设置：
 
 ```bash
-export OPENAI_MODEL="gpt-5.6-terra"
+export OPENAI_MODEL="deepseek-v4-pro"
 ```
 
 PowerShell：
 
 ```powershell
-$env:OPENAI_MODEL="gpt-5.6-terra"
+$env:OPENAI_MODEL="deepseek-v4-pro"
 ```
 
-这是本教程在 2026 年 7 月 26 日采用的平衡档示例。你需要换成自己 API 项目当前可用的模型，并用后面的评测确认质量、延迟和成本，而不是默认“越新越适合所有任务”。
+`deepseek-v4-pro` 是本教程在 2026 年 7 月 27 日采用的默认模型 ID。先确认你使用的 API 服务提供这个模型，并兼容项目调用的接口；如果不支持，就把它换成自己 API 项目当前可用的模型，再用后面的评测确认质量、延迟和成本。
 
 ## 开始主线前做一次体检
 
-依次运行：
+依次运行对应命令：
 
-```bash
+::: code-group
+```bash [Java]
+java -version
+mvn -version
+git --version
+test -n "$OPENAI_API_KEY" && echo "API Key OK" || echo "API Key missing"
+```
+
+```bash [Python]
 python --version
 git --version
 python -c "import os; print('API Key OK' if os.getenv('OPENAI_API_KEY') else 'API Key missing')"
 ```
+:::
 
 满足下面四条，就可以进入主线：
 
 - 当前终端位于专门的练习目录；
-- Python 版本不低于 3.11；
+- Java 路线使用 JDK 21 且 Maven 可用，或 Python 路线版本不低于 3.11；
 - Git 命令可用；
 - 终端显示 `API Key OK`，但没有打印真实密钥。
 
 接下来去 [先跑通第一个资料盘点 Agent](/agents/build/from-chat-to-agent)。即使暂时没有 API Key，也可以先运行全部确定性测试，看看哪些安全边界不依赖模型。
 
 ## 常见卡点
+
+### `mvn` 或 `java` 找不到
+
+先重新打开终端，再运行 `java -version` 和 `mvn -version`。如果 Java 能用但 Maven 不能用，通常是 Maven 没安装或没有加入 `PATH`；如果显示的不是 JDK 21，先检查 `JAVA_HOME` 指向了哪个 JDK。
 
 ### PowerShell 不允许激活脚本
 
@@ -220,10 +255,12 @@ python -c "import os; print('API Key OK' if os.getenv('OPENAI_API_KEY') else 'AP
 
 先运行 `pwd` 或 `Get-Location`。你很可能在错误目录执行了 `git init`。不要急着删除任何东西，先确认当前位置，再新建一个干净练习目录继续。
 
-## 核验边界与来源
+## 参考与版本
 
-- 本页命令核验日期：2026 年 7 月 26 日。
-- 本地核验环境为 macOS、Python 3.14.2 和 Git；Windows 提供 PowerShell 等价命令，但不同公司设备可能有额外执行策略。
+- 本页命令核验日期：2026 年 7 月 27 日。
+- 本地核验环境为 macOS、JDK 21.0.5、Maven 3.6.3、Python 3.14.2 和 Git；Windows 提供 PowerShell 等价命令，但不同公司设备可能有额外执行策略。
+- [Java 21 文档](https://docs.oracle.com/en/java/javase/21/)
+- [Apache Maven 安装](https://maven.apache.org/install.html)
 - [Python：创建虚拟环境](https://docs.python.org/3/library/venv.html)
 - [Git 官方下载](https://git-scm.com/downloads)
 - [OpenAI API Key 安全最佳实践](https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety)

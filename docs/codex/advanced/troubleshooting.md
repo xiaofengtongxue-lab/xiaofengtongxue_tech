@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 常见故障分层排查
 description: 按入口、版本、登录、配置、权限、网络、Skill/MCP/Plugin 和项目运行时逐层定位 Codex 问题，得到可复现证据再决定是否重装。
 ---

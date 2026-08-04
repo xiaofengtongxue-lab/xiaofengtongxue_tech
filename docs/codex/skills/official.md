@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: ChatGPT 与 Codex 官方及高价值 Skill、Plugin 推荐
 description: 面向普通用户和开发者，按办公文件、开发、浏览器、设计、数据、电商和视频场景整理内置能力与官方精选 Plugins，并给出使用边界。
 ---

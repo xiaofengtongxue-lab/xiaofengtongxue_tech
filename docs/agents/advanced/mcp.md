@@ -1,5 +1,6 @@
 ---
-title: MCP 架构与实战边界
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
+title: MCP 入门：它统一了什么，没解决什么
 description: 从 Host、Client、Server、数据层和传输层理解 MCP，分清 Tools、Resources、Prompts，并处理远程授权、审批和供应链风险。
 datePublished: 2026-07-26
 breadcrumbs:
@@ -7,9 +8,9 @@ breadcrumbs:
     path: /agents/
 ---
 
-# MCP 到底统一了什么：Host、Client、Server 和安全边界
+# MCP 是什么，解决了什么问题，没解决什么问题
 
-当每个 Agent 应用都为 GitHub、数据库、文件系统和内部服务手写一套工具适配，真正难维护的不是函数本身，而是能力发现、参数描述、连接生命周期、授权和兼容性。MCP 解决的是这层连接协议，但它不替你设计 Agent 的目标、循环、记忆和权限策略。
+每个 Agent 应用都为 GitHub、数据库、文件系统和内部服务各写一套工具适配。真正难维护的不是函数本身，是能力发现、参数描述、连接生命周期、授权和兼容性。MCP 解决的是这层连接协议。但它不替你设计 Agent 的目标、循环、记忆和权限策略——这些仍然是你的事。
 
 <figure class="agent-diagram">
   <img src="/diagrams/agents/mcp-architecture.svg" alt="MCP Host 内的 Agent Runtime 和多个 Client 连接文件资料与业务系统 Server，并暴露 Tools、Resources、Prompts 的架构图">
@@ -20,7 +21,7 @@ breadcrumbs:
 
 ### Host
 
-Host 是用户真正使用的 Agent 应用，例如 IDE、桌面 Agent、聊天应用或你的业务服务。它负责：
+Host 是用户真正使用的 Agent 应用——IDE、桌面 Agent、聊天应用或你的业务服务。它负责：
 
 - 选择模型和组装 Context；
 - 管理 Agent Loop、状态和记忆；
@@ -35,9 +36,9 @@ Client 位于 Host 内，通常与一个 Server 保持一条有状态连接。�
 
 ### Server
 
-Server 把某个数据源或系统能力用 MCP 暴露出来，例如文件、GitHub、数据库、浏览器或内部工单系统。Server 仍要自己做身份验证、输入校验、租户隔离和业务权限。
+Server 把某个数据源或系统能力用 MCP 暴露出来——文件、GitHub、数据库、浏览器或内部工单系统。Server 仍要自己做身份验证、输入校验、租户隔离和业务权限。
 
-“接了 MCP”不等于 Host 可以信任 Server 返回的所有内容。
+一句话："接了 MCP"不等于 Host 可以信任 Server 返回的所有内容。
 
 ## MCP 有数据层，也有传输层
 
@@ -47,7 +48,7 @@ Server 把某个数据源或系统能力用 MCP 暴露出来，例如文件、Gi
 - 远程 Server 常用基于 HTTP 的传输；
 - 授权方式取决于 Host、Server 和部署场景。
 
-同一个 Server 的能力语义不应因为从本地 `stdio` 换成远程 HTTP 就完全改变，但威胁面会扩大：网络身份、令牌存储、TLS、回调地址、跨租户访问和服务端日志都要重新评估。
+同一个 Server 的能力语义不应该因为从本地 `stdio` 换成远程 HTTP 就全变。但威胁面会扩大——网络身份、令牌存储、TLS、回调地址、跨租户访问和服务端日志，每一项都要重新评估。
 
 ## Tools、Resources、Prompts 不是三种同义工具
 
@@ -57,19 +58,19 @@ Server 把某个数据源或系统能力用 MCP 暴露出来，例如文件、Gi
 | Resources | Host 读取或订阅上下文数据 | 文件、文档、数据库记录、当前项目资料 |
 | Prompts | 用户或 Host 选择模板 | 标准化任务入口和参数化提示 |
 
-把所有资料访问都做成 Tool，会让模型承担不必要的“要不要调用”决策；把有副作用动作伪装成 Resource，则会遮住审批和审计。能力类型应该符合真实语义。
+把所有资料访问都做成 Tool，模型就得多做一堆"要不要调用"的决策——这些决策它本不该做。把有副作用的动作伪装成 Resource，审批和审计就被绕过去了。能力类型应该符合真实语义，别偷换概念。
 
 ## Function Calling 和 MCP 是上下两层
 
 可以这样理解：
 
 ```text
-Function Calling：模型怎样表达“我要调用 get_issue”
+Function Calling：模型怎样表达"我要调用 get_issue"
 
 MCP：Host 怎样发现远端提供了 get_issue，怎样连接并把调用送过去
 ```
 
-MCP Server 的 Tool 最终仍需要 Host 映射给模型；Host 也可以把本地 Function Tool 和 MCP Tool 放在同一任务中。两者不是“旧技术被新技术替代”的关系。
+MCP Server 的 Tool 最终仍需要 Host 映射给模型；Host 也可以把本地 Function Tool 和 MCP Tool 放在同一任务中。两者不是"旧技术被新技术替代"的关系。
 
 ## MCP 不负责 Agent 的四件事
 
@@ -78,9 +79,9 @@ MCP Server 的 Tool 最终仍需要 Host 映射给模型；Host 也可以把本�
 1. 任务应该怎样规划；
 2. 哪些历史和记忆进入当前 Context；
 3. 高风险工具何时必须人工确认；
-4. 什么证据代表任务已经完成。
+4. 怎么判断任务已经完成。
 
-如果一个 Agent 接了十个 MCP Server，却没有停止条件、租户隔离和结果验证，它只是拥有更多攻击面。
+一个 Agent 接了十个 MCP Server，却没有停止条件、租户隔离和结果验证——它只是拥有更多攻击面而已。
 
 ## 连接前先审计 Server
 
@@ -95,11 +96,11 @@ MCP Server 的 Tool 最终仍需要 Host 映射给模型；Host 也可以把本�
 - 更新机制和版本固定方式；
 - 发生问题时如何撤销令牌和连接。
 
-本地 `stdio` Server 跟普通可执行程序一样，拥有当前进程授予的系统权限。它不是因为用了标准协议就自动进入沙箱。
+本地 `stdio` Server 跟普通可执行程序一样，拥有当前进程授予的系统权限。它不会因为用了标准协议就自动进入沙箱。别想当然。
 
 ## 远程 MCP 的授权要绑定用户和租户
 
-远程 Server 常涉及 OAuth 或服务令牌。Host 不能用一把全局管理员令牌替所有用户调用，再指望 Prompt 里的“只看自己的数据”实现隔离。
+远程 Server 常涉及 OAuth 或服务令牌。Host 不能用一把全局管理员令牌替所有用户调用，再指望 Prompt 里一句"只看自己的数据"就能隔离。
 
 正确边界通常包括：
 
@@ -133,7 +134,7 @@ Host 应该：
 - 能力由另一个团队或产品维护；
 - 需要把本地和远程数据源用统一接口接入。
 
-如果只有一个应用调用一个稳定内部函数，直接 Function Calling Adapter 可能更简单。协议带来复用，也带来版本、连接和供应链成本。
+如果只有一个应用调用一个稳定内部函数，直接 Function Calling Adapter 更简单。协议带来复用，也带来版本、连接和供应链成本。别为了"用上 MCP"引入你不需要的复杂度。
 
 ## MCP 接入的最小验收清单
 
@@ -148,9 +149,9 @@ Host 应该：
 
 ## 下一步：连接更多资料以后，Context 更容易失控
 
-MCP 能让 Agent 访问更多工具和资源，但“能取到”不等于“应该全部塞给模型”。下一篇进入 [上下文工程](/agents/advanced/context)，处理 Context Budget、状态压缩和长期任务续接。
+MCP 能让 Agent 访问更多工具和资源，但"能取到"不等于"应该全部塞给模型"。下一篇进入 [上下文工程](/agents/advanced/context)，处理 Context Budget、状态压缩和长期任务续接。
 
-## 版本与事实来源
+## 参考与版本
 
 - 本页核验日期：2026 年 7 月 26 日。
 - MCP 规范与传输会继续演进，实际字段、授权流程和客户端支持以你使用的 Host、Server 和当前官方规范为准。

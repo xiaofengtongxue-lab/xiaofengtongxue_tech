@@ -3,7 +3,7 @@ flowchart LR
   U["用户"] --> H["Host<br/>Agent 应用"]
 
   subgraph Host["Host 内部"]
-    H --> A["Agent Runtime<br/>模型、上下文、循环、审批"]
+    H --> A["Agent 运行时<br/>模型、循环、审批"]
     A --> C1["MCP Client A"]
     A --> C2["MCP Client B"]
   end
@@ -17,7 +17,7 @@ flowchart LR
   S2 --> R2["Resources"]
   S2 --> P2["Prompts"]
 
-  N["MCP 统一的是上下文和能力交换协议<br/>不替 Host 决定任务规划、记忆和安全策略"]
+  N["MCP 管的是连接和能力发现<br/>任务怎么规划、要不要记忆、安全策略——它不替你做"]
   A -.-> N
 
   classDef host fill:#FFF4EF,stroke:#E65332,color:#27272A,stroke-width:2px;

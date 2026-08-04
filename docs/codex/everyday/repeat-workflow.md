@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 把一次成功任务变成普通人可复用的工作流
 description: 从一次可靠成品中提取输入、步骤、模板、检查和人工审批点，依次选择任务模板、项目、Skill、Plugin 或定时任务，不写代码也能稳定复用。
 ---

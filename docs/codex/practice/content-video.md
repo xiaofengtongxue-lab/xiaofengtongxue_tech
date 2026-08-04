@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 制作图文、短视频和内容素材
 description: 从选题事实包、内容结构和平台规格开始，用 Codex 生成图文卡片、公众号素材和短视频，并完成事实、视觉、字幕、版权和发布检查。
 ---

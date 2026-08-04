@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex Hooks 与 Rules 实战
 description: 用 Rules 决定哪些命令允许、询问或禁止，用 Hooks 在生命周期节点执行检查，并与 AGENTS.md 和 CI 组成分层护栏。
 ---

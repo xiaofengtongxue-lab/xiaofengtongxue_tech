@@ -1,4 +1,5 @@
 ---
+publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 分析数据并制作可视化
 description: 从数据字典、清洗脚本和质量报告开始，让 Codex 做可复现分析、情景比较、图表和报告，并避免口径错误与虚假因果。
 ---

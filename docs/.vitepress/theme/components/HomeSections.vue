@@ -42,7 +42,7 @@ import { withBase } from 'vitepress'
             <a :href="withBase('/agents/')">
               <span class="home-article-topic">完整路线</span>
               <span class="home-article-copy">
-                <strong>按 A、B、C 三种起点选择教程</strong>
+                <strong>按零基础、实战、进阶三种起点选教程</strong>
                 <span>零基础导读、真实项目主线和工程进阶彼此独立，通过前置与深入链接连接。</span>
               </span>
               <span class="home-article-arrow" aria-hidden="true">↗</span>
