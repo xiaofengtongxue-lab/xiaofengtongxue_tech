@@ -25,7 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--goal", default=DEFAULT_GOAL, help="本次盘点目标")
     parser.add_argument(
         "--model",
-        default=os.getenv("OPENAI_MODEL", "gpt-5.6-terra"),
+        default=os.getenv("OPENAI_MODEL", "deepseek-v4-pro"),
         help="当前 API 项目可用的模型 ID",
     )
     parser.add_argument("--max-steps", type=int, default=10)

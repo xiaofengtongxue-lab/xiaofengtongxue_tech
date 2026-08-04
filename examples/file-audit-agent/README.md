@@ -15,8 +15,8 @@ python -m unittest discover -s tests -v
 
 ```bash
 export OPENAI_API_KEY="YOUR_OPENAI_API_KEY"
-export OPENAI_MODEL="gpt-5.6-terra"
+export OPENAI_MODEL="deepseek-v4-pro"
 file-audit-agent --root sample-workspace
 ```
 
-`OPENAI_MODEL` 应替换成你的 API 项目当前可用并经过验证的模型。默认值只记录本教程核验时采用的平衡档模型，不代表永久推荐。
+`deepseek-v4-pro` 是教程默认模型 ID。请先确认你使用的 API 服务提供这个模型，并兼容项目调用的接口；如果不支持，就通过 `OPENAI_MODEL` 换成当前可用并经过验证的模型。本地验证只覆盖确定性测试和项目安装，不代表已经完成真实模型请求验证。

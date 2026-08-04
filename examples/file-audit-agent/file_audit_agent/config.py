@@ -7,7 +7,7 @@ from pathlib import Path
 @dataclass(frozen=True)
 class Settings:
     root: Path
-    model: str = "gpt-5.6-terra"
+    model: str = "deepseek-v4-pro"
     max_steps: int = 10
     max_read_chars: int = 6_000
     max_files: int = 200
