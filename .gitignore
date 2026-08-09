@@ -9,3 +9,7 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .workbuddy/
+.impeccable/
+.reasonix/
+reasonix.toml
+PRODUCT.md
