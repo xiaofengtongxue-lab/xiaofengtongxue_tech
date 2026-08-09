@@ -6,6 +6,15 @@
 
 这不是内容策划仓库，也不是 CCWS 产品说明书。仓库保存教程正文、站点配置和部署所需文件；教程可以继续编辑，但公开构建只读取明确确认过的 Git 版本。
 
+## Git 作者约定
+
+本仓库为个人项目，Git 提交作者统一使用：
+
+- 姓名：`xiaofengtongxue`
+- 邮箱：`vincenthsu520@gmail.com`
+
+该约定覆盖全局配置中“weishu 目录默认 xuwenjun”的规则，本仓库所有提交均以 `xiaofengtongxue` 为作者。
+
 ## Worktree Safety
 
 - 任何情况下都不要使用 `git restore`，包括撤销当前任务产生的修改。
