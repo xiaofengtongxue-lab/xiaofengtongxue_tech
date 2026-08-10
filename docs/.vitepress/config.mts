@@ -533,7 +533,7 @@ export default defineConfig({
           text: '普通用户：不要求编程',
           collapsed: false,
           items: [
-            { text: '普通人完整学习路线', link: '/codex/everyday/' },
+            { text: '六个概念与三条边界', link: '/codex/everyday/' },
             { text: '不用代码完成第一份文件', link: '/codex/everyday/first-result' },
             { text: '项目、任务与本地文件', link: '/codex/everyday/projects-files' },
             { text: '用普通话说清任务', link: '/codex/everyday/task-brief' },
