@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 做代码审查、Git 和 PR 闭环
 description: 选择正确 diff 范围，让 Codex 输出可复现的高价值发现，逐项核实、修复、暂存并处理 GitHub Pull Request 反馈。
 ---

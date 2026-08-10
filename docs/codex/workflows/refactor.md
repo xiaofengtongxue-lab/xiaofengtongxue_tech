@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 做可回退的重构与迁移
 description: 用行为基线、依赖地图、分阶段切片、兼容层和回滚点控制大型重构，让 Codex 在不改变用户行为的前提下逐步迁移。
 ---

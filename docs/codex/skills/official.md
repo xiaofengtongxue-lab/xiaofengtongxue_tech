@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: ChatGPT 与 Codex 官方及高价值 Skill、Plugin 推荐
 description: 面向普通用户和开发者，按办公文件、开发、浏览器、设计、数据、电商和视频场景整理内置能力与官方精选 Plugins，并给出使用边界。
 ---
@@ -69,7 +68,7 @@ codex plugin list --available --json
 | Presentations | PPTX/Slides 创建与修改 | 全页渲染、数据、可编辑性 |
 | Spreadsheets | XLSX/CSV 分析和生成 | 公式重算、抽样核对 |
 | PDF | PDF 读取、生成、比较、OCR | 逐页渲染、文本层和链接 |
-| Template Creator | 从已有模板提炼可复用工作流 | 用真实样例回归模板 |
+| Template Creator | 从已有模板提炼可复用流程 | 用真实样例回归模板 |
 
 说真的，用这些能力做 PPT 和办公文件特别顺。我之前帮朋友批量生成周报模板，就是靠 Template Creator + Documents 联动的。感兴趣可以看看这两个实战：[PPT 实战](/codex/practice/ppt) 和 [办公文件实战](/codex/practice/documents-spreadsheets-pdf)。
 

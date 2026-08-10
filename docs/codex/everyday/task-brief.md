@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 不会写提示词也能说清任务：普通人的任务说明法
 description: 不背提示词公式，用结果、资料、受众、边界和检查标准向 ChatGPT Work 或 Codex 说明任务，并通过追问和局部反馈逐步得到可用成品。
 ---

@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 安装、登录与环境检查
 description: 在 macOS、Linux 和 Windows 安装 Codex CLI，打开桌面应用或 IDE，选择 ChatGPT/API Key 登录，完成健康检查。
 ---

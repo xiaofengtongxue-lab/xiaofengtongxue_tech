@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 是什么：先做一次只读项目体检
 description: 用一次真实的只读项目体检，看懂 Codex 和普通聊天模型的区别、四种入口怎么选，建立正确的使用预期。
 ---

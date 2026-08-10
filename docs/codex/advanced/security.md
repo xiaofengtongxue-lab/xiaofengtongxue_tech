@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 团队安全与数据边界
 description: 从身份、代码、凭证、外部内容、Plugins/MCP、CI 和生产操作建立 Codex 威胁模型，并给出团队上线前的最小控制清单。
 ---

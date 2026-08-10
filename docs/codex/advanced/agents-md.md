@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: AGENTS.md 实战：让 Codex 自动遵守项目规则
 description: 在全局、仓库和子目录分层编写 AGENTS.md，固化项目边界、验证命令与工作树安全规则，并验证 Codex 实际加载顺序。
 ---

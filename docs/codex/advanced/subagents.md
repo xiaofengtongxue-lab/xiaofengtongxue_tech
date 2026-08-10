@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex Subagents 并行协作实战
 description: 判断任务能否安全并行，按独立证据或文件边界拆给 Subagents，控制线程、深度、权限和成本，并由主任务统一验证结果。
 ---

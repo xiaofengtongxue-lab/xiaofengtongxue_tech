@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 从想法做到可运行 Web 应用
 description: 从用户任务、视觉方向和技术边界开始，用 Codex 完成垂直切片、浏览器验证、数据与支付接入，并部署可回退预览版本。
 ---
@@ -128,7 +127,7 @@ Build Web Apps Plugin 里的 Stripe/Supabase 指导可以帮你跟上当前最�
 准备预览部署。先检查环境变量清单、构建命令、静态资源路径和数据库目标。部署到 preview/staging，返回 URL 和验证清单。不要绑定正式域名，不连接生产数据库，不执行正式发布。
 ```
 
-用 Vercel、Netlify、Render 或 Cloudflare Plugin 时，明确部署目标账号和项目；预览通过后再由人批准生产。这个习惯帮我挡过至少两次「凌晨上线发现炸了」的情况。
+用 Vercel、Netlify、Render 或 Cloudflare Plugin 时，明确部署目标账号和项目；预览通过后再由人批准生产。先预览再上线的顺序，能避免把问题直接暴露给用户。
 
 ## 第十步：发布前门槛
 

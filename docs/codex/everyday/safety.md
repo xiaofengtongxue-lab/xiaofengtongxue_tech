@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 普通人使用 ChatGPT Work 和 Codex 的隐私、权限与审批
 description: 用普通语言理解附件、本地文件夹、Plugin、Computer Use、沙箱和审批的不同边界，保护客户资料并阻止未经确认的发送、发布、付款、删除和系统修改。
 ---

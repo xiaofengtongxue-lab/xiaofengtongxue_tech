@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex 云任务与 Git Worktree 并行实战
 description: 分清本地目录、Codex 管理的 worktree 和云环境，安全并行任务、配置依赖、审查远程 diff，并把结果应用回本地。
 ---

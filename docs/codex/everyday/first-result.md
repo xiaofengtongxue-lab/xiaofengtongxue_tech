@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 第一次使用 ChatGPT Work：不用写代码完成工作文件
 description: 用一份会议记录完成从新建任务、附加资料、生成行动清单、预览批注到下载复查的完整流程，不需要终端、Git 或代码经验。
 ---

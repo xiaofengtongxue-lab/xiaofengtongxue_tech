@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 复现并修复 Bug
 description: 从原始错误、稳定复现和失败测试出发，让 Codex 定位根因、实施最小修复、补回归测试并验证真实运行路径。
 ---

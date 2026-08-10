@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 制作 AI 漫剧与短片
 description: 用 Codex 管理角色圣经、剧本、分镜、画面生成、配音、字幕和程序化剪辑，控制角色一致性、连续性、版权与逐镜头验收。
 ---

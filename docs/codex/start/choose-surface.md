@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Chat、Work、Codex App、CLI、IDE 和云任务怎么选
 description: 先搞清楚你是聊天、做日常成品、还是写代码，再选对应工具。不写代码的人不需要碰 CLI 和 IDE。
 ---

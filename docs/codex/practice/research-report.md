@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 完成带来源的研究报告
 description: 从研究问题、来源层级和检索日志开始，建立 claim ledger，区分事实、分析和未知项，生成可复核的报告与引用。
 ---

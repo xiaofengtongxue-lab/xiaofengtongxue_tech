@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 普通人怎样使用 ChatGPT Skill 和 Plugin
 description: 用白话理解 Skill 与 Plugin，在 ChatGPT Work 或 Codex 中选择办公、PPT、表格和重复工作能力，审查外部连接，并用自然语言创建自己的简单 Skill。
 ---
@@ -176,7 +175,7 @@ Skill 得包含稳定的步骤、模板、资源和检查标准。只用一次�
 
 ## 下一步
 
-继续看 [把一次成功任务变成可复用工作流](/codex/everyday/repeat-workflow)。
+继续看 [把一次成功任务变成可复用流程](/codex/everyday/repeat-process)。
 
 ## 官方资料
 

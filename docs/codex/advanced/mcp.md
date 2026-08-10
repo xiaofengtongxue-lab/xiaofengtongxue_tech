@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex MCP 配置与安全实战
 description: 为 Codex 添加 STDIO 或 Streamable HTTP MCP 服务器，使用 OAuth/环境变量认证、工具 allowlist 和审批策略，并验证真实连接与数据边界。
 ---

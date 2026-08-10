@@ -540,7 +540,7 @@ export default defineConfig({
             { text: '检查 Word、PPT、表格和 PDF', link: '/codex/everyday/review-revise' },
             { text: '隐私、权限与审批', link: '/codex/everyday/safety' },
             { text: '使用 Skill 和 Plugin', link: '/codex/everyday/skills-plugins' },
-            { text: '复用和自动化工作流', link: '/codex/everyday/repeat-workflow' }
+            { text: '把成功任务变成可复用流程', link: '/codex/everyday/repeat-process' }
           ]
         },
         {

@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex config.toml 配置实战
 description: 分清用户、项目、Profile 和命令行配置优先级，安全设置沙箱、审批、搜索和推理，并用 strict-config 与 doctor 验证配置。
 ---

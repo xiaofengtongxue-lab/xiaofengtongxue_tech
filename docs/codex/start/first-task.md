@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 开发者第一次使用 Codex：完成可验证的小改动
 description: 面向开发者，用基线记录、只读调查、最小修改、测试和 Git diff 完成第一次 Codex 代码任务。普通用户请走文件任务路线。
 howTo:

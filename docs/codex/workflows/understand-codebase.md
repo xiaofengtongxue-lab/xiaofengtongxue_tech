@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: 用 Codex 读懂陌生代码库
 description: 从仓库基线、启动入口、真实调用链、数据模型和验证命令入手，用 Codex 生成可核对的代码库地图，而不是泛泛架构总结。
 ---

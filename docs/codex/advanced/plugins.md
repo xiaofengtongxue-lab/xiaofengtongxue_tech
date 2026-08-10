@@ -1,5 +1,4 @@
 ---
-publishedRevision: "5b5a98622cd1cf60da3c4bc3c9d2258d973f506e"
 title: Codex Plugins 安装与管理实战
 description: 分清 Plugin、Skill 与 MCP，查看 Marketplace、安装官方或团队插件、完成认证和权限检查，并在新任务中验证插件是否真正可用。
 ---
