@@ -248,7 +248,7 @@ codex plugin list --available --json
 
 ## 相关内容
 
-- [PPT、办公与创作类 Skill 推荐](/codex/skills/official)
+- [高价值 Skill、Plugin 推荐](/codex/skills/official)
 - [社区 Skill 的安装与审计](/codex/skills/install-audit)
 
 ## 事实来源

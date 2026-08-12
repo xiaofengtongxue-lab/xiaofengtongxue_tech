@@ -255,7 +255,7 @@ Remotion Plugin 适合用 React 组织镜头、字幕、转场、音频和批量
 
 ## 相关 Skill
 
-查看 [官方创作类 Plugin 推荐](/codex/skills/official) 和 [社区创作 Skill 推荐](/codex/skills/community)。
+查看 [高价值 Skill、Plugin 推荐](/codex/skills/official) 和 [社区创作 Skill 推荐](/codex/skills/community)。
 
 ## 参考
 

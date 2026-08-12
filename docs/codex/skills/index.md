@@ -61,7 +61,7 @@ Skill 说白了就是一套「可复用的任务方法」，通常由一个 `SKI
 
 按这个顺序读，不容易迷路：
 
-1. [官方与高价值 Skill/Plugin 推荐](/codex/skills/official)
+1. [高价值 Skill、Plugin 推荐](/codex/skills/official)
 2. [社区 Skill 推荐](/codex/skills/community)
 3. [第三方 Skill 安装与安全审计](/codex/skills/install-audit)
 4. [从零创建自己的 Codex Skill](/codex/skills/create)

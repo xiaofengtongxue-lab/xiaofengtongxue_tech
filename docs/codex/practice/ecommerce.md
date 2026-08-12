@@ -225,7 +225,7 @@ AI 出的图，**每一张都要人工检查**：结构有没有变形、颜色�
 
 ## 相关 Skill
 
-查看 [官方与高价值 Skill/Plugin 推荐](/codex/skills/official) 和 [社区 Skill 推荐](/codex/skills/community)。
+查看 [高价值 Skill、Plugin 推荐](/codex/skills/official) 和 [社区 Skill 推荐](/codex/skills/community)。
 
 ## 参考
 

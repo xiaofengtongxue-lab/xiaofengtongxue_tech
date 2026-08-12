@@ -113,7 +113,7 @@
 ## Skills
 
 - Skill learning path: https://www.xiaofengtongxue.com/codex/skills/
-- Official and high-value skills/plugins: https://www.xiaofengtongxue.com/codex/skills/official
+- High-value Skills and plugins: https://www.xiaofengtongxue.com/codex/skills/official
 - Community skills: https://www.xiaofengtongxue.com/codex/skills/community
 - Install and audit third-party skills: https://www.xiaofengtongxue.com/codex/skills/install-audit
 - Create a Codex skill: https://www.xiaofengtongxue.com/codex/skills/create

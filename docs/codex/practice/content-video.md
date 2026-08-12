@@ -221,7 +221,7 @@ Remotion、HeyGen 或者你熟悉的视频工具都可以用。提示：
 
 ## 相关 Skill
 
-查看 [官方与高价值 Skill/Plugin 推荐](/codex/skills/official) 和 [社区创作 Skill 推荐](/codex/skills/community)。
+查看 [高价值 Skill、Plugin 推荐](/codex/skills/official) 和 [社区创作 Skill 推荐](/codex/skills/community)。
 
 ## 事实来源
 

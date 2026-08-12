@@ -607,7 +607,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: 'Skill 推荐总览', link: '/codex/skills/' },
-            { text: '官方与高价值能力推荐', link: '/codex/skills/official' },
+            { text: '高价值 Skill、Plugin 推荐', link: '/codex/skills/official' },
             { text: '社区 Skill 推荐', link: '/codex/skills/community' },
             { text: '安装与安全审计', link: '/codex/skills/install-audit' },
             { text: '从零创建自己的 Skill', link: '/codex/skills/create' }
