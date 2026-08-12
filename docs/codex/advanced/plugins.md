@@ -1,6 +1,10 @@
 ---
 title: Codex Plugins 安装与管理实战
 description: 分清 Plugin、Skill 与 MCP，查看 Marketplace、安装官方或团队插件、完成认证和权限检查，并在新任务中验证插件是否真正可用。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex Plugins 安装与管理实战
@@ -181,6 +185,8 @@ codex plugin marketplace remove <marketplace-name>
 ## 下一步
 
 需要并行处理任务的话，接着看 [云任务与 Git worktree 实战](/codex/advanced/cloud-worktrees)。想找场景化的插件推荐，翻翻 [Codex Skill 推荐](/codex/skills/)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

@@ -1,9 +1,13 @@
 ---
-title: ChatGPT 与 Codex 官方及高价值 Skill、Plugin 推荐
+title: ChatGPT 与 Codex 高价值 Skill、Plugin 推荐
 description: 面向普通用户和开发者，按办公文件、开发、浏览器、设计、数据、电商和视频场景整理内置能力与官方精选 Plugins，并给出使用边界。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "Skill 推荐", path: "/codex/skills/" }
+
 ---
 
-# ChatGPT 与 Codex 官方及高价值 Skill、Plugin 推荐
+# ChatGPT 与 Codex 高价值 Skill、Plugin 推荐
 
 嘿，朋友！如果你正在琢磨 ChatGPT 和 Codex 到底该装哪些 Skill 和 Plugin，那咱俩想到一块去了。我刚接触这块的时候，一口气装了二十几个，结果每次打开都卡得不行，好多根本没用过。后来学乖了，先搞清楚哪些是真正高频的，哪些只是看着炫。这篇文章就是我把踩过的坑整理出来，咱们按场景聊聊。
 
@@ -11,7 +15,7 @@ description: 面向普通用户和开发者，按办公文件、开发、浏览�
 
 ## 先看看你本机有哪些
 
-如果你是普通用户，打开 ChatGPT 桌面应用，直接在 Skills 或 Plugins 列表里翻就行，输入框里也能选。ChatGPT / Work 一般用 `@` 选 Plugin，Codex 用 `$` 选 Skill——界面上会标得很清楚，照着点就行。
+如果你是普通用户，打开 ChatGPT 桌面应用，直接在 Skills 或 Plugins 列表里翻就行，输入框里也能选。ChatGPT Work 一般用 `@` 选 Plugin，Codex 用 `$` 选 Skill——界面上会标得很清楚，照着点就行。
 
 下面这两条命令是给开发者用的，普通用户可以跳过：
 

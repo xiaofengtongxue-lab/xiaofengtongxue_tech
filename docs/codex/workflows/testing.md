@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 补测试与建立验证门槛
 description: 让 Codex 先理解项目测试约定，再为真实行为补回归测试、处理不稳定测试，并建立从最小检查到完整构建的验证阶梯。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 补测试与建立验证门槛

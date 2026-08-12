@@ -1,6 +1,10 @@
 ---
 title: Codex Hooks 与 Rules 实战
 description: 用 Rules 决定哪些命令允许、询问或禁止，用 Hooks 在生命周期节点执行检查，并与 AGENTS.md 和 CI 组成分层护栏。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex Hooks 与 Rules 实战
@@ -173,6 +177,8 @@ Rules 和 Hooks 都应固定 Codex 版本并在升级后重新运行测试。
 ## 下一步
 
 需要拆解大型并行工作时，继续学习 [Codex Subagents 实战](/codex/advanced/subagents)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

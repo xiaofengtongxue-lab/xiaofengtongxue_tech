@@ -1,6 +1,10 @@
 ---
 title: 从零创建自己的 Codex Skill
 description: 以 release-readiness 为例，从真实触发样本、目录和 SKILL.md 开始，加入脚本、参考与资产，验证触发、产物和失败路径，再迭代为团队工作流。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "Skill 推荐", path: "/codex/skills/" }
+
 ---
 
 # 从零创建自己的 Codex Skill

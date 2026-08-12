@@ -1,6 +1,9 @@
 ---
 title: ChatGPT Work 与 Codex 场景实战
 description: 面向普通工作者和开发者的完整场景教程，使用 ChatGPT Work 或 Codex 完成 PPT、电商、漫剧、办公文件、研究、数据、Web 应用和内容视频。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+
 ---
 
 # ChatGPT Work 与 Codex 场景实战
@@ -21,7 +24,7 @@ description: 面向普通工作者和开发者的完整场景教程，使用 Cha
 | PPT、报告、表格、研究和内容成品 | ChatGPT Work | 不需要 |
 | 网站、程序、脚本和技术系统 | Codex | 不要求你亲自写代码，但需要检查技术结果 |
 
-目前的官方说明是：已经在用 Codex 做非编程工作的同学可以继续用，也可以切到更适合日常工作的 Work。这个页面里讲的方法两个都适用——出现终端、代码或脚本的时候，我会明确标成"开发者增强选项"，普通用户跳过就行。
+目前的官方说明是：已经在用 Codex 做非编程工作的同学可以继续用，也可以切到更适合日常工作的 ChatGPT Work。这个页面里讲的方法两个都适用——出现终端、代码或脚本的时候，我会明确标成"开发者增强选项"，普通用户跳过就行。
 
 ## 先建立一个通用生产模型
 
@@ -59,23 +62,9 @@ description: 面向普通工作者和开发者的完整场景教程，使用 Cha
 
 ## 选择 Skill 和 Plugin 的原则
 
-聊到 Skill 和 Plugin，我刚开始也是一通乱装，结果工作区乱得不行。后来总结了几条原则，现在装任何新东西之前都会过一遍：
+挑能力就按这个顺序：ChatGPT / Codex 自带 → 官方精选 Plugin → 审查过的社区 Skill → 自己创建的 Skill。普通用户看 [Skill 和 Plugin 入门](/codex/everyday/skills-plugins)；装第三方之前务必走一遍 [安装与安全审计](/codex/skills/install-audit)。开发者想查机器上可用的 Plugin，跑 `codex plugin list --available --json` 就行。
 
-普通用户先去桌面应用的 Skills 或 Plugins 列表里看看当前有哪些可用的。输入框里也能选：ChatGPT / Work 一般用 `@` 选 Plugin，Codex 用 `$` 选 Skill。不同版本、套餐和工作区显示的名称可能不一样，找不到也别慌。
-
-开发者同学如果需要查机器上可用的 Plugin，跑下面这条命令就行。普通用户跳过，不用管：
-
-```bash
-codex plugin list --available --json
-```
-
-我自己的选择顺序是这样的，供你参考：
-
-1. 优先用 ChatGPT / Codex 自带、有完整验证流程的文件类能力；
-2. 需要连实时外部系统的时候，用官方或可信的 Plugin / MCP；
-3. 社区 Skill 安装之前，审查源码、脚本、网络权限和许可证——这一步别偷懒；
-4. 等工作流跑稳了，再考虑创建自己的 Skill；
-5. 别为了"一句话生成"牺牲可编辑性、来源追溯和质量检查。AI 一口闷出来的东西，往往改起来更费劲。
+核心就一句：别为了"一句话生成"牺牲可编辑性、来源追溯和质量检查。AI 一口闷出来的东西，往往改起来更费劲。
 
 ## 通用任务开场模板
 

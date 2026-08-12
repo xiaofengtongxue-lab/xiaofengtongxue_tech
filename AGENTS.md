@@ -124,6 +124,17 @@ GitHub Pages 自定义域名通过 `docs/public/CNAME` 声明为 `tutorial.xiaof
 | 工程实践 | `/engineering/` | 架构、数据库、测试、部署、安全和可观测性 |
 | 开发工具 | `/tools/` | Git、IDE、终端、调试工具、MCP 和效率工具 |
 
+## Codex 栏目术语约定
+
+Codex 栏目涉及 OpenAI 产品时，统一按以下术语书写，防止各页面说法漂移：
+
+- **ChatGPT Work**：ChatGPT 应用里做 PPT、报告、表格、研究等日常文件的入口。非开发者语境一律使用全称，`Work` 不作为产品指代单独使用。
+- **Codex**：OpenAI 的编程助手，包括桌面应用模式、CLI、IDE 和云任务。开发者语境一律用 Codex。
+- **Chat**：ChatGPT 应用里的聊天问答入口。
+- **ChatGPT 桌面应用**：软件本体，只在安装、打开、登录语境使用，不指代 ChatGPT Work。
+- 三个入口并列时固定顺序 **Chat、Work、Codex**；引用界面按钮时按钮名写 **Work** 并加粗。
+- 权威定义：`docs/codex/index.md` 的「术语约定」小节。其它栏目引用 Codex 教程时遵循同一约定。
+
 ## CCWS Boundary
 
 通用技术教程可以提到 CCWS，但不要复制 CCWS 产品文档。

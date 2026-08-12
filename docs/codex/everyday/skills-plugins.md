@@ -1,6 +1,10 @@
 ---
 title: 普通人怎样使用 ChatGPT Skill 和 Plugin
 description: 用白话理解 Skill 与 Plugin，在 ChatGPT Work 或 Codex 中选择办公、PPT、表格和重复工作能力，审查外部连接，并用自然语言创建自己的简单 Skill。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "普通用户路线", path: "/codex/everyday/" }
+
 ---
 
 # 普通人怎样使用 ChatGPT Skill 和 Plugin
@@ -41,7 +45,7 @@ description: 用白话理解 Skill 与 Plugin，在 ChatGPT Work 或 Codex 中�
 最简单的方式就是直接说你要干嘛，ChatGPT 觉得匹配就会自己选 Skill。有时候你想指定用哪个，也可以手动选：
 
 - Codex 里一般用 `$` 提起 Skill；
-- ChatGPT / Work 里从输入框的能力选择器里选，官方资料里也支持对应的提及方式；
+- ChatGPT Work 里从输入框的能力选择器里选，官方资料里也支持对应的提及方式；
 - Plugin 通常用 `@` 选择具体插件或连接来源。
 
 界面这事随版本变得快。如果输入符号没弹出列表，打开 Skills 或 Plugins 页面看看当前有什么，不要反复敲不知道对不对的命令。

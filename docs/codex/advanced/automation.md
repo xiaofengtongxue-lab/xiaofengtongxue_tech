@@ -1,6 +1,10 @@
 ---
 title: Codex 定时任务与持续目标实战
 description: 先把流程在普通任务中跑稳定，再使用 Goal mode 和 Scheduled tasks 持续推进或周期执行，并控制 worktree、权限、通知与失败处理。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex 定时任务与持续目标实战
@@ -162,6 +166,8 @@ Codex 提供了两种自动运行的方式，选对场景能省好多事：
 ## 下一步
 
 需要在脚本或 CI 中运行时，继续学习 [codex exec 与 GitHub Actions](/codex/advanced/exec-ci)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

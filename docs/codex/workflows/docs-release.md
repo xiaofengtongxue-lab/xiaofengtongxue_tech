@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 更新文档并准备发布
 description: 让 Codex 从真实代码和运行结果更新教程、README、迁移说明和发布记录，完成链接、构建、敏感信息与发布前检查。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 更新文档并准备发布

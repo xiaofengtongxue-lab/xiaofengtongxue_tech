@@ -1,6 +1,9 @@
 ---
 title: 普通用户要懂的六个概念和三条边界
 description: 用大白话解释项目、任务、附件、Skill、Plugin 等概念，以及先用副本、先出草稿、先看成品三条安全边界。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+
 ---
 
 # 普通用户要懂的六个概念和三条边界

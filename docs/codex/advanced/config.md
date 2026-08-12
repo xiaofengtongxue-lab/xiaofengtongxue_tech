@@ -1,6 +1,10 @@
 ---
 title: Codex config.toml 配置实战
 description: 分清用户、项目、Profile 和命令行配置优先级，安全设置沙箱、审批、搜索和推理，并用 strict-config 与 doctor 验证配置。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex config.toml 配置实战
@@ -174,6 +178,8 @@ authorization = "Bearer real-secret"
 ## 下一步
 
 配置搞定了，接下来看看 MCP 怎么配：继续读 [Codex MCP 配置与安全实战](/codex/advanced/mcp)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

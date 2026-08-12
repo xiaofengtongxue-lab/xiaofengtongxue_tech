@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 复现并修复 Bug
 description: 从原始错误、稳定复现和失败测试出发，让 Codex 定位根因、实施最小修复、补回归测试并验证真实运行路径。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 复现并修复 Bug

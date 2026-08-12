@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 读懂陌生代码库
 description: 从仓库基线、启动入口、真实调用链、数据模型和验证命令入手，用 Codex 生成可核对的代码库地图，而不是泛泛架构总结。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 读懂陌生代码库

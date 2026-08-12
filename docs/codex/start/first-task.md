@@ -16,6 +16,10 @@ howTo:
       text: 运行最小相关测试或构建，记录命令、退出结果、通过数量和未执行检查。
     - name: 完成独立复核
       text: 对未提交变更进行风险审查，逐条回到代码和测试核实，再形成完成报告。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "开发者入门", path: "/codex/start/" }
+
 ---
 
 # 开发者第一次使用 Codex：完成可验证的小改动

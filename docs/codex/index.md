@@ -20,7 +20,7 @@ description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Wor
 
 不管走哪条路线，你都会逐渐看懂 AI 是怎么一步步把任务做完的——这也是理解所有同类工具的共同基础。
 
-> 内容核验日期：2026 年 7 月 11 日。普通用户路线以当日 ChatGPT 桌面应用官方资料为基线；开发者命令以 Codex CLI `0.144.1` 为验证基线。产品入口会随版本、套餐和工作区策略变化，以你当前界面和官方说明为准。
+> 内容核验日期：2026 年 8 月 13 日。普通用户路线以当日 ChatGPT 桌面应用官方资料为基线；开发者命令以 Codex CLI `0.147.0` 为验证基线。产品入口会随版本、套餐和工作区策略变化，以你当前界面和官方说明为准。
 
 ## 先看看你想干什么
 
@@ -51,17 +51,31 @@ description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Wor
 | ChatGPT Work | PPT、报告、表格、研究、计划——总之是你能打开看、能审核的那种成品 |
 | Codex | 软件开发、读代码库、写代码、调试，跟开发工具沾边的活儿 |
 
-说实话，如果你之前已经习惯用 Codex 干非编程的活，继续用也没毛病。但要是你第一次尝试，做文件或办公任务的时候，Work 通常更顺手一些，少踩很多坑。我把这些内容都收在 Codex 大栏目下，是想给你一条从文件操作到 Skills、Plugins、自动化的连续学习路径，中间不用来回跳。不是想把所有事情都往「编程」上靠。
+说实话，如果你之前已经习惯用 Codex 干非编程的活，继续用也没毛病。但要是你第一次尝试，做文件或办公任务的时候，ChatGPT Work 通常更顺手一些，少踩很多坑。我把这些内容都收在 Codex 大栏目下，是想给你一条从文件操作到 Skills、Plugins、自动化的连续学习路径，中间不用来回跳。不是想把所有事情都往「编程」上靠。
+
+## 术语约定
+
+本站提到 OpenAI 的 AI 助手时，统一按下面的说法写，不同页面保持一致：
+
+| 说法 | 指什么 | 什么时候用 |
+| --- | --- | --- |
+| ChatGPT Work | ChatGPT 应用里做 PPT、报告、表格、研究等日常文件的入口 | 普通用户路线和其他非编程场景 |
+| Codex | OpenAI 的编程助手，包括桌面应用模式、CLI、IDE 和云任务 | 开发者路线和所有编程场景 |
+| Chat | ChatGPT 应用里的聊天问答入口 | 问问题、解释概念、头脑风暴 |
+| ChatGPT 桌面应用 | ChatGPT 的桌面软件本体 | 安装、打开、登录时 |
+
+三个入口并列时固定按 **Chat、Work、Codex** 的顺序写；引用界面上的按钮时，按钮名 **Work** 保持加粗。正文指代产品时一律写 ChatGPT Work，不用 Work 单独指代产品。
 
 ## 普通用户完整路线
 
-1. [不用写代码完成第一份工作文件](/codex/everyday/first-result)
-2. [理解项目、任务、附件和本地文件夹](/codex/everyday/projects-files)
-3. [用普通话说清任务](/codex/everyday/task-brief)
-4. [检查 Word、PPT、表格和 PDF](/codex/everyday/review-revise)
-5. [保护隐私，读懂权限和审批](/codex/everyday/safety)
-6. [使用 Skill 和 Plugin](/codex/everyday/skills-plugins)
-7. [把一次成功任务变成可复用流程](/codex/everyday/repeat-process)
+1. [普通用户要懂的六个概念和三条边界](/codex/everyday/)
+2. [不用写代码完成第一份工作文件](/codex/everyday/first-result)
+3. [理解项目、任务、附件和本地文件夹](/codex/everyday/projects-files)
+4. [用普通话说清任务](/codex/everyday/task-brief)
+5. [检查 Word、PPT、表格和 PDF](/codex/everyday/review-revise)
+6. [保护隐私，读懂权限和审批](/codex/everyday/safety)
+7. [使用 Skill 和 Plugin](/codex/everyday/skills-plugins)
+8. [把一次成功任务变成可复用流程](/codex/everyday/repeat-process)
 
 走完这一轮，你应该能自己准备资料、生成草稿、局部修改、下载文件、核对事实——整个过程不用等技术同事帮忙。当然，最后那一步——发送、发布、付款、删除——记得还是自己确认一下再动手。
 

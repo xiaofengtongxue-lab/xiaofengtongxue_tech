@@ -1,9 +1,13 @@
 ---
-title: 普通人使用 ChatGPT Work 和 Codex 的隐私、权限与审批
+title: 普通人使用 ChatGPT Work 的隐私、权限与审批
 description: 用普通语言理解附件、本地文件夹、Plugin、Computer Use、沙箱和审批的不同边界，保护客户资料并阻止未经确认的发送、发布、付款、删除和系统修改。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "普通用户路线", path: "/codex/everyday/" }
+
 ---
 
-# 普通人使用 ChatGPT Work 和 Codex 的隐私、权限与审批
+# 普通人使用 ChatGPT Work 的隐私、权限与审批
 
 嘿，聊点实际的东西。
 

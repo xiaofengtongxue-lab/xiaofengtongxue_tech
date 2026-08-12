@@ -1,6 +1,10 @@
 ---
 title: AGENTS.md 实战：让 Codex 自动遵守项目规则
 description: 在全局、仓库和子目录分层编写 AGENTS.md，固化项目边界、验证命令与工作树安全规则，并验证 Codex 实际加载顺序。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # AGENTS.md 实战：让 Codex 自动遵守项目规则
@@ -192,6 +196,8 @@ codex -C services/payments --sandbox read-only --ask-for-approval never "列出�
 ## 下一步
 
 继续学习 [Codex config.toml 配置实战](/codex/advanced/config)，把权限、搜索、MCP 和运行偏好放到正确的配置层。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

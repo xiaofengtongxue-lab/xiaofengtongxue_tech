@@ -1,6 +1,10 @@
 ---
 title: Codex MCP 配置与安全实战
 description: 为 Codex 添加 STDIO 或 Streamable HTTP MCP 服务器，使用 OAuth/环境变量认证、工具 allowlist 和审批策略，并验证真实连接与数据边界。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex MCP 配置与安全实战
@@ -198,7 +202,9 @@ codex mcp remove internalDocs
 
 想把 Skills、连接器和 MCP 打包一起分发的时候，接着看 [Codex Plugins 安装与管理](/codex/advanced/plugins)。
 
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
+
 ## 事实来源
 
 - [OpenAI：Model Context Protocol](https://learn.chatgpt.com/docs/extend/mcp)
-- [OpenAI Docs MCP](https://developers.openai.com/mcp)
+- [OpenAI Docs MCP](https://developers.openai.com/api/docs/mcp)

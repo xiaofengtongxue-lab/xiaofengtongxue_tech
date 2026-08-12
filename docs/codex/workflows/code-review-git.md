@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 做代码审查、Git 和 PR 闭环
 description: 选择正确 diff 范围，让 Codex 输出可复现的高价值发现，逐项核实、修复、暂存并处理 GitHub Pull Request 反馈。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 做 Code Review、Git 暂存和 PR 闭环

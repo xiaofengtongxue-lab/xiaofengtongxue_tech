@@ -1,6 +1,10 @@
 ---
 title: codex exec 与 GitHub Actions 自动化实战
 description: 使用 codex exec 做非交互任务、JSONL 和结构化输出，并用 openai/codex-action@v1 在最小权限下运行代码审查或候选修复。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # codex exec 与 GitHub Actions 自动化实战
@@ -127,7 +131,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: refs/pull/${{ github.event.pull_request.number }}/merge
           fetch-depth: 0
@@ -215,6 +219,8 @@ jobs:
 ## 下一步
 
 命令执行前后需要加机械护栏的话，去看 [Hooks 与 Rules 实战](/codex/advanced/hooks-rules)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

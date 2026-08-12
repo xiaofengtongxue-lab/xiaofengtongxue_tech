@@ -1,6 +1,10 @@
 ---
 title: Codex 提示词实战：目标、上下文、边界和验证
 description: 不需要"咒语"，用工程工单的方式写任务说明，掌握目标、上下文、边界和验证五要素，附带调试、功能、审查和文档模板。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "开发者入门", path: "/codex/start/" }
+
 ---
 
 # Codex 提示词实战：目标、上下文、边界和验证

@@ -1,6 +1,10 @@
 ---
 title: Codex 常见故障分层排查
 description: 按入口、版本、登录、配置、权限、网络、Skill/MCP/Plugin 和项目运行时逐层定位 Codex 问题，得到可复现证据再决定是否重装。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex 常见故障分层排查
@@ -221,6 +225,8 @@ Codex 能启动不等于你项目里的命令能跑——这是两回事。项�
 ## 下一步
 
 走完这套排查流程之后，可以去 [Codex 技巧与场景实战](/codex/practice/) 看看实战技巧，或者逛逛 [Codex Skill 推荐](/codex/skills/) 找找好用的 Skill。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

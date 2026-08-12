@@ -1,6 +1,10 @@
 ---
 title: Codex Subagents 并行协作实战
 description: 判断任务能否安全并行，按独立证据或文件边界拆给 Subagents，控制线程、深度、权限和成本，并由主任务统一验证结果。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex Subagents 并行协作实战
@@ -93,11 +97,11 @@ nickname_candidates = ["Atlas", "Delta", "Echo"]
 
 ```toml
 [agents]
-max_threads = 4
+max_concurrent_threads_per_session = 4
 max_depth = 1
 ```
 
-`max_threads` 管并发线程数，`max_depth` 管 agent 能不能继续往下派生子 agent。我的建议是深度就定在 1，别让 agent 生 agent——递归扇出会让成本和不可控性指数级膨胀。你想想，一个 agent 起三个子 agent，每个子 agent 又起三个，一眨眼就九个了，额度账单那叫一个刺激。
+`max_concurrent_threads_per_session` 管并发线程数（旧配置里的 `max_threads` 仍兼容，但新配置建议用规范名），`max_depth` 管 agent 能不能继续往下派生子 agent，目前只对 V1 代理线程生效。我的建议是深度就定在 1，别让 agent 生 agent——递归扇出会让成本和不可控性指数级膨胀。你想想，一个 agent 起三个子 agent，每个子 agent 又起三个，一眨眼就九个了，额度账单那叫一个刺激。
 
 ## 给每个 agent 足够但最小的上下文
 
@@ -157,6 +161,8 @@ max_depth = 1
 ## 下一步
 
 需要把 Codex 嵌入自己的服务或工具时，继续学习 [Codex SDK 与 App Server](/codex/advanced/sdk-app-server)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

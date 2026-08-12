@@ -1,6 +1,10 @@
 ---
 title: 值得关注的社区 Codex Skill 推荐
 description: 按 PPT、社交图文、插画、架构图和学习工作流整理活跃社区 Skill，并说明输出路线、许可证和安装前风险。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "Skill 推荐", path: "/codex/skills/" }
+
 ---
 
 # 值得关注的社区 Codex Skill 推荐

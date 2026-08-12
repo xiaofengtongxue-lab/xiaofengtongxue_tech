@@ -1,6 +1,10 @@
 ---
 title: 把一次成功任务变成普通人可复用的流程
 description: 从一次可靠成品中提取输入、步骤、模板、检查和人工审批点，依次选择任务模板、项目、Skill、Plugin 或定时任务，不写代码也能稳定复用。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "普通用户路线", path: "/codex/everyday/" }
+
 ---
 
 # 把一次成功任务变成普通人可复用的流程

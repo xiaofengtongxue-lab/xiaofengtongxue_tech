@@ -1,6 +1,10 @@
 ---
 title: Codex 云任务与 Git Worktree 并行实战
 description: 分清本地目录、Codex 管理的 worktree 和云环境，安全并行任务、配置依赖、审查远程 diff，并把结果应用回本地。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex 云任务与 Git Worktree 并行实战
@@ -186,6 +190,8 @@ git diff
 ## 下一步
 
 把稳定的重复工作交给 [Codex 定时任务与持续目标](/codex/advanced/automation)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

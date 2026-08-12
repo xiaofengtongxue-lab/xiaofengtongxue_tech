@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 做可回退的重构与迁移
 description: 用行为基线、依赖地图、分阶段切片、兼容层和回滚点控制大型重构，让 Codex 在不改变用户行为的前提下逐步迁移。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 做可回退的重构与迁移

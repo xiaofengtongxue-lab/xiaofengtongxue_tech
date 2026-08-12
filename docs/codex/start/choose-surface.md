@@ -1,6 +1,10 @@
 ---
 title: Chat、Work、Codex App、CLI、IDE 和云任务怎么选
 description: 先搞清楚你是聊天、做日常成品、还是写代码，再选对应工具。不写代码的人不需要碰 CLI 和 IDE。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "开发者入门", path: "/codex/start/" }
+
 ---
 
 # Chat、Work、Codex App、CLI、IDE 和云任务怎么选

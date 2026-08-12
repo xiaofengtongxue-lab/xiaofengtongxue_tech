@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 根据截图实现并迭代界面
 description: 把截图变成能跑、能响应、能无障碍访问的页面——用上现有的设计系统，浏览器里真实验证，每个尺寸都检查到位。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 根据截图实现并迭代界面

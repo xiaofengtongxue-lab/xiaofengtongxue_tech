@@ -1,6 +1,10 @@
 ---
 title: Codex SDK 与 App Server 集成实战
 description: 在 codex exec、TypeScript/Python SDK、MCP Server 和 App Server 之间做选择，用最小示例创建线程、流式处理事件并控制工作目录与沙箱。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex SDK 与 App Server 集成实战
@@ -195,6 +199,8 @@ codex mcp-server
 ## 下一步
 
 团队或产品环境部署之前，推荐接着看 [Codex 团队安全与数据边界](/codex/advanced/security)，安全意识提前拉满总没错。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

@@ -1,6 +1,10 @@
 ---
 title: Codex 团队安全与数据边界
 description: 从身份、代码、凭证、外部内容、Plugins/MCP、CI 和生产操作建立 Codex 威胁模型，并给出团队上线前的最小控制清单。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "高级能力", path: "/codex/advanced/" }
+
 ---
 
 # Codex 团队安全与数据边界
@@ -175,6 +179,8 @@ Codex 可以帮你准备迁移脚本、写部署说明、草拟消息，这些�
 ## 下一步
 
 遇到实际异常时，参考 [Codex 常见故障分层排查](/codex/advanced/troubleshooting)。
+
+> 命令核验：本页关键命令已对照 openai/codex 源码与官方文档核验（2026-08-13）。产品行为会随版本变化，以当前官方文档为准。
 
 ## 事实来源
 

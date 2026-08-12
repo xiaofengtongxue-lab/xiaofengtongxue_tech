@@ -1,6 +1,10 @@
 ---
 title: 普通人如何整理 ChatGPT 项目、任务和本地文件
 description: 用资料柜和工作单的方式理解项目、任务、附件和本地文件夹，学会准备安全副本、限制访问范围并保持长期工作不混乱。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "普通用户路线", path: "/codex/everyday/" }
+
 ---
 
 # 普通人如何整理 ChatGPT 项目、任务和本地文件

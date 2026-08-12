@@ -1,6 +1,10 @@
 ---
 title: 第三方 Codex Skill 安装与安全审计
 description: 在安装社区 Skill 前审查来源、许可证、SKILL.md、脚本、依赖、网络、凭证和写入路径，并用小样本测试触发与产物。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "Skill 推荐", path: "/codex/skills/" }
+
 ---
 
 # 第三方 Codex Skill 安装与安全审计

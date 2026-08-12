@@ -1,6 +1,10 @@
 ---
 title: Codex 安装、登录与环境检查
 description: 在 macOS、Linux 和 Windows 安装 Codex CLI，打开桌面应用或 IDE，选择 ChatGPT/API Key 登录，完成健康检查。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "开发者入门", path: "/codex/start/" }
+
 ---
 
 # Codex 安装、登录与环境检查
@@ -11,7 +15,7 @@ description: 在 macOS、Linux 和 Windows 安装 Codex CLI，打开桌面应用
 
 ## 不写代码的话，先别折腾 CLI
 
-如果你主要是做 PPT、写文档、整表格、搞电商、做内容，**不需要装 CLI**。装个 ChatGPT 桌面应用，用 Chat 或 Work 就够了。别觉得装了命令行就显得专业——用不上就是给自己添麻烦。
+如果你主要是做 PPT、写文档、整表格、搞电商、做内容，**不需要装 CLI**。装个 ChatGPT 桌面应用，用 Chat 或 ChatGPT Work 就够了。别觉得装了命令行就显得专业——用不上就是给自己添麻烦。
 
 普通用户直接去 [不用写代码完成第一份工作文件](/codex/everyday/first-result)。下面安装、版本、命令和仓库检查都是给开发者看的。
 

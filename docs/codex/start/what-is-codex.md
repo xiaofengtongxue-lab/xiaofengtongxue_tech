@@ -1,6 +1,10 @@
 ---
 title: Codex 是什么：先做一次只读项目体检
 description: 用一次真实的只读项目体检，看懂 Codex 和普通聊天模型的区别、四种入口怎么选，建立正确的使用预期。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "开发者入门", path: "/codex/start/" }
+
 ---
 
 # Codex 是什么：先做一次只读项目体检

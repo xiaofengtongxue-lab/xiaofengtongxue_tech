@@ -1,6 +1,10 @@
 ---
 title: 用 Codex 开发一个完整功能
 description: 把模糊需求转换为可验收行为，复用现有项目模式，按垂直切片实现代码、测试、数据和文档，并完成端到端验证。
+breadcrumbs:
+  - { name: "Codex 实战教程", path: "/codex/" }
+  - { name: "项目工作流", path: "/codex/workflows/" }
+
 ---
 
 # 用 Codex 开发一个完整功能
