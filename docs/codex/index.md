@@ -68,14 +68,14 @@ description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Wor
 
 ## 普通用户完整路线
 
-1. [普通用户要懂的六个概念和三条边界](/codex/everyday/)
-2. [不用写代码完成第一份工作文件](/codex/everyday/first-result)
-3. [理解项目、任务、附件和本地文件夹](/codex/everyday/projects-files)
+1. [六个概念与三条边界](/codex/everyday/)
+2. [不用代码完成第一份文件](/codex/everyday/first-result)
+3. [项目、任务与本地文件](/codex/everyday/projects-files)
 4. [用普通话说清任务](/codex/everyday/task-brief)
 5. [检查 Word、PPT、表格和 PDF](/codex/everyday/review-revise)
-6. [保护隐私，读懂权限和审批](/codex/everyday/safety)
+6. [隐私、权限与审批](/codex/everyday/safety)
 7. [使用 Skill 和 Plugin](/codex/everyday/skills-plugins)
-8. [把一次成功任务变成可复用流程](/codex/everyday/repeat-process)
+8. [把成功任务变成可复用流程](/codex/everyday/repeat-process)
 
 走完这一轮，你应该能自己准备资料、生成草稿、局部修改、下载文件、核对事实——整个过程不用等技术同事帮忙。当然，最后那一步——发送、发布、付款、删除——记得还是自己确认一下再动手。
 
@@ -83,12 +83,12 @@ description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Wor
 
 ### 第一阶段：安全地跑通第一次代码任务
 
-1. [认识 Codex 的工作方式](/codex/start/what-is-codex)
-2. [选择 App、CLI、IDE 还是云任务](/codex/start/choose-surface)
+1. [Codex 是什么](/codex/start/what-is-codex)
+2. [Chat、Work 与 Codex 入口怎么选](/codex/start/choose-surface)
 3. [安装、登录与环境检查](/codex/start/install-login)
-4. [完成第一次可验证任务](/codex/start/first-task)
-5. [写出不容易跑偏的任务说明](/codex/start/prompting)
-6. [掌握权限、沙箱与工作区安全](/codex/start/permissions)
+4. [第一次可验证任务](/codex/start/first-task)
+5. [提示词与任务说明](/codex/start/prompting)
+6. [权限、沙箱与工作区安全](/codex/start/permissions)
 
 这个阶段结束后，你应该能做到：让 Codex 在明确的边界内读你的项目、做一处小改动、跑一下验证，然后自己判断结果靠不靠谱。不追求多快，就追求每一步你都看得懂。
 
@@ -97,28 +97,28 @@ description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Wor
 1. [读懂陌生代码库](/codex/workflows/understand-codebase)
 2. [复现并修复 Bug](/codex/workflows/fix-bugs)
 3. [开发一个完整功能](/codex/workflows/build-feature)
-4. [补测试与建立验证门槛](/codex/workflows/testing)
-5. [根据截图实现和迭代界面](/codex/workflows/ui-from-screenshot)
-6. [做可回退的重构与迁移](/codex/workflows/refactor)
-7. [代码审查、Git 与 PR 闭环](/codex/workflows/code-review-git)
-8. [更新文档并准备发布](/codex/workflows/docs-release)
+4. [补测试与验证门槛](/codex/workflows/testing)
+5. [根据截图实现界面](/codex/workflows/ui-from-screenshot)
+6. [可回退的重构与迁移](/codex/workflows/refactor)
+7. [代码审查、Git 与 PR](/codex/workflows/code-review-git)
+8. [文档与发布准备](/codex/workflows/docs-release)
 
 这一阶段的重点：每次改动都有证据、有边界、能审查、能回退。我见过太多人让 AI 狂写一通代码，最后谁也看不懂、改不动、回不去——那不是在提效，是在给自己埋雷。
 
 ### 第三阶段：把你自己的经验固化下来
 
-1. [用 AGENTS.md 固化项目规则](/codex/advanced/agents-md)
-2. [用 config.toml 管理模型、权限和项目配置](/codex/advanced/config)
-3. [用 MCP 连接外部资料和工具](/codex/advanced/mcp)
-4. [安装和管理 Plugins](/codex/advanced/plugins)
-5. [用云任务与 worktree 并行工作](/codex/advanced/cloud-worktrees)
-6. [创建定时任务和持续目标](/codex/advanced/automation)
-7. [用 codex exec 和 GitHub Actions 做自动化](/codex/advanced/exec-ci)
-8. [用 Hooks 与 Rules 建立机械护栏](/codex/advanced/hooks-rules)
-9. [用 Subagents 拆解复杂任务](/codex/advanced/subagents)
-10. [用 SDK 与 App Server 集成 Codex](/codex/advanced/sdk-app-server)
+1. [AGENTS.md 实战](/codex/advanced/agents-md)
+2. [config.toml 配置实战](/codex/advanced/config)
+3. [MCP 配置与安全](/codex/advanced/mcp)
+4. [Plugins 安装与管理](/codex/advanced/plugins)
+5. [云任务与 Worktree](/codex/advanced/cloud-worktrees)
+6. [定时任务与持续目标](/codex/advanced/automation)
+7. [codex exec 与 GitHub Actions](/codex/advanced/exec-ci)
+8. [Hooks 与 Rules](/codex/advanced/hooks-rules)
+9. [Subagents 并行协作](/codex/advanced/subagents)
+10. [SDK 与 App Server](/codex/advanced/sdk-app-server)
 11. [团队安全与数据边界](/codex/advanced/security)
-12. [常见故障的分层排查](/codex/advanced/troubleshooting)
+12. [常见故障分层排查](/codex/advanced/troubleshooting)
 
 这一阶段的重点：把前面靠口头交代和临时操作的经验，沉淀成项目里的规则、配置和自动化。这样 AI 的行为可预期、可复用、有护栏，换人接手或长期维护时也不用重新摸索一遍。
 
@@ -129,11 +129,11 @@ description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Wor
 - [制作可交付的 PPT](/codex/practice/ppt)
 - [搭建电商运营工作流](/codex/practice/ecommerce)
 - [制作 AI 漫剧与短片](/codex/practice/comic-drama)
-- [处理 Word、Excel、PDF](/codex/practice/documents-spreadsheets-pdf)
+- [处理 Word、Excel 和 PDF](/codex/practice/documents-spreadsheets-pdf)
 - [完成带来源的研究报告](/codex/practice/research-report)
-- [分析数据并制作可视化](/codex/practice/data-analysis)
-- [从想法做到可运行 Web 应用](/codex/practice/web-app)
-- [制作图文、短视频与内容素材](/codex/practice/content-video)
+- [数据分析与可视化](/codex/practice/data-analysis)
+- [从想法到 Web 应用](/codex/practice/web-app)
+- [图文、短视频与内容素材](/codex/practice/content-video)
 
 ## 关于账号、模型和第三方服务
 
