@@ -1,5 +1,5 @@
 ---
-publishedRevision: "d969b64c609d30f7f415c2b3016b8bee91b54ce1"
+publishedRevision: "9228fb08a57a574ba660242b3f14aed0cffac391"
 title: Codex 实战教程
 description: 为普通工作者和开发者分别设计的 Codex 与 ChatGPT Work 实战教程，覆盖办公文件、PPT、电商、内容创作、软件开发、Skills、MCP 和自动化。
 ---
