@@ -1,5 +1,5 @@
 ---
-publishedRevision: "c6ef773a2abb71b766c6089849f5c30dfb86258a"
+publishedRevision: "01c298cbf804bc7a90dd07e6049ae3b2102a5ef2"
 title: 普通用户要懂的六个概念和三条边界
 description: 解释项目、任务、附件、Skill、Plugin 等概念，以及先用副本、先出草稿、先看成品三条安全边界。
 breadcrumbs:
