@@ -1,4 +1,5 @@
 ---
+publishedRevision: "c6ef773a2abb71b766c6089849f5c30dfb86258a"
 title: ChatGPT Work 与 Codex 场景实战
 description: 面向普通工作者和开发者的完整场景教程，使用 ChatGPT Work 或 Codex 完成 PPT、电商、漫剧、办公文件、研究、数据、Web 应用和内容视频。
 breadcrumbs:
